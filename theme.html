@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<!--Bloc de code correspondant à l'utilisation des liens de Bootstrap -->
+	<meta charset="utf-8" />
+	 <title>Thèmes</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="stylesheet" href="style_theme.css">
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+	<div class="col-md-3">
+	<!--Correspond au 1/3 de l'écran-->
+		<div class="container">
+			<!--Partie 1 correspondant aux 7 thèmes disposés verticalement sur la gauche-->
+			<h3>Choisissez votre thème</h3>
+			 <div class="btn-group-vertical">
+			 <form method="post">
+				   <input type="radio" name="Theme" value="International" id="International" />
+				   <label for="International">International</label><br/>
+
+				   <input type="radio" name="Theme" value="Politique_fr" id="Politique_fr" />
+				   <label for="Politique_fr">Politique fr</label><br/>
+
+				   <input type="radio" name="Theme" value="France" id="France" />
+				   <label for="France">France</label><br/>
+
+				   <input type="radio" name="Theme" value="Economie" id="Economie" />
+				   <label for="Economie">Economie</label><br/>
+
+				   <input type="radio" name="Theme" value="Science-High-tech" id="Science-High-tech" />
+				   <label for="Science-High-tech">Science/High-tech</label><br/>
+
+				   <input type="radio" name="Theme" value="Art-Culture" id="Art-Culture" />
+				   <label for="Art-Culture">Art et Culture</label><br/>
+
+				   <input type="radio" name="Theme" value="Sports" id="Sports" />
+				   <label for="Sports">Sports</label><br/>
+
+				   <input type="radio" name="Theme" value="Santé" id="Santé" />
+				   <label for="Santé">Santé</label><br/>
+			</form>
+			 </div>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div class="row">
+			<div id="part2"> 
+				<h3> Partie 2 <h3>
+				<h6> Par defaut le theme le plus traité</h6>
+
+				<div id="bullesThemes">
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  					<script type="text/javascript">
+     				google.charts.load('current', {'packages':['corechart']});
+     				google.charts.setOnLoadCallback(drawSeriesChart);
+
+     			
+
+    function drawSeriesChart() {
+
+var data = google.visualization.arrayToDataTable([
+		        ['Theme', 				'X', 		'Y',		"Ordre",		 'Effectif'],
+		        ['International',		 1,			 1,				0, 				81902307],
+		        ['Politique fr',		 2,			 2,				1, 				5523095],
+		        ['France',   			 3,			 3,				2, 				79716203],
+		        ['Economie',    		 4,			 4,				3,  			61801570],
+		        ['Science',    			 5,			 5,				4,  			73137148],
+		        ['Art et Culture',   	 6,			 6,				5,  			31090763],
+		        ['Sports',    			 7,			 7,				6, 				74856000],
+		        ['Santé',    		     8,			 8,				7, 				141850000],
+		      ]);
+      var options = {
+        title: 'Thèmes les plus traités',
+        hAxis: {title: 'X'},
+        vAxis: {title: 'Y'},
+        bubble: {textStyle: {fontSize: 11}}
+      };
+
+      var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+        <div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+
+    </div>
+
+	 		</div>
+		</div>
+
+
+		<div class="row">
+			<div id="part3"> 
+				<h3> Partie 3 <h3>
+				<h6> Les mots les plus traités par theme et par semaine </h6>
+				<div id="NuageMot">
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['treemap']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
+          ['Global',    null,                 0,                               0],
+          ['Europe',    'Global',             0,                               0],
+          ['Asia',      'Global',             0,                               0],
+          ['Australia', 'Global',             0,                               0],
+          ['Africa',    'Global',             0,                               0],
+          ['Brazil',    'Global',            11,                              10],
+          ['USA',       'Global',            52,                              31],
+          ['Mexico',    'Global',            24,                              12],
+          ['Canada',    'Global',            16,                              -23],
+          ['France',    'Global',             42,                              -11],
+          ['Germany',   'Global',             31,                              -2],
+          ['Sweden',    'Global',             22,                              -13],
+          ['Italy',     'Global',             17,                              4],
+          ['UK',        'Global',             21,                              -5]
+        ]);
+
+        tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
+
+        tree.draw(data, {
+          minColor: '#f00',
+          midColor: '#ddd',
+          maxColor: '#0d0',
+          headerHeight: 15,
+          fontColor: 'black',
+          showScale: true
+        });
+
+      }
+    </script>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+					<!--img src="https://media.licdn.com/mpr/mpr/shrinknp_800_800/AAEAAQAAAAAAAATpAAAAJGM0OTcxYmYxLTU4YTctNGM0MS05OGU0LTVkYzZkYzg5MzIzMg.png" height="400" alt="Nuage_de_Mot"-->
+				</div>
+	 		</div>
+		</div>
+
+		<div class="row">
+			<div id="part4">
+				<h3> Partie 4<h3>
+			 	<table>
+			 		<caption class="text-center">Mot associé au thème</caption>
+
+			 		<thead>
+			 			<tr >
+			 				<th>Mots liés au thème</th>
+			 				<th>Tendance</th>
+			 			</tr>
+			 		</thead>
+			 		<tbody>
+			 			<tr>
+			 				<td>V</td>
+			 				<td></td>
+			 			</tr>
+			 			<tr>
+			 				<td>A</td>
+			 				<td></td>
+			 			</tr>
+			 			<tr>
+			 				<td>N</td>
+			 				<td></td>
+			 			</tr>
+			 		</tbody>
+			 	</table>
+			</div>	
+		</div>
+	</div>
+	
+<script src="header.js"></script>
+ 	<script src="footer.js"></script>	
+</body>
+</html>
