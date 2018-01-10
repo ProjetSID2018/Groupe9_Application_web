@@ -4,176 +4,127 @@
 <head>
 	<!--Bloc de code correspondant à l'utilisation des liens de Bootstrap -->
 	<meta charset="utf-8" />
-	 <title>Thèmes</title>
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link rel="stylesheet" href="style_theme.css">
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	<title>Thèmes</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../static/style_theme.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Nuags de mots-->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen">
+    <script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
+    <script type="text/javascript" src="../dynamic/jqcloud-1.0.4.js"></script>
+    <link rel="stylesheet" href="../static/jqcloud.css" type="text/css" media="screen">
+    <script type="text/javascript" src="../dynamic/core_tests.js"></script>
 </head>
 
 <body>
-	<div class="col-md-3">
-	<!--Correspond au 1/3 de l'écran-->
-		<div class="container">
-			<!--Partie 1 correspondant aux 7 thèmes disposés verticalement sur la gauche-->
-			<h3>Choisissez votre thème</h3>
-			 <div class="btn-group-vertical">
-			 <form method="post">
-				   <input type="radio" name="Theme" value="International" id="International" />
-				   <label for="International">International</label><br/>
-
-				   <input type="radio" name="Theme" value="Politique_fr" id="Politique_fr" />
-				   <label for="Politique_fr">Politique fr</label><br/>
-
-				   <input type="radio" name="Theme" value="France" id="France" />
-				   <label for="France">France</label><br/>
-
-				   <input type="radio" name="Theme" value="Economie" id="Economie" />
-				   <label for="Economie">Economie</label><br/>
-
-				   <input type="radio" name="Theme" value="Science-High-tech" id="Science-High-tech" />
-				   <label for="Science-High-tech">Science/High-tech</label><br/>
-
-				   <input type="radio" name="Theme" value="Art-Culture" id="Art-Culture" />
-				   <label for="Art-Culture">Art et Culture</label><br/>
-
-				   <input type="radio" name="Theme" value="Sports" id="Sports" />
-				   <label for="Sports">Sports</label><br/>
-
-				   <input type="radio" name="Theme" value="Santé" id="Santé" />
-				   <label for="Santé">Santé</label><br/>
-			</form>
-			 </div>
+	<section id="title_section_theme">
+		<div class="container-fluid" id="container1_div_theme">
+			<h1>Stats sur les thèmes</h1>
 		</div>
-	</div>
-	<div class="col-md-9">
-		<div class="row">
-			<div id="part2"> 
-				<h3> Partie 2 <h3>
-				<h6> Par defaut le theme le plus traité</h6>
+	</section>
 
-				<div id="bullesThemes">
-					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  					<script type="text/javascript">
-     				google.charts.load('current', {'packages':['corechart']});
-     				google.charts.setOnLoadCallback(drawSeriesChart);
+	<section id="Menu_section_theme">
+		<div class="container-fluid" id="container2_div_theme">
+			<h2>Choisissez votre thème</h2>
+			<div id="list_theme_div_theme">
+				<form method="post">
+				   <input type="radio" name="Theme" value="_international" id="_international" />
+				   <label for="_international">International</label>
 
-     			
+				   <input type="radio" name="Theme" value="_politique_fr" id="_politique_fr" />
+				   <label for="_politique_fr">Politique fr</label>
 
-    function drawSeriesChart() {
+				   <input type="radio" name="Theme" value="_france" id="_france" />
+				   <label for="_france">France</label>
 
-var data = google.visualization.arrayToDataTable([
-		        ['Theme', 				'X', 		'Y',		"Ordre",		 'Effectif'],
-		        ['International',		 1,			 1,				0, 				81902307],
-		        ['Politique fr',		 2,			 2,				1, 				5523095],
-		        ['France',   			 3,			 3,				2, 				79716203],
-		        ['Economie',    		 4,			 4,				3,  			61801570],
-		        ['Science',    			 5,			 5,				4,  			73137148],
-		        ['Art et Culture',   	 6,			 6,				5,  			31090763],
-		        ['Sports',    			 7,			 7,				6, 				74856000],
-		        ['Santé',    		     8,			 8,				7, 				141850000],
-		      ]);
-      var options = {
-        title: 'Thèmes les plus traités',
-        hAxis: {title: 'X'},
-        vAxis: {title: 'Y'},
-        bubble: {textStyle: {fontSize: 11}}
-      };
+				   <input type="radio" name="Theme" value="_economie" id="_economie" />
+				   <label for="_economie">Economie</label>
 
-      var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
-      chart.draw(data, options);
-    }
-    </script>
-        <div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+				   <input type="radio" name="Theme" value="_sciences_high_tech" id="_sciences_high_tech" />
+				   <label for="_sciences_high_tech">Science/High-tech</label>
 
-    </div>
+				   <input type="radio" name="Theme" value="_arts_et_culture" id="_arts_et_culture" />
+				   <label for="_arts_et_culture">Art et Culture</label>
 
-	 		</div>
+				   <input type="radio" name="Theme" value="_sports" id="_sports" />
+				   <label for="_sports">Sports</label>
+				   <input type="radio" name="Theme" value="_sante" id="_sante" />
+				   <label for="_sante">Santé</label>
+					<div id="buttonOK_div_theme"> <button type="submit">OK</button> </div>
+				</form>
+			</div>
 		</div>
+	</section>
 
 
-		<div class="row">
-			<div id="part3"> 
-				<h3> Partie 3 <h3>
-				<h6> Les mots les plus traités par theme et par semaine </h6>
-				<div id="NuageMot">
-					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['treemap']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
-          ['Global',    null,                 0,                               0],
-          ['Europe',    'Global',             0,                               0],
-          ['Asia',      'Global',             0,                               0],
-          ['Australia', 'Global',             0,                               0],
-          ['Africa',    'Global',             0,                               0],
-          ['Brazil',    'Global',            11,                              10],
-          ['USA',       'Global',            52,                              31],
-          ['Mexico',    'Global',            24,                              12],
-          ['Canada',    'Global',            16,                              -23],
-          ['France',    'Global',             42,                              -11],
-          ['Germany',   'Global',             31,                              -2],
-          ['Sweden',    'Global',             22,                              -13],
-          ['Italy',     'Global',             17,                              4],
-          ['UK',        'Global',             21,                              -5]
-        ]);
-
-        tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
-
-        tree.draw(data, {
-          minColor: '#f00',
-          midColor: '#ddd',
-          maxColor: '#0d0',
-          headerHeight: 15,
-          fontColor: 'black',
-          showScale: true
-        });
-
-      }
-    </script>
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
-
-					<!--img src="https://media.licdn.com/mpr/mpr/shrinknp_800_800/AAEAAQAAAAAAAATpAAAAJGM0OTcxYmYxLTU4YTctNGM0MS05OGU0LTVkYzZkYzg5MzIzMg.png" height="400" alt="Nuage_de_Mot"-->
+	<section id="stats_section_theme">
+		<div class="container-fluid" id="container3_div_theme">
+			<article class="row" id="most_treated_theme_article_theme">
+				<div id="text_graph1_div_theme"> 
+					<h2> Graphe 1 : Par defaut les themes les plus traités<h2>
 				</div>
-	 		</div>
-		</div>
+				<div id="graph1_div_theme">
+						<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+						<script type="text/javascript" src="../dynamic/gcharts.js" ></script>
+						<div id="series_chart_theme" style="width: 100%; height: 500px;"></div>
 
-		<div class="row">
-			<div id="part4">
-				<h3> Partie 4<h3>
-			 	<table>
-			 		<caption class="text-center">Mot associé au thème</caption>
+		 		</div>
+			</article>
 
-			 		<thead>
-			 			<tr >
-			 				<th>Mots liés au thème</th>
-			 				<th>Tendance</th>
-			 			</tr>
-			 		</thead>
-			 		<tbody>
-			 			<tr>
-			 				<td>V</td>
-			 				<td></td>
-			 			</tr>
-			 			<tr>
-			 				<td>A</td>
-			 				<td></td>
-			 			</tr>
-			 			<tr>
-			 				<td>N</td>
-			 				<td></td>
-			 			</tr>
-			 		</tbody>
-			 	</table>
-			</div>	
+
+			<article class="row" id="most_treated_word_article_theme">
+				<div id="text_graph2_div_theme"> 
+					<h2> Graphe 2 : Les mots les plus traités par theme et par semaine <h2>
+				</div>
+				<div id="graph2_div_theme">
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	    			<script type="text/javascript" src"gcharts.js"></script>
+	    			<!--graphe de remplacement-->
+	    			<!--<div id="chart_div_theme" style="width: 100%; height: 500px;"></div>-->
+	    			
+	    			<!--Nuages de mots-->
+
+	    			<div class="word_cloud_div_theme" style="width: 600px; height: 450px; border: 1px solid #ccc; margin: 20px;"></div>
+				</div>
+			</article>
+
+			<article class="row" id="3_main_words_article_theme">
+				<div id="text_graph3_div_theme">
+					<h2> Graphe 3 : Les 3 Motes les plus tendances<h2>
+				</div>
+				<div id="graph3_div_theme">
+				 	<table id="tab_3words_table_theme">
+				 		<caption class="text-center">Mot associé au thème</caption>
+				 		<thead id="header_tab_thead_theme">
+				 			<tr >
+				 				<th>Mots liés au thème</th>
+				 				<th>Tendance</th>
+				 			</tr>
+				 		</thead>
+				 		<tbody id="body_tab_tbody_theme">
+				 			<tr id="1st_line_tr_theme">
+				 				<td >V</td>
+				 				<td></td>
+				 			</tr>
+				 			<tr id="2st_line_tr_theme">
+				 				<td>A</td>
+				 				<td></td>
+				 			</tr>
+				 			<tr id="3st_line_tr_theme">
+				 				<td>N</td>
+				 				<td></td>
+				 			</tr>
+				 		</tbody>
+				 	</table>
+				</div>	
+			</article>
 		</div>
-	</div>
+	</section>
 	
 <script src="header.js"></script>
- 	<script src="footer.js"></script>	
+<script src="footer.js"></script>	
 </body>
 </html>
