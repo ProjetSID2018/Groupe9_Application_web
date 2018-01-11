@@ -10,7 +10,7 @@ var some_words = [
   {text: 'ABC', weight: 9},
   {text: 'DEF', weight: 10},
 ]
- 
+//
 $(document).ready(function() {
   $(".word_cloud_div_theme").jQCloud(some_words, {afterCloudRender: function() {
 
