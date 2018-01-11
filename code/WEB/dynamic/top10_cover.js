@@ -17,7 +17,7 @@
     },
     {
         "source": "truc",
-        "nombre" : 54654
+        "nombre" : 544
     },
     {
         "source": "ouai",
@@ -40,31 +40,45 @@
         "nombre": 783
     }
 ]
+function start(){
 
-    google.charts.load('current', {packages: ['corechart', 'bar']});
+    request_top_10()
+}
+
+function request_top_10(){
+    $('#top10_sources').hide();
+    drawBasic()
+    $.ajax({
+        url:'http//localhost:5000/',
+        type: 'POST',
+        dataType: 'json',
+        sucess: drawBasic,
+        error: ajax_failed,
+    });
+}
+
+
+google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawBasic);
 
 function drawBasic() {
 
+      $('#top10_sources').show();
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'sources');
-      data.addColumn('number', 'nombre');
+      data.addColumn('number', "nombres d'articles");
 
 for (var i = 0; i <10; i++) {
-      data.addRow([ datatest[i].source,datatest[i]['nombre'] ]);
+      data.addRow([datatest[i].source,datatest[i].nombre ]);
     }
 
-//       data.addRows( [ datatest[0]['source'],datatest[0]['nombre'] ],
-// [ datatest[1].source,datatest[1].nombre]);
-
       var options = {
-        title: 'Motivation Level Throughout the Day',
         hAxis: {
           title: 'sources',
           format: 'string',
         },
         vAxis: {
-          title: 'nombres'
+          title: "nombres d'articles par source"
         }
       };
 
@@ -72,4 +86,11 @@ for (var i = 0; i <10; i++) {
         document.getElementById('chart_div'));
 
       chart.draw(data, options);
+
+    }
+
+
+    function ajax_failed(){
+        alert('erreur');
+        alert(result);
     }
