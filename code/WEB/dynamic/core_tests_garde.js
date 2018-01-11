@@ -12,11 +12,5 @@ var some_words = [
 ]
 
 $(document).ready(function() {
-  $(".word_cloud_row_graph").jQCloud(some_words, {afterCloudRender: function() {
-
-    test('Words with equal weight', function() {
-      ok($(".word_cloud_div_theme span.w5").length == 3, "There should be three words with equal weight.");
-    });
-
-  }});
+  $(".word_cloud_row_graph").jQCloud(some_words);
 });
