@@ -40,6 +40,7 @@
         "nombre": 783
     }
 ]
+/*
 function start(){
 
     request_top_10()
@@ -56,7 +57,7 @@ function request_top_10(){
         error: ajax_failed,
     });
 }
-
+*/
 
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawBasic);
@@ -68,9 +69,9 @@ function drawBasic() {
       data.addColumn('string', 'sources');
       data.addColumn('number', "nombres d'articles");
 
-for (var i = 0; i <10; i++) {
-      data.addRow([datatest[i].source,datatest[i].nombre ]);
-    }
+      for (var i = 0; i <10; i++) {
+        data.addRow([datatest[i].source,datatest[i].nombre ]);
+      }
 
       var options = {
         hAxis: {

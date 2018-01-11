@@ -5,7 +5,7 @@
   <head>
     <title>WATCHNEWS</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -31,16 +31,15 @@
       <section id="statistics">
         <h1 id="statistics_title" align="center">Statistiques de la semaine</h1>
 
-        <article id="word_cloud">
-          <div id="word_cloud_div_cover" class="container-fluid">
-            <div id="word_cloud_row_cover" class="row">
-              <div class="col-xs-12 text-center">
-                <h2>Nuages de mots</h2>
-                <p>Nuages de mots par semaine</p>
-              </div>
+    <article class="row" id="word_cloud_cover">
+        <div id="word_cloud_div_cover" class="col-xs-12 text-center">
+          <h2> Nuage de mots</h2>
+          <p>Nuage de mots par semaine</p>
+            <div class="center-block">
+                <div class="word_cloud_row_graph block_word_cloud"></div>
             </div>
-          </div>
-        </article>
+        </div>
+      </article>
 
         <article id="most_popular_theme">
           <div id="most_popular_theme_div_cover" class="container-fluid">
@@ -59,8 +58,8 @@
             <div id="top10_sources_row_cover" class="row">
               <div class="col-xs-12 text-center">
                 <h2>TOP 10 des sources</h2>
-                <p>TOP 10 des sources</p>
-              </div>
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <div class="block_top10 " id = "chart_div"></div>
             </div>
           </div>
         </article>
@@ -82,6 +81,12 @@
 
     <script src="/home/formationsid/Groupe9_Application_web/code/WEB/dynamic/header.js"></script>
     <script src="/home/formationsid/Groupe9_Application_web/code/WEB/dynamic/footer.js"></script>
+    <script type="text/javascript" src="code/WEB/dynamic/jqcloud-1.0.4.js"></script>
+    <link rel="stylesheet" href="code/WEB/static/jqcloud.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="code/WEB/static/style_cover.css" type="text/css" media="screen">
+    <!--Script to test word cloud (data definition and container definition)-->
+    <script type="text/javascript" src="code/WEB/dynamic/core_tests_garde.js"></script>
+    <script type="text/javascript" src="code/WEB/dynamic/top10_cover.js"></script>
 
   </body>
 
