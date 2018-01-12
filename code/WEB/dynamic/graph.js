@@ -1,11 +1,11 @@
 function start() {
 	request_top_10();
-    request_word_cloud();
+	request_word_cloud();
 }
 
 function request_top_10() {
 	$('#top10_sources').hide();
-    $.ajax({
+    	$.ajax({
         url:'http://localhost:5000/test',
         type: 'GET',
         dataType: 'json',
