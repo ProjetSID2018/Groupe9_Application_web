@@ -115,6 +115,23 @@ def general1():
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp
 
+    
+@app.route('/test2', methods = ['GET'])
+def general2():
+    #--> requete sur la base
+    #--> appel de l'API du groupe statiques
+    
+    data = {
+   '1': {
+        "name": "France",
+        "pourcentage" : "50%"
+    }}
+    resp = jsonify(data)
+    resp.status_code = 200
+    resp.headers.add('Access-Control-Allow-Origin', '*')
+    return resp  
+   
+
    
 if __name__ == '__main__':
   app.run()
