@@ -10,7 +10,9 @@ var some_words = [
   {text: 'ABC', weight: 9},
   {text: 'DEF', weight: 10},
 ]
-//
+$(document).ready(function() {
+  $(".word_cloud_div_theme").jQCloud(some_words);
+/*
 $(document).ready(function() {
   $(".word_cloud_div_theme").jQCloud(some_words, {afterCloudRender: function() {
 
@@ -19,4 +21,23 @@ $(document).ready(function() {
     });
 
   }});
+});
+*/
+$( "#_international" ).click(function() {
+    var key_theme = $(this).attr('id');
+    alert(key_theme);
+    });
+
+$(document).ready(function() {
+  $(".word_cloud_div_theme").hide(10);
+  $("#3_main_words_article_theme").hide(10);
+  });
+
+$( ".radio label" ).click(function() {
+  $(".word_cloud_div_theme").empty();
+  //$(".word_cloud_div_theme").html("");
+  $(".word_cloud_div_theme").jQCloud(some_words);
+  $(".word_cloud_div_theme").show();
+  $("#3_main_words_article_theme").show();
+  //alert("OK !!!! ")
 });
