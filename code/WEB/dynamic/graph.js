@@ -1,7 +1,9 @@
-var count = 0;
+var compt=0;
+
 function start() {
 	request_top_10();
-	request_word_cloud();
+    request_word_cloud();
+    request_top_theme();
 }
 
 function request_top_10() {
@@ -26,6 +28,16 @@ function request_word_cloud() {
     });
 }
 
+function request_top_theme() {
+    $('#most_popular_theme').hide();
+    $.ajax({
+        url:'http://localhost:5000/test2',
+        type: 'GET',
+        dataType: 'json',
+        success: top_theme,
+        error: ajax_failed,
+    });
+}
 
 function drawBasic(data_json) {
 	google.charts.load('visualization', '1', {packages: ['corechart', 'bar']});
@@ -63,10 +75,15 @@ function draw_cloud(some_words) {
 	$('#word_cloud_cover').show();
 }
 
+function top_theme(theme_pourcent) {
+    $('#most_popular_theme').show();
+    document.getElementById("most_popular_theme_pourcentage").textContent = theme_pourcent[1].theme;
+    document.getElementById("most_popular_theme_name").textContent = theme_pourcent[1].pourcent;
+}
 
 function ajax_failed() {
-	count += 1;
-	if (count == 2) {
-    		alert('Erreur de chargement.')
-	};
+    compt+=1;
+    if ( compt == 3){
+        alert('erreur')
+    };
 }
