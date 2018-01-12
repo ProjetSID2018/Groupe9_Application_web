@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!--Bloc de code correspondant à l'utilisation des liens de Bootstrap -->
 	<meta charset="utf-8" />
 	<title>Thèmes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,42 +22,32 @@
 		</div>
 	</section>
 
-	<section id="Menu_section_theme">
-		<div class="container-fluid" id="container2_div_theme">
+	<section id="Menu_section_theme" >
+		<div class="container-fluid" id="container2_div_theme" >
 			<h2>Choisissez votre thème</h2>
 			<div id="list_theme_div_theme" class="row">
 				<form>
-					<!-- MODIFICATION DU RADIO A PRENDRE EN COMPTE : ON RETIRE LE BOUTON OK ET CA RETIRE LES 
-						PROBLEMES DE GESTION DAPPUIE SUR LE BOUTON OK -->
-
-					<div class="radio" id="_international" value="_international">
-      				<label><input type="radio" name="optradio">International</label>
+					<div class="radio" id="_international">
+      					<label><input type="radio" name="optradio">International</label>
     				</div>
     				<div class="radio" id="_france">
-      				<label><input type="radio" name="optradio">France</label>
+      					<label><input type="radio" name="optradio">France</label>
     				</div>
     				<div class="radio" id="_economie">
-      				<label><input type="radio" name="optradio">Economie</label>
+      					<label><input type="radio" name="optradio">Economie</label>
     				</div>
     				<div class="radio" id="_sciences_high_tech">
-      				<label><input type="radio" name="optradio">Science/High-tech</label>
+      					<label><input type="radio" name="optradio">Science/High-tech</label>
     				</div>
     				<div class="radio" id="_arts_et_culture">
-      				<label><input type="radio" name="optradio">Art et Culture</label>
+      					<label><input type="radio" name="optradio">Art et Culture</label>
     				</div>
     				<div class="radio" id="_sports">
-      				<label><input type="radio" name="optradio">Sports</label>
+      					<label><input type="radio" name="optradio">Sports</label>
     				</div>
     				<div class="radio" id="_sante">
-      				<label><input type="radio" name="optradio">Santé</label>
+      					<label><input type="radio" name="optradio">Santé</label>
     				</div>
-					<script>
-						$( "#_international" ).click(function() {
-					  		//var label = $(this).text();
-					  		alert($(this).attr('id'));
-					  		//alert(label);
-							});
-					</script>
 				</form>
 			</div>
 		</div>
@@ -80,7 +69,7 @@
 
 			<article class="row">
 				<div id="text_graph2_div_theme">
-					<h2> Graphe 2 : Les mots les plus traités par theme et par semaine <h2>
+					<h2> Graphe 2 : Pour chaque theme afficher le nuage des mots les plus traités par semaine <h2>
 				</div>
 				<div id="graph2_div_theme">
 					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -93,7 +82,7 @@
 
 			<article class="row" id="3_main_words_article_theme">
 				<div id="text_graph3_div_theme">
-					<h2> Graphe 3 : Les 3 Motes les plus tendances<h2>
+					<h2> Graphe 3 : Les 3 Mots associés et leur tendance<h2>
 				</div>
 				<div id="graph3_div_theme">
 				 	<table id="tab_3words_table_theme">
@@ -137,6 +126,5 @@
 
 <!--Script to test word cloud (data definition and container definition)-->
 <script type="text/javascript" src="../dynamic/core_tests.js"></script>
-<!--<script type="text/javascript" src="../dynamic/test.js"></script>-->
 </body>
 </html>
