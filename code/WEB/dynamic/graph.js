@@ -1,18 +1,18 @@
 var count = 0;
 function start() {
 	request_top_10();
-    request_word_cloud();
+	request_word_cloud();
 }
 
 function request_top_10() {
 	$('#top10_sources').hide();
-    $.ajax({
-        url:'http://localhost:5000/test',
-        type: 'GET',
-        dataType: 'json',
-        success: drawBasic,
-        error: ajax_failed,
-    });
+    	$.ajax({
+        	url:'http://localhost:5000/test',
+        	type: 'GET',
+        	dataType: 'json',
+        	success: drawBasic,
+        	error: ajax_failed,
+	});
 }
 
 function request_word_cloud() {
@@ -32,9 +32,9 @@ function drawBasic(data_json) {
 	google.charts.setOnLoadCallback(function(){
 		var data = new google.visualization.DataTable();
 		data.addColumn("string", "sources");
-    	data.addColumn("number", "nombres d'articles");
-    	for (var i = 1; i <11; i++) {
-    		data.addRow([data_json[i].source,data_json[i].nombre]);
+    		data.addColumn("number", "nombres d'articles");
+    		for (var i = 1; i <11; i++) {
+    			data.addRow([data_json[i].source,data_json[i].nombre]);
 		}
 		var options = {
 			title: 'Top 10 des thèmes les plus traités de la semaine.',
@@ -66,6 +66,7 @@ function draw_cloud(some_words) {
 
 function ajax_failed() {
 	count += 1;
-    if (count == 2) {
-    	alert('Erreur de chargement.')};
+	if (count == 2) {
+    		alert('Erreur de chargement.')
+	};
 }
