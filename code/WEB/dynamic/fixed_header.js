@@ -15,5 +15,22 @@
                $("nav").removeClass("navbar-fixed-top");
            }
        });
+
+      var title = $("title").attr("id");
+      if(title == "Search_Page"){
+        $("#themeBar").hide();
+      }
+      else if(title == "theme_page"){
+        $("#searchBar").hide();
+      }
+      else if(title == "index"){
+        $("#searchBar").hide();
+        $("#themeBar").hide();
+      };
    });
 })(jQuery);
+
+
+      
+    
+

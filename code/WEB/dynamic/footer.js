@@ -7,21 +7,26 @@ document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="https
 /*utilise le lien vers bootstrap de chaque page */
 
 document.body.insertAdjacentHTML("beforeend",
-	'<footer id ="footer">'+
-    '<div class="top-bar" id="bar_footer">'+
-      '<div class="container-fluid" id="div_footer">'+
-        '<div class="row" id="div_row_footer">'+
-          '<div class = "text-left" id="sid_div_footer">'+
-            '<a href="#" class="navbar-left" id="sid_link_footer"><img src="https://archive.is/o4KHi/3e85f3ee0e66b11b1b91af32d2568fb284561469.png" id="sid_logo_footer"></a>'+
-          '</div>'+
-          '<div class="socl-icons text-right" id="social_icons_div_footer">'+
-            '<ul  class="list-inline" id="social_icons_set_cover">'+
-              '<li id="facebook_link_footer"><a href="#"><i class="fa fa-facebook fa-5x" aria-hidden="true" id="facebook_icons_footer"></i></a> </li>'+
-              '<li id="twitter_link_footer"><a href="#"><i class="fa fa-twitter fa-5x" aria-hidden="true" id="twitter_icons_footer"></i></a></li>'+
-              '<li id="google_plus_link_footer"><a href="#"><i class="fa fa-google-plus fa-5x" aria-hidden="true" id="google_plus_icons_footer"></i></a></li>'+
-            '</ul>'+
-          '</div>'+
-        '</div>'+
-      '</div>'+
-    '</div>'+
-  '</footer>');
+'<footer id ="ft1">' +
+  '<div class="top-bar">' +
+    '<div class="container-fluid">' +
+      '<div class="row">' +
+        '<div class = "display center">' +
+          '<a href="#" class="navbar-center">' +
+              '<img class="ups" src="https://raw.githubusercontent.com/ProjetSID2018/Groupe10_Qualite_communication/master/Logos/Paul%20Sabatier%20SID.png" >' +
+          '</a>' +
+        '</div>' +
+        '<div class="social">' +
+          '<ul class="social-network social-circle">' +
+            '<li><a href="https://www.facebook.com/Watch-News-160938714533244/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>' +
+            '<li><a href="https://twitter.com/WatchNewsFR?lang=fr" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>' +
+            '<li><a href="" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>' +
+            '<li><a href="https://github.com/ProjetSID2018" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>' +
+          '</ul>' +       
+        '</div>' +
+        '<div class="entreprise">WATCHNEWS</div>' +
+        '<div class="citation">Ce site est conçu dans le cadre d’un projet d’étude universitaire. Il n’a pas de vocation commerciale et est consultable gratuitement. Pour toute information ou réclamation, vous pouvez nous contacter à l’adresse suivante : watchnewsapp@gmail.com</div>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+'</footer>');

@@ -9,6 +9,7 @@ function start() {
 function request_top_10() {
 	$('#top10_sources').hide();
     	$.ajax({
+        	//url:'/Top10_source/',
         	url:'http://localhost:5000/test',
         	type: 'GET',
         	dataType: 'json',
@@ -20,6 +21,7 @@ function request_top_10() {
 function request_word_cloud() {
     $('#word_cloud_cover').hide();
     $.ajax({
+        //url:'/Top10_pertinent',
         url:'http://localhost:5000/test1',
         type: 'GET',
         dataType: 'json',
@@ -31,6 +33,7 @@ function request_word_cloud() {
 function request_top_theme() {
     $('#most_popular_theme').hide();
     $.ajax({
+        //url:'/MostPublishedCat',
         url:'http://localhost:5000/test2',
         type: 'GET',
         dataType: 'json',
@@ -40,12 +43,14 @@ function request_top_theme() {
 }
 
 function drawBasic(data_json) {
+	$(document).ready(function(){
+    $(window).resize(function(){
 	google.charts.load('visualization', '1', {packages: ['corechart', 'bar']});
 	google.charts.setOnLoadCallback(function(){
 		var data = new google.visualization.DataTable();
 		data.addColumn("string", "sources");
     		data.addColumn("number", "nombres d'articles");
-    		for (var i = 1; i <11; i++) {
+    		for (var i = 1; i <Object.keys(data_json).length+1; i++) {
     			data.addRow([data_json[i].source,data_json[i].nombre]);
 		}
 		var options = {
@@ -62,11 +67,13 @@ function drawBasic(data_json) {
 		$('#top10_sources').show();
 		chart.draw(data, options);
 	});
+	    });
+});
 }
 
 function draw_cloud(some_words) {
 	var tab = [];
-	for (var i = 1; i <11; i++) {
+	for (var i = 1; i <Object.keys(some_words).length+1; i++) {
 		tab = tab.concat(some_words[i]);
 	}
 	$(document).ready(function() {
@@ -80,6 +87,7 @@ function top_theme(theme_pourcent) {
     document.getElementById("most_popular_theme_pourcentage").textContent = theme_pourcent[1].pourcentage;
     document.getElementById("most_popular_theme_name").textContent = theme_pourcent[1].name;
 }
+
 
 function ajax_failed() {
     compt+=1;

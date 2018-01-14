@@ -2,7 +2,7 @@
 """
 Created on Tue Jan  9 12:22:10 2018
 
-@author: G9
+@author: mathi
 """
 
 from flask import Flask, request,  jsonify, Response
@@ -12,6 +12,39 @@ import json
 app = Flask(__name__)
 api = Api(app)
 
+
+# @app.route('/general', methods = ['POST'])
+# def general():
+#     #--> requete sur la base
+#     #--> appel de l'API du groupe statiques
+#     
+#     data = {
+#         'nbart'  : 2000,
+#         'source' : ["lemonde", "le figaro", "le nouvel obs"]
+#     }
+#     resp = jsonify(data)
+#     resp.status_code = 200
+#     resp.headers.add('Access-Control-Allow-Origin', '*')
+#     return resp
+# 
+# @app.route('/theme', methods = ['GET'])
+# def theme():
+#     #--> requete sur la base
+#     #--> appel de l'API du groupe statiques
+#     word =request.args.get('word')  
+#     source = request.args.get('source')  
+#     print(word, source)
+#     data = {
+#         'src'  : source,
+#         'word' :word,
+#         'tendancy' : {'month':'-','week':'+','day':'+-'},
+#         'verbe':{'verbe' : 'atomiser','month':'+','week':'-','day':'--'},
+#         'theme':{'culture' : 1,'politic':80,'humor':19}
+#     }
+#     resp = jsonify(data)
+#     resp.status_code = 200
+#     resp.headers.add('Access-Control-Allow-Origin', '*')
+#     return resp
     
 @app.route('/test', methods = ['GET'])
 def general():
@@ -115,7 +148,7 @@ def general1():
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp
 
-    
+
 @app.route('/test2', methods = ['GET'])
 def general2():
     #--> requete sur la base
@@ -129,9 +162,7 @@ def general2():
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp  
-   
-
+    return resp 
    
 if __name__ == '__main__':
   app.run()

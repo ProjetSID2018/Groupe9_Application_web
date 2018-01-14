@@ -3,12 +3,13 @@
 <html lang="fr">
 
   <head>
-    <title>WATCHNEWS</title>
+    <title id="index">WATCHNEWS</title>
     <meta charset="utf-8">
     <link rel="shorcut icon" href="code/WEB/static/logo.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="code/WEB/static/css/style.css" type="text/css" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
@@ -17,18 +18,14 @@
     <div id = "content_global_cover" class="container-fluid">
           <!--content-->
 
-      <section id="description">
-        <div id= "description_div_cover" class="container-fluid">
-          <div id= "description_row_cover" class="row">
-            <div class="col-xs-12 text-center">
-            	<h1>Description du site</h1>
-              <p>Ceci est une Description de notre travail</p>
-              <a href="#statistics"><i class="fa fa-chevron-down fa-2x" aria-hidden="true"></i></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <section>
+           <div class="couverture">
+           <a href="#statistics">
+              <div class="arrow"></div>
+           </a>
+           </div>
+       </section>
+ 
       <section id="statistics">
         <h1 id="statistics_title" align="center">Statistiques de la semaine</h1>
 
@@ -47,7 +44,7 @@
               <div class="col-xs-12 text-center">
                 <h2>Thème le plus traité de la semaine</h2>
                 <p id="most_popular_theme_text">
-                  <B><em id="most_popular_theme_pourcentage"></em></B>   des articles de cette semaine traitent du thème   <B><em id="most_popular_theme_name"></em></B>
+                <B><em id="most_popular_theme_pourcentage"></em></B>   des articles de cette semaine traitent du thème   <B><em id="most_popular_theme_name"></em></B>
                 </p>
               </div>
             </div>
@@ -80,16 +77,17 @@
       <!--END Content-->
     </div>
 
+    <script src="code/WEB/dynamic/fixed_header.js"></script>
     <script src="code/WEB/dynamic/header.js"></script>
     <script src="code/WEB/dynamic/footer.js"></script>
     <script type="text/javascript" src="code/WEB/dynamic/jqcloud-1.0.4.js"></script>
     <link rel="stylesheet" href="code/WEB/static/jqcloud.css" type="text/css" media="screen">
     <link rel="stylesheet" href="code/WEB/static/style_cover.css" type="text/css" media="screen">
     <!--Script to test word cloud (data definition and container definition)-->
-    <!--
-    <script type="text/javascript" src="code/WEB/dynamic/core_tests_garde.js"></script>
+    <!-- 
+<script type="text/javascript" src="code/WEB/dynamic/core_tests_garde.js"></script>
     <script type="text/javascript" src="code/WEB/dynamic/top10_cover.js"></script>
-  -->
+ -->
     <script src="code/WEB/dynamic/graph.js"></script>
 
   </body>
