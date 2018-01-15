@@ -508,7 +508,7 @@ height: 400px
 .couverture {
     height: max;
     width: max;
-    background-image: url('./code/WEB/static/img/couverture.png');
+    background-image: url('../img/Couverture.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
