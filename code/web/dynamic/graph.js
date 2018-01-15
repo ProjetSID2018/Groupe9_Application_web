@@ -43,8 +43,6 @@ function request_top_theme() {
 }
 
 function drawBasic(data_json) {
-	$(document).ready(function(){
-    $(window).resize(function(){
 	google.charts.load('visualization', '1', {packages: ['corechart', 'bar']});
 	google.charts.setOnLoadCallback(function(){
 		var data = new google.visualization.DataTable();
@@ -66,9 +64,10 @@ function drawBasic(data_json) {
 		var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 		$('#top10_sources').show();
 		chart.draw(data, options);
+		$(window).resize(function(){
+			chart.draw(data, options);
+		});
 	});
-	    });
-});
 }
 
 function draw_cloud(some_words) {
