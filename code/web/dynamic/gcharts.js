@@ -1,4 +1,4 @@
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', {'packages':['corechart', 'table']});
 google.charts.setOnLoadCallback(drawSeriesChart);
 
 var val_most_treated_themes = [
@@ -27,38 +27,52 @@ function drawSeriesChart() {
     chart.draw(data, options);
 };
 
-google.charts.load('current', {'packages':['treemap']});
-google.charts.setOnLoadCallback(drawChart);
 
-val_most_treated_words=[
-          ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
-          ['Global',    null,                 0,                               0],
-          ['Europe',    'Global',             0,                               0],
-          ['Asia',      'Global',             0,                               0],
-          ['Australia', 'Global',             0,                               0],
-          ['Africa',    'Global',             0,                               0],
-          ['Brazil',    'Global',            11,                              10],
-          ['USA',       'Global',            52,                              31],
-          ['Mexico',    'Global',            24,                              12],
-          ['Canada',    'Global',            16,                              -23],
-          ['France',    'Global',             42,                              -11],
-          ['Germany',   'Global',             31,                              -2],
-          ['Sweden',    'Global',             22,                              -13],
-          ['Italy',     'Global',             17,                              4],
-          ['UK',        'Global',             21,                              -5]
-        ];
+google.charts.setOnLoadCallback(drawTable);
+// var cssClassNames = {'tableCell': 'table_trend_cell', 'headerCell': 'table_header_cell'};
 
-function drawChart() {
-        var data = google.visualization.arrayToDataTable(val_most_treated_words)
+var words_associated_trend_1 = [
+  ["Mots liés au thème",  "Tendance"],
+  ["Mot1", "Tendance1"],
+  ["Mot2", "Tendance2"],
+  ["Mot3", "Tendance3"]
+];
 
-        tree = new google.visualization.TreeMap(document.getElementById('chart_div_theme'));
+var words_associated_trend_2 = [
+  ["Mots liés au thème",  "Tendance"],
+  ["Word1", "Res1"],
+  ["Word2", "Res2"],
+  ["Word3", "Res3"]
+];
 
-        tree.draw(data, {
-          minColor: '#f00',
-          midColor: '#ddd',
-          maxColor: '#0d0',
-          headerHeight: 15,
-          fontColor: 'black',
-          showScale: true
-        });
+var words_associated_trend_3 = [
+  ["Mots liés au thème",  "Tendance"],
+  ["Expression1", "Analyse1"],
+  ["Expression2", "Analyse2"],
+  ["Expression3", "Analyse3"]
+];
+
+/*
+var json_table = {
+   '1': {
+       word_link: "Lorem",
+       trend : 13
+     },
+     '2':{
+       text: "Ipsum",
+       weight: 10.5
+     }
 }
+*/
+
+function drawTable() {
+    // var options = { 'allowHtml': true, 'cssClassNames': cssClassNames };
+    var options = {
+      showRowNumber: true,
+      width: '100%', 
+      height: '100%'
+    };
+    var data = google.visualization.arrayToDataTable(words_associated_trend_1);
+    var table = new google.visualization.Table(document.getElementById('table_div'));
+    table.draw(data);
+};
