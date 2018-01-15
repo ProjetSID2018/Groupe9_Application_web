@@ -53,14 +53,49 @@
 
         <article id="top10_sources">
           <div id="top10_sources_div_cover" class="container-fluid">
-            <div id="top10_sources_row_cover" class="row">
-              <div class="col-xs-12 text-center">
-                <h2>TOP 10 des sources de la semaine</h2>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <div class="block_top10 " id = "chart_div"></div>
+			<div id="top10_sources_row_cover" class="row">
+            	<div class="col-xs-12 text-center">
+                	<h2>TOP 10 des sources de la semaine</h2>
+                	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                	<div class="block_top10 " id = "chart_div"></div>
+            	</div>
             </div>
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Plus de sources</button>
+			 <!-- Modal -->
+			 <div class="modal fade" id="myModal" role="dialog">
+			   <div class="modal-dialog">
+   
+				 <!-- Modal content-->
+				 <div class="modal-content">
+				   <div class="modal-header">
+					 <button type="button" class="close" data-dismiss="modal">&times;</button>
+					 <h4 class="modal-title">Autres sources</h4>
+				   </div>
+				   <div class="modal-body">
+					 <div class="container-fluid">        
+					   <table id ="table_source" class="table table-striped">
+						 <thead>
+						   <tr>
+							 <th>Source</th>
+							 <th>Nombre d'articles</th>
+						   </tr>
+						 </thead>
+						 <tbody id ="table_source_body">
+						 </tbody>
+					   </table>
+				   </div>
+				   </div>
+				   <div class="modal-footer">
+					 <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+				   </div>
+				 </div>
+	 
+			   </div>
+			 </div>
+            
+            
           </div>
-        </article>
+		</article>
 
       </section>
 

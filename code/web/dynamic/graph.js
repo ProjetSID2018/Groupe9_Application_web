@@ -48,7 +48,7 @@ function drawBasic(data_json) {
 		var data = new google.visualization.DataTable();
 		data.addColumn("string", "sources");
     		data.addColumn("number", "nombres d'articles");
-    		for (var i = 1; i <Object.keys(data_json).length+1; i++) {
+    		for (var i = 1; i <=10; i++) {
     			data.addRow([data_json[i].source,data_json[i].nombre]);
 		}
 		var options = {
@@ -68,6 +68,14 @@ function drawBasic(data_json) {
 			chart.draw(data, options);
 		});
 	});
+	draw_table(data_json);
+}
+
+function draw_table(data_json) {
+   var length = data_json.length;
+   for (var i = 1; i <=Object.keys(data_json).length; i++) {
+       document.getElementById('table_source_body').insertAdjacentHTML("beforeEnd",'<tr><td>'+data_json[i].source+'</td> <td>'+data_json[i].nombre+'</td></tr>');
+   }
 }
 
 function draw_cloud(some_words) {
