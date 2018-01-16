@@ -99,25 +99,25 @@ document.body.insertAdjacentHTML("afterBegin",
             '<div id="list_theme_div_theme" class="row">' +
               '<form>' +
                 '<div class="col-sm-2" + id="_international" value="_international">' +
-                  '<label><input id="_international" type="radio" name="optradio">International</label>' +
+                  '<label><input id="_international" class="radio" type="radio" name="optradio">International</label>' +
                 '</div>' +
                 '<div class="col-sm-2" id="_france">' +
-                  '<label><input id="_france" type="radio" name="optradio">France</label>' +
+                  '<label><input id="_france" class="radio" type="radio" name="optradio">France</label>' +
                 '</div>' +
                 '<div class="col-sm-2" id="_economie">' +
-                  '<label><input id="_economie" type="radio" name="optradio">&Eacute;conomie</label>' +
+                  '<label><input id="_economie" class="radio" type="radio" name="optradio">&Eacute;conomie</label>' +
                 '</div>' +
                 '<div class="col-sm-2" id="_sciences_high_tech">' +
-                  '<label><input id="_sciences_high_tech" type="radio" name="optradio">Science/High-tech</label>' +
+                  '<label><input id="_sciences_high_tech" class="radio" type="radio" name="optradio">Science/High-tech</label>' +
                 '</div>' +
                 '<div class="col-sm-2" id="_arts_et_culture">' +
-                  '<label><input id="_arts_et_culture" type="radio" name="optradio">Art et Culture</label>' +
+                  '<label><input id="_arts_et_culture" class="radio" type="radio" name="optradio">Art et Culture</label>' +
                 '</div>' +
                 '<div class="col-sm-1" id="_sports">' +
-                  '<label><input id="_sports" type="radio" name="optradio">Sports</label>' +
+                  '<label><input id="_sports" class="radio" type="radio" name="optradio">Sports</label>' +
                 '</div>'+
                 '<div class="col-sm-1" id="_sante">' +
-                   '<label><input id="_sante" type="radio" name="optradio">Sant&eacute;</label>' +
+                   '<label><input id="_sante" class="radio" type="radio" name="optradio">Sant&eacute;</label>' +
                 '</div>' +
               '</form>' +
             '</div>' +
