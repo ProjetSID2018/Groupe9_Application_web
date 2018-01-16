@@ -45,12 +45,12 @@ api = Api(app)
 #     resp.status_code = 200
 #     resp.headers.add('Access-Control-Allow-Origin', '*')
 #     return resp
-    
+ 
+##################################################
+#					PAGE INDEX					#   
+##################################################
 @app.route('/test', methods = ['GET'])
 def general():
-    #--> requete sur la base
-    #--> appel de l'API du groupe statiques
-    
     data = {
    '1': {
         "source": "figaro",
@@ -89,8 +89,16 @@ def general():
         "nombre" : 828
     },
     '10':{
-        "source": "test",
+        "source": "dix",
         "nombre": 783
+    },
+    '11':{
+        "source": "onze",
+        "nombre": 7823
+    },
+    '12':{
+        "source": "douze",
+        "nombre": 78223
     }}
     resp = jsonify(data)
     resp.status_code = 200
@@ -99,9 +107,6 @@ def general():
    
 @app.route('/test1', methods = ['GET'])
 def general1():
-    #--> requete sur la base
-    #--> appel de l'API du groupe statiques
-    
     data = {
    '1': {
         "text": "figaro",
@@ -151,9 +156,6 @@ def general1():
 
 @app.route('/test2', methods = ['GET'])
 def general2():
-    #--> requete sur la base
-    #--> appel de l'API du groupe statiques
-    
     data = {
    '1': {
         "name": "France",
@@ -163,6 +165,203 @@ def general2():
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp 
-   
+
+
+##################################################
+#					PAGE THEME					#   
+##################################################
+
+ 
+@app.route('/theme', methods = ['GET'])
+def theme():
+    data = {
+	'1':{
+		"theme" : "Art et Culture",
+		"effectif" : 31090763
+	},
+	'2':{
+		"theme" : "Economie",
+		"effectif" : 61801570
+	},
+	'3':{
+		"theme" : "Science",
+		"effectif" : 73137148
+	},
+	'4':{
+		"theme" : "Sports",
+		"effectif" : 74856000
+	},
+	'5':{
+		"theme" : "France",
+		"effectif" : 79716203
+	},
+	'6':{
+		"theme" : "International",
+		"effectif" : 81902307
+	},
+	'7':{
+		"theme" : "Santé",
+		"effectif" : 141850000
+	}}
+    resp = jsonify(data)
+    resp.status_code = 200
+    resp.headers.add('Access-Control-Allow-Origin', '*')
+    return resp 
+ 
+@app.route('/trend/<string:vparam1>', methods = ['GET'])
+def trend(vparam1):
+    #theme =request.args.get('theme')
+    print(vparam1)
+    data_first = {
+    '1':{
+        "mot" : "Verbe",
+        "tendance" : "tendance1"
+    },
+    '2':{
+        "mot" : "Nom",
+        "tendance" : "tendance2"
+    },
+    '3':{
+        "mot" : "Adjectif",
+        "tendance" : "tendance3"
+    }}
+    data_bis = {
+    '1':{
+        "mot" : "Manger",
+        "tendance" : "En hausse"
+    },
+    '2':{
+        "mot" : "Donald Trump",
+        "tendance" : "En baisse"
+    },
+    '3':{
+        "mot" : "Gros",
+        "tendance" : "Constant"
+    }}
+    data_ter = {
+    '1':{
+        "mot" : "Boire",
+        "tendance" : "tendance1"
+    },
+    '2':{
+        "mot" : "Individu",
+        "tendance" : "tendance2"
+    },
+    '3':{
+        "mot" : "Savoureux",
+        "tendance" : "tendance3"
+    }}
+    if vparam1 == '_international':
+        data = data_first
+    elif vparam1 == '_france':
+        data = data_bis
+    else:
+        data = data_ter
+    resp = jsonify(data)
+    resp.status_code = 200
+    resp.headers.add('Access-Control-Allow-Origin', '*')
+    return resp 
+
+@app.route('/cloud/<string:vparam1>', methods = ['GET'])
+def cloud(vparam1):
+    print(vparam1)
+    data_first = {
+    '1':{
+        "text" : "Lorem",
+        "weight" : 13
+    },
+    '2':{
+        "text" : "Ipsum",
+        "weight" : 10.5
+    },
+    '3':{
+        "text" : "Dolor",
+        "weight" : 9.4
+    },
+    '4':{
+        "text" : "Sit",
+        "weight" : 8
+    },
+    '5':{
+        "text" : "Amet",
+        "weight" : 6.2
+    },
+    '6':{
+        "text" : "Consectetur",
+        "weight" : 5
+    },
+    '7':{
+        "text" : "Adipiscing",
+        "weight" : 5
+    }}
+    data_bis = {
+    '1':{
+        "text" : "Arbre",
+        "weight" : 13
+    },
+    '2':{
+        "text" : "Bol",
+        "weight" : 10.5
+    },
+    '3':{
+        "text" : "Cerceau",
+        "weight" : 9.4
+    },
+    '4':{
+        "text" : "Domino",
+        "weight" : 8
+    },
+    '5':{
+        "text" : "Elephant",
+        "weight" : 6.2
+    },
+    '6':{
+        "text" : "Fabriquer",
+        "weight" : 5
+    },
+    '7':{
+        "text" : "Gateau",
+        "weight" : 5
+    }}
+    data_ter = {
+    '1':{
+        "text" : "Hibou",
+        "weight" : 13
+    },
+    '2':{
+        "text" : "Important",
+        "weight" : 10.5
+    },
+    '3':{
+        "text" : "Joyeux",
+        "weight" : 9.4
+    },
+    '4':{
+        "text" : "Lalala",
+        "weight" : 8
+    },
+    '5':{
+        "text" : "Mouton",
+        "weight" : 6.2
+    },
+    '6':{
+        "text" : "Négation",
+        "weight" : 5
+    },
+    '7':{
+        "text" : "Obligation",
+        "weight" : 5
+    }}
+    if vparam1 == '_international':
+        data = data_first
+    elif vparam1 == '_france':
+        data = data_bis
+    else:
+        data = data_ter
+    resp = jsonify(data)
+    resp.status_code = 200
+    resp.headers.add('Access-Control-Allow-Origin', '*')
+    return resp  
+
 if __name__ == '__main__':
-  app.run()
+  app.run(debug=True)
