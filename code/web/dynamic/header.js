@@ -67,11 +67,17 @@ document.body.insertAdjacentHTML("afterBegin",
               '</div>' +
 
               '<div class="row">' +
-                '<div class="col-sm-3">' +    
-                  '<input id="startDate_input_research" type="text" name="dateDeb" style="cursor: pointer" onclick="new calendar(this);" value="Du :"/>' +
+                '<div id="startDate_input_research" class="col-sm-3">' +
+                  '<input type="text" class="form-control">' +
+                  '<span class="input-group-addon">' +
+                    '<span class="glyphicon glyphicon-calendar"></span>' +
+                  '</span>' +
                 '</div>' +
-                '<div class="col-sm-offset-1 col-sm-3">' +
-                  '<input id="endDate_input_research" type="text" name="dateFin" style="cursor: pointer" onclick="new calendar(this);" value="Au :"/>' +
+                '<div id="endDate_input_research" class="col-sm-offset-1 col-sm-3">' +
+                  '<input type="text" class="form-control">' +
+                  '<span class="input-group-addon">' +
+                    '<span class="glyphicon glyphicon-calendar"></span>' +
+                  '</span>' +
                 '</div>' +
                 '<div class="col-sm-offset-1 col-sm-2">' +
                   '<button id="buttonCancel_input_research" type="submit" class="btn btn-primary" onclick="window.location.reload(false)">Réinitialiser</button>'+

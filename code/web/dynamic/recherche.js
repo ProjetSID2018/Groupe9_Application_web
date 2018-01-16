@@ -1,3 +1,80 @@
+/*Boites des dates*/
+$(function(){
+  $("#startDate_input_research").DateTimePicker({
+      fullMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+      shortDayNames: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+      fullDayNames : ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
+      shortMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+      titleContentDateTime : "Choissisez la date de début",
+      setButtonContent : "Appliquer",
+      clearButtonContent : "Effacer",
+      buttonsToDisplay : ["HeaderCloseButton", "SetButton"],
+      dateTimeFormat : "dd-MM-yyyy"
+  });
+});
+
+$(function(){
+  $("#endDate_input_research").DateTimePicker({
+      fullMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+      shortDayNames: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+      fullDayNames : ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
+      shortMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+      titleContentDateTime : "Choissisez la date de fin",
+      setButtonContent : "Appliquer",
+      clearButtonContent : "Effacer",
+      buttonsToDisplay : ["HeaderCloseButton", "SetButton"],
+      dateTimeFormat : "dd-MM-yyyy"
+  });
+});
+
+function verification(word,start,end){
+  d1=new Date(start);
+  d1=formattedDate(d1);
+  d2=new Date(end);
+  d2=formattedDate(d2);
+  if (d1==false || d2==false){
+    alert('date impossible,réessayez')
+  }else{
+  d1=new Date(d1)
+  d2=new Date(d2)
+  if (word=='' || isValidDate(start)== false || isValidDate(end)== false|| d2<d1){
+    if (word==''){
+      alert('Il faut absolument rentrer un mot')
+    }else if (isValidDate(start)== false || isValidDate(end)== false){
+      alert('Il faut absolument rentrer les 2 dates dans le bon format')
+    }else{
+      alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')      
+    }
+      return false
+    }else{
+      return true
+    }
+  }
+}
+
+function formattedDate(d) {
+  var month = String(d.getMonth() + 1);
+  var day = String(d.getDate());
+  var year = String(d.getFullYear());
+  if (month.length < 2) {
+    month = '0' + month};
+  if (day.length < 2) {
+    day = '0' + day};
+  if (day<=12 && month<=31){
+    return '${day}/${month}/${year}';
+  }else{
+    return false;
+  }
+}
+
+function isValidDate(date){
+   var matches = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/.exec(date);
+   if (matches == null) return false;
+}
+
+
+
+/*Auto-completion*/
 var countries = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.whitespace,
   queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -10,6 +87,8 @@ $('#prefetch .typeahead').typeahead(null, {
 });
 
 
+
+/*Boutton de recherche*/
 $("#buttonResearch_input_research").click(function() {
   var valueSearchBar = $("#searchBar_input_research").val();
   var themeChoisi = $("#themeList_select_research").val();
@@ -48,53 +127,7 @@ $("#buttonResearch_input_research").click(function() {
 
 
 
-function verification(word,start,end){
-  d1=new Date(start);
-  d1=formattedDate(d1);
-  d2=new Date(end);
-  d2=formattedDate(d2);
-  if (d1==false || d2==false){
-    alert('date impossible,réessayez')
-  }else{
-
-  d1=new Date(d1)
-  d2=new Date(d2)
-
-  if (word=='' || isValidDate(start)== false || isValidDate(end)== false|| d2<d1){
-    if (word==''){
-      alert('Il faut absolument rentrer un mot')
-    }else if (isValidDate(start)== false || isValidDate(end)== false){
-      alert('Il faut absolument rentrer les 2 dates dans le bon format')
-    }else{
-      alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')      
-    }
-      return false
-    }else{
-      return true
-    }
-  }
-}
-
-function formattedDate(d) {
-  var month = String(d.getMonth() + 1);
-  var day = String(d.getDate());
-  var year = String(d.getFullYear());
-  if (month.length < 2) {
-    month = '0' + month};
-  if (day.length < 2) {
-    day = '0' + day};
-  if (day<=12 && month<=31){
-    return '${day}/${month}/${year}';
-  }else{
-    return false;
-  }
-}
-
-function isValidDate(date){
-   var matches = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/.exec(date);
-   if (matches == null) return false;
-}
-
+/*Création des titres*/
 function recupererTitre1(word,start,end,frequence){  return "Graphe 1 : Evolution du nombre d'article utilisant " + word + " par "+ frequence + " et par source(s) selectionnée(s) entre le " + start + " et le " + end;}
 function recupererTitre2(word,start,end,frequence){  return "Graphe 2 : Evolution du nombre d'article utilisant " + word + " par "+ frequence + "semaine et par thème(s) selectionné(s) entre le " + start + " et le " + end;}
 function recupererTitre3(word,start,end){  return "Graphe 3 : Nombre d'utilisation de " + word + " par source(s) selectionnée(s) entre le " + start + " et le " + end;}
@@ -103,7 +136,7 @@ function recupererTitre5(word,start,end){  return "Graphe 5 : Nuage des mots les
 function recupererTitre6(word,start,end){  return "Graphe 6 : Nuage des mots les plus associés à " + word + " par thème(s) selectionné(s) entre le " + start + " et le " + end;}
 
 
-
+/*Création des graphiques*/
 function Graph1() {
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
