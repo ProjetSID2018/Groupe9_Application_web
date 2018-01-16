@@ -14,7 +14,7 @@
     <script type="text/javascript" src="http://code.jquery.com/qunit/qunit-2.5.0.js"></script>
 </head>
 
-<body>
+<body onLoad="start()">
 	<section id="title_section_theme">
 		<div class="container-fluid" id="container1_div_theme">
 			<h1>Stats sur les thèmes</h1>
@@ -33,14 +33,13 @@
 			</article>
 
 			<article class="row" id="most_treated_word_article_theme">
-				<div id="text_graph2_div_theme">
-					<h2> Graphe 2 : Pour chaque theme afficher le nuage des mots les plus traités par semaine <h2>
-				</div>
-				<div id="graph2_div_theme">
-	    			<!--Nuages de mots-->
-	    			<div id="world_cloud_div_theme" class="block_word_cloud" ></div>
-				</div>
-			</article>
+        		<div id="text_graph2_div_theme" class="col-xs-12 text-center">
+          			<h2>Graphe 2 : Pour chaque theme afficher le nuage des mots les plus traités par semaine</h2>
+            		<div class="center-block">
+                		<div class="world_cloud_div_theme block_word_cloud"></div>
+            		</div>
+        		</div>
+      		</article>
 
 			<article class="row" id="3_main_words_article_theme">
 				<div id="text_graph3_div_theme">
@@ -50,6 +49,7 @@
 					<div id="table_div" ></div>
 		 		</div>
 			</article>
+
 		</div>
 	</section>
 
@@ -59,7 +59,6 @@
 <script src="../dynamic/footer.js"></script>
 
 <!--Script CSS formatting table-->
-<link rel="stylesheet" href="../static/style_theme.css">
 <link rel="stylesheet" href="../static/css/style.css">
 <link rel="stylesheet" href="../static/style_cover.css">
 
@@ -68,7 +67,7 @@
 <link rel="stylesheet" href="../static/jqcloud.css" type="text/css" media="screen">
 
 <!--Script to test word cloud (data definition and container definition)-->
-<script type="text/javascript" src="../dynamic/core_tests.js"></script>
+<!-- <script type="text/javascript" src="../dynamic/core_tests.js"></script> -->
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="../dynamic/gcharts.js"></script>
