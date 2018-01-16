@@ -1,8 +1,16 @@
+var countries = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: 'code/web/countries.json'
+});
+
+$('#prefetch .typeahead').typeahead(null, {
+  name: 'countries',
+  source: countries
+});
+
+
 $("#buttonResearch_input_research").click(function() {
-  /*$('#recherche').autocomplete({
-    source : liste
-    minLength : 3
-  })*/
   var valueSearchBar = $("#searchBar_input_research").val();
   var themeChoisi = $("#themeList_select_research").val();
   var sourceChoisie = $("#sourceList_input_research").val();
@@ -27,48 +35,64 @@ $("#buttonResearch_input_research").click(function() {
     document.getElementById("chart5_div_research").innerHTML = Graph5();
     document.getElementById("titre6").innerHTML = recupererTitre6(valueSearchBar,dateDebutChoisie,dateFinChoisie);
     document.getElementById("chart6_div_research").innerHTML = Graph6();
-   }
+  }
 
-   $.ajax({
-      url:'http://localhost:5000/test',
-      type: 'GET',
-      dataType: 'json',
-      success: drawBasic,
-      error: ajax_failed,
-   });
+  $.ajax({
+    url:'http://localhost:5000/test',
+    type: 'GET',
+    dataType: 'json',
+    success: drawBasic,
+    error: ajax_failed,
+  });
 });
 
 
 
 function verification(word,start,end){
- d1=new Date(start);
- d1=formattedDate(d1);
- d1=new Date(d1)
- d2=new Date(end);
- d2=formattedDate(d2);
- d2=new Date(d2)
+  d1=new Date(start);
+  d1=formattedDate(d1);
+  d2=new Date(end);
+  d2=formattedDate(d2);
+  if (d1==false || d2==false){
+    alert('date impossible,réessayez')
+  }else{
 
- if (word=='' || isValidDate(start)== false || isValidDate(end)== false|| d2<d1){
-   if (word==''){
-     alert('Il faut absolument rentrer un mot')
-   }else if (isValidDate(start)== false || isValidDate(end)== false){
-     alert('Il faut absolument rentrer les 2 dates dans le bon format')
-   }else{
-     alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')      
-   }
-   return false
- }else{
-   return true
- }
+  d1=new Date(d1)
+  d2=new Date(d2)
+
+  if (word=='' || isValidDate(start)== false || isValidDate(end)== false|| d2<d1){
+    if (word==''){
+      alert('Il faut absolument rentrer un mot')
+    }else if (isValidDate(start)== false || isValidDate(end)== false){
+      alert('Il faut absolument rentrer les 2 dates dans le bon format')
+    }else{
+      alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')      
+    }
+      return false
+    }else{
+      return true
+    }
+  }
 }
 
 function formattedDate(d) {
- var month = String(d.getMonth() + 1);
- var day = String(d.getDate());
- var year = String(d.getFullYear());
- if (month.length < 2) month = '0' + month;
- if (day.length < 2) day = '0' + day;
- return `${day}/${month}/${year}`;
+  var month = String(d.getMonth() + 1);
+  var day = String(d.getDate());
+  var year = String(d.getFullYear());
+  if (month.length < 2) {
+    month = '0' + month};
+  if (day.length < 2) {
+    day = '0' + day};
+  if (day<=12 && month<=31){
+    return '${day}/${month}/${year}';
+  }else{
+    return false;
+  }
+}
+
+function isValidDate(date){
+   var matches = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/.exec(date);
+   if (matches == null) return false;
 }
 
 function recupererTitre1(word,start,end,frequence){  return "Graphe 1 : Evolution du nombre d'article utilisant " + word + " par "+ frequence + " et par source(s) selectionnée(s) entre le " + start + " et le " + end;}
@@ -77,6 +101,8 @@ function recupererTitre3(word,start,end){  return "Graphe 3 : Nombre d'utilisati
 function recupererTitre4(word,start,end){  return "Graphe 4 : Nombre d'utilisation de " + word + " par thème(s) selectionné(s) entre le " + start + " et le " + end;}
 function recupererTitre5(word,start,end){  return "Graphe 5 : Nuage des mots les plus associés à " + word + " par source(s) selectionnée(s) entre le " + start + " et le " + end;}
 function recupererTitre6(word,start,end){  return "Graphe 6 : Nuage des mots les plus associés à " + word + " par thème(s) selectionné(s) entre le " + start + " et le " + end;}
+
+
 
 function Graph1() {
   google.charts.load('current', {'packages':['corechart']});
@@ -140,64 +166,7 @@ function Graph1() {
 }
 
 function Graph2() {
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var json  = [
-      {"week": "w1", "source":"La Dépêche", "nombre": 10 },
-      {"week": "w1", "source":"Le Figaro", "nombre": 1 },
-      {"week": "w1", "source":"Le Point", "nombre": 12 },
-      {"week": "w1", "source":"Le Monde", "nombre": 2 },
-      {"week": "w1", "source":"Libération", "nombre": 9 },
-      {"week": "w1", "source":"Nouvelle Obs", "nombre": 13 },
-      {"week": "w1", "source":"Telerama", "nombre": 6 },
-      {"week": "w1", "source":"Futurasciences", "nombre": 5 },
-      {"week": "w1", "source":"L’Humanité", "nombre": 9 },
-      {"week": "w2", "source":"La Dépêche", "nombre": 20 },
-      {"week": "w2", "source":"Le Figaro", "nombre": 35 },
-      {"week": "w2", "source":"Le Point", "nombre": 15 },
-      {"week": "w2", "source":"Le Monde", "nombre": 17 },
-      {"week": "w2", "source":"Libération", "nombre": 3 },
-      {"week": "w2", "source":"Nouvelle Obs", "nombre": 22 },
-      {"week": "w2", "source":"Telerama", "nombre": 8 },
-      {"week": "w2", "source":"Futurasciences", "nombre": 3 },
-      {"week": "w2", "source":"L’Humanité", "nombre": 6 },
-      {"week": "w3", "source":"La Dépêche", "nombre": 15 },
-      {"week": "w3", "source":"Le Figaro", "nombre": 5 },
-      {"week": "w3", "source":"Le Point", "nombre": 11 },
-      {"week": "w3", "source":"Le Monde", "nombre": 17 },
-      {"week": "w3", "source":"Libération", "nombre": 7 },
-      {"week": "w3", "source":"Nouvelle Obs", "nombre": 23 },
-      {"week": "w3", "source":"Telerama", "nombre": 28 },
-      {"week": "w3", "source":"Futurasciences", "nombre": 13 },
-      {"week": "w3", "source":"L’Humanité", "nombre": 9 }
-    ]
-    var data = new google.visualization.DataTable();
-    var w1=json[0].week;
-    var col=0;
-    data.addColumn('string', "week");
-    for (var g = 0; g <json.length; g++) {
-      if (json[g].week==w1){
-        data.addColumn('number', json[g].source); //add every distinct sources present in the Json into column
-        col=col+1;
-      }
-    }
-    for (var i = 0; i <json.length; i+=col) {
-      var tab = [json[i].week];
-      for (var j = 0; j <col; j++) { //create a table proportional to the number of sources selected
-        tab.splice(j+1,0,json[j+i].nombre); 
-      }
-      data.addRow(tab) //add the table to generate the lines
-    }
-    var options = {
-      curveType: 'function',
-      legend: { position: 'bottom' }};
-    var chart = new google.visualization.LineChart(document.getElementById('chart1_div_research'));
-    chart.draw(data,options);
-  }
-  $(window).resize(function(){ //make the graphics responsive
-    drawChart();
-  });
+
 }
 
 function Graph3(){
@@ -230,32 +199,7 @@ function Graph3(){
 }
 
 function Graph4(){
-  google.charts.load('current', {packages: ['corechart', 'bar']});
-  google.charts.setOnLoadCallback(drawBasic);
-  function drawBasic() {
-    var json=[
-      {"source": "figaro","nombre" : 210},
-      {"source": "monde","nombre": 2015},
-      {"source": "depeche","nombre" : 50},
-      {"source": "libération","nombre": 45},
-      {"source": "nouvel Obs","nombre" : 544},
-      {"source": "Telerama","nombre": 45},
-      {"source": "Futurasciences","nombre" : 76},
-      {"source": "L’Humanité","nombre": 71}
-    ]
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'source');
-    data.addColumn('number', "nombre");
-    for (var i = 0; i <json.length; i++) {
-    data.addRow([json[i].source,json[i].nombre ]);
-    }
-    var chart = new google.visualization.ColumnChart(
-    document.getElementById('chart2_div_research'));
-    chart.draw(data,{legend: {position: 'none'}});
-  }
-  $(window).resize(function(){ //make the graphics responsive
-    drawBasic();
-  });
+
 }
 
 function Graph5(){

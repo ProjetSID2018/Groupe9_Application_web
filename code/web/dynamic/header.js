@@ -34,8 +34,8 @@ document.body.insertAdjacentHTML("afterBegin",
           '<div id="codebrainery-toggle-search" class="collapse navbar-collapse">' +
             '<div class="col-sm-offset-4">'+
               '<div class="row">' +
-                '<div class="col-sm-offset-4 col-sm-4">' +
-                  '<input id="searchBar_input_research" type="text" name="search" placeholder="Recherche">' +
+                '<div id="prefetch" class="col-sm-offset-4 col-sm-4">' +
+                  '<input id="searchBar_input_research" type="text" class="typeahead" placeholder="Recherche">' +
                 '</div>' +
               '</div>'+
               '<div class="row">' +
