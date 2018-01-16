@@ -1,7 +1,5 @@
  // Fonction JQUERY pour gérer la barre de navigation
-(
-
- function($){
+(function($){
    // Quand le document est chargé
    $(document).ready(
     function(){

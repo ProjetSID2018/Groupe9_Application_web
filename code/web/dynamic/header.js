@@ -34,56 +34,56 @@ document.body.insertAdjacentHTML("afterBegin",
           '<div id="codebrainery-toggle-search" class="collapse navbar-collapse">' +
             '<div class="col-sm-offset-4">'+
               '<div class="row">' +
-             '<div class="col-sm-offset-4 col-sm-4">' +
-               '<input id="searchBar_input_research" type="text" name="search" placeholder="Recherche">' +
-             '</div>' +
-           '</div>'+
-           '<div class="row">' +
-             '<div class="col-sm-4">' +
-               '<SELECT id="themeList_select_research" class="form-control" name="theme" size="1">' +
-                  '<option> Tous les th&egrave;mes </option>' +
-                  '<option> International </option>' +
-                  '<option> France </option>' +  
-                  '<option> Economie </option>' +
-                  '<option> Science/High-Tech </option>' +
-                  '<option> Culture </option>' +
-                  '<option> Sport </option>' +
-                  '<option> Sant&eacute; </option>' +
-                '</SELECT>' +
+                '<div class="col-sm-offset-4 col-sm-4">' +
+                  '<input id="searchBar_input_research" type="text" name="search" placeholder="Recherche">' +
+                '</div>' +
+              '</div>'+
+              '<div class="row">' +
+                '<div class="col-sm-4">' +
+                  '<SELECT id="themeList_select_research" class="form-control" name="theme" size="1">' +
+                    '<option> Tous les th&egrave;mes </option>' +
+                    '<option> International </option>' +
+                    '<option> France </option>' +  
+                    '<option> Economie </option>' +
+                    '<option> Science/High-Tech </option>' +
+                    '<option> Culture </option>' +
+                    '<option> Sport </option>' +
+                    '<option> Sant&eacute; </option>' +
+                  '</SELECT>' +
+                '</div>' +
+                '<div class="col-sm-4">' +        
+                  '<SELECT id="sourceList_input_research" class="form-control" name="Source" size="1">' +
+                    '<option> Toutes les sources </option>' +
+                    '<option> </option>' +
+                  '</select>' +
+                '</div>' +
+                '<div class="col-sm-4">' +        
+                  '<SELECT id="freqList_input_research" class="form-control" name="frequence" size="1">' +
+                    '<option>Traitement par semaine</option>' +
+                    '<option>Traitement par mois</option>' +
+                    '<option>Traitement par année</option>' +
+                  '</select>' +
+                '</div>' +
               '</div>' +
-              '<div class="col-sm-4">' +        
-                '<SELECT id="sourceList_input_research" class="form-control" name="Source" size="1">' +
-                  '<option> Toutes les sources </option>' +
-                  '<option> </option>' +
-                '</select>' +
-              '</div>' +
-              '<div class="col-sm-4">' +        
-                '<SELECT id="freqList_input_research" class="form-control" name="frequence" size="1">' +
-                  '<option>Traitement par semaine</option>' +
-                  '<option>Traitement par mois</option>' +
-                  '<option>Traitement par année</option>' +
-                '</select>' +
-              '</div>' +
-            '</div>' +
 
-            '<div class="row">' +
-              '<div class="col-sm-3">' +    
-                '<input id="startDate_input_research" type="text" name="dateDeb" style="cursor: pointer" onclick="new calendar(this);" value="Du :"/>' +
+              '<div class="row">' +
+                '<div class="col-sm-3">' +    
+                  '<input id="startDate_input_research" type="text" name="dateDeb" style="cursor: pointer" onclick="new calendar(this);" value="Du :"/>' +
+                '</div>' +
+                '<div class="col-sm-offset-1 col-sm-3">' +
+                  '<input id="endDate_input_research" type="text" name="dateFin" style="cursor: pointer" onclick="new calendar(this);" value="Au :"/>' +
+                '</div>' +
+                '<div class="col-sm-offset-1 col-sm-2">' +
+                  '<button id="buttonCancel_input_research" type="submit" class="btn btn-primary" onclick="window.location.reload(false)">Réinitialiser</button>'+
+                '</div>' +
+                '<div class="col-sm-2">' +
+                  '<button id="buttonResearch_input_research" type="submit" class="btn btn-primary">Valider</button>' +
+                '</div>' +
               '</div>' +
-              '<div class="col-sm-offset-1 col-sm-3">' +
-                '<input id="endDate_input_research" type="text" name="dateFin" style="cursor: pointer" onclick="new calendar(this);" value="Au :"/>' +
-              '</div>' +
-              '<div class="col-sm-offset-1 col-sm-2">' +
-                '<button id="buttonCancel_input_research" type="submit" class="btn btn-primary" onclick="window.location.reload(false)">Réinitialiser</button>'+
-              '</div>' +
-              '<div class="col-sm-2">' +
-                '<button id="buttonResearch_input_research" type="submit" class="btn btn-primary">Valider</button>' +
-              '</div>' +
-            '</div>' +
-          '</div>'+
-        '</div>'+   
-      '</div>'+
-
+            '</div>'+
+          '</div>'+   
+        '</div>'+
+      '</div>' +
 
     /*Theme choice*/ 
 
