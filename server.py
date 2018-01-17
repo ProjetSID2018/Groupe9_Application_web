@@ -110,44 +110,55 @@ def general1():
     data = {
    '1': {
         "text": "figaro",
-        "weight" : 1
+        "weight" : 1,
+        "trend" : "hausse"
     },
     '2':{
         "text": "monde",
-        "weight": 2
+        "weight": 2,
+        "trend" : "baisse"
     },
     '3':{
         "text": "depeche",
-        "weight" : 3
+        "weight" : 3,
+        "trend" : "normale"
     },
     '4':{
         "text": "set",
-        "weight": 4
+        "weight": 4,
+        "trend" : "normale"
     },
     '5':{
         "text": "truc",
-        "weight" : 5
+        "weight" : 5,
+        "trend" : "normale"
     },
     '6':{
         "text": "ouai",
-        "weight": 6
+        "weight": 6,
+        "trend" : "normale"
     },
     '7':{
         "text": "plus",
-        "weight" : 7
+        "weight" : 7,
+        "trend" : "normale"
     },
     '8':{
         "text": "trente",
-        "weight": 8
+        "weight": 8,
+        "trend" : "normale"
     },
     '9':{
         "text": "aller",
-        "weight" : 9
+        "weight" : 9,
+        "trend" : "normale"
     },
     '10':{
         "text": "test",
-        "weight": 10
-    }}
+        "weight": 10,
+        "trend" : "normale"
+    }
+}
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
@@ -350,6 +361,155 @@ def cloud(vparam1):
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp 
+
+##################################################
+#					PAGE RECHERCHE				#   
+##################################################
+
+@app.route('/recherche1/<string:vparam1>/<string:vparam2>/<string:vparam3>/<string:vparam4>/<string:vparam5>/<string:vparam6>', methods = ['GET'])
+def recherche1(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6):
+	print(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6)
+	data = {
+	'1':{
+		"periode" : "w1",
+		"source" : "La Dépêche",
+		"nombre" : 10
+	},
+	'2':{
+		"periode" : "w1",
+		"source" : "Le Figaro",
+		"nombre" : 1
+	},
+	'3':{
+		"periode" : "w1",
+		"source" : "Le Point",
+		"nombre" : 12
+	},
+	'4':{
+		"periode" : "w1",
+		"source" : "Le Monde",
+		"nombre" : 2
+	},
+	'5':{
+		"periode" : "w1",
+		"source" : "Libération",
+		"nombre" : 9
+	},
+	'6':{
+		"periode" : "w1",
+		"source" : "Nouvelle Obs",
+		"nombre" : 13
+	},
+	'7':{
+		"periode" : "w1",
+		"source" : "Telerama",
+		"nombre" : 6
+	},
+	'8':{
+		"periode" : "w1",
+		"source" : "Futurasciences",
+		"nombre" : 5
+	},
+	'9':{
+		"periode" : "w1",
+		"source" : "L’Humanité",
+		"nombre" : 9
+	},
+	'10':{
+		"periode" : "w2",
+		"source" : "La Dépêche",
+		"nombre" : 20
+	},
+	'11':{
+		"periode" : "w2",
+		"source" : "Le Figaro",
+		"nombre" : 35
+	},
+	'12':{
+		"periode" : "w2",
+		"source" : "Le Point",
+		"nombre" : 15
+	},
+	'13':{
+		"periode" : "w2",
+		"source" : "Le Monde",
+		"nombre" : 17
+	},
+	'14':{
+		"periode" : "w2",
+		"source" : "Libération",
+		"nombre" : 3
+	},
+	'15':{
+		"periode" : "w2",
+		"source" : "Nouvelle Obs",
+		"nombre" : 22
+	},
+	'16':{
+		"periode" : "w2",
+		"source" : "Telerama",
+		"nombre" : 8
+	},
+	'17':{
+		"periode" : "w2",
+		"source" : "Futurasciences",
+		"nombre" : 3
+	},
+	'18':{
+		"periode" : "w2",
+		"source" : "L’Humanité",
+		"nombre" : 6
+	},
+	'19':{
+		"periode" : "w3",
+		"source" : "La Dépêche",
+		"nombre" : 15
+	},
+	'20':{
+		"periode" : "w3",
+		"source" : "Le Figaro",
+		"nombre" : 5
+	},
+	'21':{
+		"periode" : "w3",
+		"source" : "Le Point",
+		"nombre" : 11
+	},
+	'22':{
+		"periode" : "w3",
+		"source" : "Le Monde",
+		"nombre" : 17
+	},
+	'23':{
+		"periode" : "w3",
+		"source" : "Libération",
+		"nombre" : 7
+	},
+	'24':{
+		"periode" : "w3",
+		"source" : "Nouvelle Obs",
+		"nombre" : 23
+	},
+	'25':{
+		"periode" : "w3",
+		"source" : "Telerama",
+		"nombre" : 28
+	},
+	'26':{
+		"periode" : "w3",
+		"source" : "Futurasciences",
+		"nombre" : 13
+	},
+	'27':{
+		"periode" : "w3",
+		"source" : "L’Humanité",
+		"nombre" : 9
+	}}
+	resp = jsonify(data)
+	resp.status_code = 200
+	resp.headers.add('Access-Control-Allow-Origin', '*')
+	return resp 
+
 
 if __name__ == '__main__':
   app.run(debug=True)
