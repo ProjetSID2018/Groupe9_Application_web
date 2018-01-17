@@ -166,6 +166,26 @@ def general2():
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp 
 
+@app.route('/gauge', methods = ['GET'])
+def gauge():
+	data = {
+	'1': {
+		"feeling": "Degout",
+		"pourcent" : "50"
+	},
+	'2': {
+		"feeling": "Peur",
+		"pourcent" : "20"
+	},
+	'3': {
+		"feeling": "Joie",
+		"pourcent" : "80"
+	}}
+	resp = jsonify(data)
+	resp.status_code = 200
+	resp.headers.add('Access-Control-Allow-Origin', '*')
+	return resp 
+
 
 ##################################################
 #					PAGE THEME					#   
@@ -210,57 +230,25 @@ def theme():
  
 @app.route('/trend/<string:vparam1>', methods = ['GET'])
 def trend(vparam1):
-    #theme =request.args.get('theme')
-    print(vparam1)
-    data_first = {
-    '1':{
-        "mot" : "Verbe",
-        "tendance" : "tendance1"
-    },
-    '2':{
-        "mot" : "Nom",
-        "tendance" : "tendance2"
-    },
-    '3':{
-        "mot" : "Adjectif",
-        "tendance" : "tendance3"
-    }}
-    data_bis = {
-    '1':{
-        "mot" : "Manger",
-        "tendance" : "En hausse"
-    },
-    '2':{
-        "mot" : "Donald Trump",
-        "tendance" : "En baisse"
-    },
-    '3':{
-        "mot" : "Gros",
-        "tendance" : "Constant"
-    }}
-    data_ter = {
-    '1':{
-        "mot" : "Boire",
-        "tendance" : "tendance1"
-    },
-    '2':{
-        "mot" : "Individu",
-        "tendance" : "tendance2"
-    },
-    '3':{
-        "mot" : "Savoureux",
-        "tendance" : "tendance3"
-    }}
-    if vparam1 == '_international':
-        data = data_first
-    elif vparam1 == '_france':
-        data = data_bis
-    else:
-        data = data_ter
-    resp = jsonify(data)
-    resp.status_code = 200
-    resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp 
+	#theme =request.args.get('theme')
+	print(vparam1)
+	data = {
+	'1':{
+		"mot" : "verbe",
+		"tendance" : "tendance1"
+	},
+	'2':{
+		"mot" : "Nom",
+		"tendance" : "tendance2"
+	},
+	'3':{
+		"mot" : "Adjectif",
+		"tendance" : "tendance3"
+	}}
+	resp = jsonify(data)
+	resp.status_code = 200
+	resp.headers.add('Access-Control-Allow-Origin', '*')
+	return resp 
 
 @app.route('/cloud/<string:vparam1>', methods = ['GET'])
 def cloud(vparam1):
@@ -361,7 +349,7 @@ def cloud(vparam1):
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp  
+    return resp 
 
 if __name__ == '__main__':
   app.run(debug=True)

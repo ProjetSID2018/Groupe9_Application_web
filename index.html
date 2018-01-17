@@ -9,9 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="code/WEB/static/css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="code/web/static/css/style.css" type="text/css" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="code/web/static/style_jauge.css">
   </head>
 
   <body onLoad="start()">
@@ -29,6 +30,13 @@
       <section id="statistics">
         <h1 id="statistics_title" align="center">Statistiques de la semaine</h1>
 
+	
+	<article id="gauge">
+		<div id="g1"></div>
+    	<div id="g2"></div>
+    	<div id="g3"></div>
+	</article>
+	
     <article class="row" id="word_cloud_cover">
         <div id="word_cloud_div_cover" class="col-xs-12 text-center">
           <h2> Top 10 des mots clés de la semaine</h2>
@@ -51,7 +59,7 @@
           </div>
         </article>
 
-        <article id="top10_sources">
+		<article id="top10_sources">
           <div id="top10_sources_div_cover" class="container-fluid">
 			<div id="top10_sources_row_cover" class="row">
             	<div class="col-xs-12 text-center">
@@ -104,7 +112,59 @@
           <div id="sources_row_cover" class="row">
             <div class="col-xs-12 text-center">
               <h1>Sources</h1>
-              <p>Sources </p>
+              <div class="container">
+				<div class="row">
+					<div >
+						<div id="block" style="background: rgb(67,122,189);" class="col-md-3 col-sm-4 col-xs-6"><!--col-sm-offset-1 col-xs-offset-1 col-md-offset-1-->
+						  <a href="http://www.lefigaro.fr/"><img id="block_img" class="img-responsive" src="code/web/static/img/img_source/Image_Source/Le_Figaro.jpg" /></a>
+					  </div>
+					</div>
+					  <div id="block" style="background-color: rgb(14,64,150);" class="col-md-3 col-sm-4 col-xs-6 col-offset-1">
+						  <a href="http://www.20minutes.fr/"><img id="block_img_middle" class="img-responsive" src="code/web/static/img/img_source/Image_Source/20_Minutes.png" /></a>
+					  </div>
+					  <div id="block" style="background-color: rgb(27,31,43);" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="http://www.femina.fr/"><img id="block_img_middle" class="img-responsive" src="code/web/static/img/img_source/Image_Source/Femina.png" /></a>
+					  </div>
+					  <div id="block" style="background-color:white;" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="https://www.ladepeche.fr/"><img id="block_img" class="img-responsive" src="code/web/static/img/img_source/Image_Source/La_Depeche.jpg" /></a>
+					  </div>
+					  <div id="block" style="background-color: rgb(171,0,0);" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="http://www.lepoint.fr/"><img id="block_img" class="img-responsive" src="code/web/static/img/img_source/Image_Source/Le_point.png" /></a>
+					  </div>
+					  <div id="block" style="background-color: white;" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="https://www.lequipe.fr/"><img id="block_img" class="img-responsive" src="code/web/static/img/img_source/Image_Source/Lequipe.jpg" /></a>
+					  </div>
+					  <div id="block" style="background-color: rgb(21,44,86);" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="http://www.legorafi.fr/"><img id="block_img" class="img-responsive" src="code/web/static/img/img_source/Image_Source/Le_Gorafi.png" /></a>
+					  </div>
+					  <div id="block" style="background-color: white;" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="http://www.lemonde.fr/"><img id="block_img_middle" class="img-responsive" src="code/web/static/img/img_source/Image_Source/Le_Monde.png" /></a>
+					  </div>
+					  <div id="block" style="background-color: rgb(224,0,27);" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="https://www.nouvelobs.com/"><img id="block_img_middle" class="img-responsive" src="code/web/static/img/img_source/Image_Source/LObs.png" /></a>
+					  </div>
+					  <div id="block" style="background-color: rgb(204,7,30);" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="https://www.science-et-vie.com/"><img id="block_img_middle" class="img-responsive" src="code/web/static/img/img_source/Image_Source/Science_et_Vie.png" /></a>
+					  </div>
+					  <div id="block" style="background-color: white;" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="http://www.liberation.fr/"><img id="block_img_middle" class="img-responsive" src="code/web/static/img/img_source/Image_Source/Liberation.png" /></a>
+					  </div>
+					  <div id="block" style="background-color: black;" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="http://www.telerama.fr/"><img id="block_img_middle_Tele" class="img-responsive" src="code/web/static/img/img_source/Image_Source/Telerama.png" /></a>
+					  </div>
+					  <div id="block" style="background-color: white;" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="https://www.futura-sciences.com/"><img id="block_img_middle_Futura" class="img-responsive" src="code/web/static/img/img_source/Image_Source/Futura-Sciences.png" /></a>
+					  </div>
+					  <div id="block" style="background-color: white;" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="https://www.humanite.fr/"><img id="block_img_middle_Hum" class="img-responsive" src="code/web/static/img/img_source/Image_Source/LHumanite.jpg" /></a>
+					  </div>
+					  <div id="block" style="background-color: rgb(1,82,140);" class="col-md-3 col-sm-4 col-xs-6">
+						  <a href="https://www.latribune.fr/"><img id="block_img_middle_Tri" class="img-responsive" src="code/web/static/img/img_source/Image_Source/La_Tribune.png" /></a>
+					  </div>
+
+				</div>
+			  </div>
+
             </div>
           </div>
         </div>
@@ -112,18 +172,16 @@
       <!--END Content-->
     </div>
 
-    <script src="code/WEB/dynamic/fixed_header.js"></script>
-    <script src="code/WEB/dynamic/header.js"></script>
-    <script src="code/WEB/dynamic/footer.js"></script>
-    <script type="text/javascript" src="code/WEB/dynamic/jqcloud-1.0.4.js"></script>
-    <link rel="stylesheet" href="code/WEB/static/jqcloud.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="code/WEB/static/style_cover.css" type="text/css" media="screen">
-    <!--Script to test word cloud (data definition and container definition)-->
-    <!-- 
-<script type="text/javascript" src="code/WEB/dynamic/core_tests_garde.js"></script>
-    <script type="text/javascript" src="code/WEB/dynamic/top10_cover.js"></script>
- -->
-    <script src="code/WEB/dynamic/graph.js"></script>
+    <script src="code/web/dynamic/fixed_header.js"></script>
+    <script src="code/web/dynamic/header.js"></script>
+    <script src="code/web/dynamic/footer.js"></script>
+    <script type="text/javascript" src="code/web/dynamic/jqcloud-1.0.4.js"></script>
+    <link rel="stylesheet" href="code/web/static/jqcloud.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="code/web/static/style_cover.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="code/web/static/css/Source.css" type="text/css" media="screen">
+    <script src="code/web/dynamic/graph.js"></script>
+    <script src="code/web/dynamic/raphael-2.1.4.min.js"></script>
+    <script src="code/web/dynamic/justgage.js"></script>
 
   </body>
 

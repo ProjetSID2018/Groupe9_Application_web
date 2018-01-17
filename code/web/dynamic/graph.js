@@ -4,6 +4,7 @@ function start() {
 	request_top_10();
     request_word_cloud();
     request_top_theme();
+    request_gauge();
 }
 
 function request_top_10() {
@@ -19,7 +20,7 @@ function request_top_10() {
 }
 
 function request_word_cloud() {
-    $('#word_cloud_cover').hide();
+    $('#most_treated_word_article_theme').hide();
     $.ajax({
         //url:'/Top10_pertinent',
         url:'http://localhost:5000/test1',
@@ -33,7 +34,7 @@ function request_word_cloud() {
 function request_top_theme() {
     $('#most_popular_theme').hide();
     $.ajax({
-        //url:'/MostPublishedCat',
+        //url:'http://130.120.8.250:5000/MostPublishedCat',
         url:'http://localhost:5000/test2',
         type: 'GET',
         dataType: 'json',
@@ -41,6 +42,18 @@ function request_top_theme() {
         error: ajax_failed,
     });
 }
+
+function request_gauge() {
+    $.ajax({
+        //url:'/MostPublishedCat',
+        url:'http://localhost:5000/gauge',
+        type: 'GET',
+        dataType: 'json',
+        success: draw_gauge,
+        error: ajax_failed,
+    });
+}
+
 
 function drawBasic(data_json) {
 	google.charts.load('visualization', '1', {packages: ['corechart', 'bar']});
@@ -95,6 +108,44 @@ function top_theme(theme_pourcent) {
     document.getElementById("most_popular_theme_name").textContent = theme_pourcent[1].name;
 }
 
+function draw_gauge(data_gauge) {
+	var title1 = data_gauge[1].feeling;
+	var title2 = data_gauge[2].feeling;
+	var title3 = data_gauge[3].feeling;
+	var pourcent1 = data_gauge[1].pourcent;
+	var pourcent2 = data_gauge[2].pourcent;
+	var pourcent3 = data_gauge[3].pourcent;
+	gauge(title1,title2,title3,pourcent1,pourcent2,pourcent3);
+}
+
+function gauge(title1,title2,title3,pourcent1,pourcent2,pourcent3) {
+    var g1 = new JustGage({
+        id: "g1",
+        value: pourcent1,
+        min: 0,
+        max: 100,
+        title: title1,
+        label: "%"
+    });
+
+    var g2 = new JustGage({
+        id: "g2",
+        value: pourcent2,
+        min: 0,
+        max: 100,
+        title: title2,
+        label: "%"
+    });
+
+    var g3 = new JustGage({
+        id: "g3",
+        value: pourcent3,
+        min: 0,
+        max: 100,
+        title: title3,
+        label: "%"
+    });
+}
 
 function ajax_failed() {
     compt+=1;
