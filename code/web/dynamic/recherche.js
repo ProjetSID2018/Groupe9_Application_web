@@ -1,50 +1,34 @@
 /*Boites des dates*/
 $(function(){
   $("#startDate_input_research").DateTimePicker({
-      fullMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
-      shortDayNames: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
-      fullDayNames : ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
-      shortMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
-      titleContentDateTime : "Choissisez la date de début",
-      setButtonContent : "Appliquer",
-      clearButtonContent : "Effacer",
-      buttonsToDisplay : ["HeaderCloseButton", "SetButton"],
       dateTimeFormat : "dd-MM-yyyy"
   });
 });
 
 $(function(){
   $("#endDate_input_research").DateTimePicker({
-      fullMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
-      shortDayNames: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
-      fullDayNames : ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
-      shortMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
-      titleContentDateTime : "Choissisez la date de fin",
-      setButtonContent : "Appliquer",
-      clearButtonContent : "Effacer",
-      buttonsToDisplay : ["HeaderCloseButton", "SetButton"],
       dateTimeFormat : "dd-MM-yyyy"
   });
 });
 
 function verification(word,start,end){
-  d1=new Date(start);
-  d1=formattedDate(d1);
-  d2=new Date(end);
-  d2=formattedDate(d2);
+  d1=formattedDate(start);
+  d2=formattedDate(end);
+
   if (d1==false || d2==false){
     alert('date impossible,réessayez')
   }else{
-  d1=new Date(d1)
-  d2=new Date(d2)
-  if (word=='' || isValidDate(start)== false || isValidDate(end)== false|| d2<d1){
-    if (word==''){
-      alert('Il faut absolument rentrer un mot')
-    }else if (isValidDate(start)== false || isValidDate(end)== false){
-      alert('Il faut absolument rentrer les 2 dates dans le bon format')
-    }else{
-      alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')      
-    }
+    d1=new Date(d1)
+    d2=new Date(d2)
+
+    if (word=='' || isValidDate(start)== false || isValidDate(end)== false|| d2<d1){
+      if (word==''){
+        alert('Il faut absolument rentrer un mot')
+      }else if (isValidDate(start)== false || isValidDate(end)== false){
+        alert('Il faut absolument rentrer les 2 dates dans le bon format')
+      }else{
+        alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')      
+      }
       return false
     }else{
       return true
@@ -52,18 +36,21 @@ function verification(word,start,end){
   }
 }
 
-function formattedDate(d) {
-  var month = String(d.getMonth() + 1);
-  var day = String(d.getDate());
-  var year = String(d.getFullYear());
-  if (month.length < 2) {
-    month = '0' + month};
-  if (day.length < 2) {
-    day = '0' + day};
-  if (day<=12 && month<=31){
-    return '${day}/${month}/${year}';
+function formattedDate(date) {
+  var day="";var month="";var year="";
+  if (date.substring(2,3)=='/' && date.substring(5,6)=='/'){day=date.substring(0,2); month=date.substring(3,5); year=date.substring(6,10)}
+  if (date.substring(2,3)=='/' && date.substring(4,5)=='/'){day=date.substring(0,2); month=date.substring(3,4); year=date.substring(5,9)}
+  if (date.substring(1,2)=='/' && date.substring(3,4)=='/'){day=date.substring(0,2); month=date.substring(3,4); year=date.substring(4,8)}
+  if (day!="" && month!="" && year!=""){
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    if (day<=31 && month<=12){
+      return `${month}/${day}/${year}`;
+    }else{
+      return false;
+    }
   }else{
-    return false;
+    return false
   }
 }
 
@@ -75,7 +62,7 @@ function isValidDate(date){
 
 
 /*Auto-completion*/
-var countries = new Bloodhound({
+/*var countries = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.whitespace,
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   prefetch: 'code/web/countries.json'
@@ -84,7 +71,7 @@ var countries = new Bloodhound({
 $('#prefetch .typeahead').typeahead(null, {
   name: 'countries',
   source: countries
-});
+});*/
 
 
 
@@ -100,29 +87,70 @@ $("#buttonResearch_input_research").click(function() {
   if (frequenceChoisie=='Traitement par semaine'){frequenceChoisie='semaine'}
   if (frequenceChoisie=='Traitement par mois'){frequenceChoisie='mois'}
   if (frequenceChoisie=='Traitement par annee'){frequenceChoisie='annee'}
+  if (themeChoisi=='Tous les thèmes'){themeChoisi='all'}
+  if (sourceChoisie=='Toutes les sources'){sourceChoisie='all'}
 
   if (verification(valueSearchBar,dateDebutChoisie,dateFinChoisie)==true){
     document.getElementById("titre1").innerHTML = recupererTitre1(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
-    document.getElementById("chart1_div_research").innerHTML = Graph1();
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph1,
+      error: ajax_failed,
+    });
     document.getElementById("titre2").innerHTML = recupererTitre2(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
-    document.getElementById("chart2_div_research").innerHTML = Graph2();
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph2,
+      error: ajax_failed,
+    });
     document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
-    document.getElementById("chart3_div_research").innerHTML = Graph3();
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph3,
+      error: ajax_failed,
+    });
     document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
-    document.getElementById("chart4_div_research").innerHTML = Graph4();
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph4,
+      error: ajax_failed,
+    });
     document.getElementById("titre5").innerHTML = recupererTitre5(valueSearchBar,dateDebutChoisie,dateFinChoisie);
-    document.getElementById("chart5_div_research").innerHTML = Graph5();
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph5,
+      error: ajax_failed,
+    });
     document.getElementById("titre6").innerHTML = recupererTitre6(valueSearchBar,dateDebutChoisie,dateFinChoisie);
-    document.getElementById("chart6_div_research").innerHTML = Graph6();
-  }
-
-  $.ajax({
-    url:'http://localhost:5000/test',
-    type: 'GET',
-    dataType: 'json',
-    success: drawBasic,
-    error: ajax_failed,
-  });
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph6,
+      error: ajax_failed,
+    });
+/*    document.getElementById("").innerHTML = Graph1();
+*/    
+/*    document.getElementById("chart2_div_research").innerHTML = Graph2();
+*/    
+/*    document.getElementById("chart3_div_research").innerHTML = Graph3();
+*/    
+/*    document.getElementById("chart4_div_research").innerHTML = Graph4();
+*/    
+/*    document.getElementById("chart5_div_research").innerHTML = Graph5();
+*/    
+/*    document.getElementById("chart6_div_research").innerHTML = Graph6();
+*/  }
 });
 
 
@@ -137,11 +165,7 @@ function recupererTitre6(word,start,end){  return "Graphe 6 : Nuage des mots les
 
 
 /*Création des graphiques*/
-function Graph1() {
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var json  = [
+var json  = [
       {"week": "w1", "source":"La Dépêche", "nombre": 10 },
       {"week": "w1", "source":"Le Figaro", "nombre": 1 },
       {"week": "w1", "source":"Le Point", "nombre": 12 },
@@ -170,20 +194,28 @@ function Graph1() {
       {"week": "w3", "source":"Futurasciences", "nombre": 13 },
       {"week": "w3", "source":"L’Humanité", "nombre": 9 }
     ]
+function Graph1(json_graph1) {
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
     var data = new google.visualization.DataTable();
-    var w1=json[0].week;
+    data.addColumn("periode", "Source", "nombre");
+    for (var i = 1; i <= Object.keys(json_graph1).length; i++) {
+      data.addRow([json_graph1[i].periode, json_graph1[i].Source, json_graph1[i].nombre]);
+    }
+    var w1=json_graph1[1].week;
     var col=0;
     data.addColumn('string', "week");
-    for (var g = 0; g <json.length; g++) {
-      if (json[g].week==w1){
-        data.addColumn('number', json[g].source); //add every distinct sources present in the Json into column
+    for (var g = 1; g <json_graph1.length; g++) {
+      if (json_graph1[g].week==w1){
+        data.addColumn('number', json_graph1[g].source); //add every distinct sources present in the Json into column
         col=col+1;
       }
     }
-    for (var i = 0; i <json.length; i+=col) {
-      var tab = [json[i].week];
+    for (var i = 1; i <json_graph1.length; i+=col) {
+      var tab = [json_graph1[i].week];
       for (var j = 0; j <col; j++) { //create a table proportional to the number of sources selected
-        tab.splice(j+1,0,json[j+i].nombre); 
+        tab.splice(j+1, 0, json_graph1[j+i-1].nombre); 
       }
       data.addRow(tab) //add the table to generate the lines
     }
@@ -196,10 +228,12 @@ function Graph1() {
   $(window).resize(function(){ //make the graphics responsive
     drawChart();
   });
+  $("#chart1_div_research").show();
 }
 
 function Graph2() {
 
+  $("#chart2_div_research").show();
 }
 
 function Graph3(){
@@ -229,12 +263,17 @@ function Graph3(){
   $(window).resize(function(){ //make the graphics responsive
     drawBasic();
   });
+  $("#chart3_div_research").show();
 }
 
 function Graph4(){
-
+  $("#chart4_div_research").show();
 }
 
 function Graph5(){
+  $("#chart5_div_research").show();
+}
 
+function Graph6(){
+  $("#chart5_div_research").show();
 }

@@ -41,7 +41,7 @@ document.body.insertAdjacentHTML("afterBegin",
               '<div class="row">' +
                 '<div class="col-sm-4">' +
                   '<SELECT id="themeList_select_research" class="form-control" name="theme" size="1">' +
-                    '<option> Tous les th&egrave;mes </option>' +
+                    '<option> Tous les thèmes </option>' +
                     '<option> International </option>' +
                     '<option> France </option>' +  
                     '<option> Economie </option>' +
@@ -67,17 +67,25 @@ document.body.insertAdjacentHTML("afterBegin",
               '</div>' +
 
               '<div class="row">' +
-                '<div id="startDate_input_research" class="col-sm-3">' +
-                  '<input type="text" class="form-control">' +
-                  '<span class="input-group-addon">' +
-                    '<span class="glyphicon glyphicon-calendar"></span>' +
-                  '</span>' +
+                '<div class="col-sm-3">' +
+                  '<div class="form-group">' +
+                    '<div class="input-group date" id="startDate_input_research">' +
+                      '<input type="text" class="form-control">' +
+                      '<span class="input-group-addon">' +
+                        '<span class="glyphicon glyphicon-calendar"></span>' +
+                      '</span>' +
+                    '</div>' +
+                  '</div>' +    
                 '</div>' +
-                '<div id="endDate_input_research" class="col-sm-offset-1 col-sm-3">' +
-                  '<input type="text" class="form-control">' +
-                  '<span class="input-group-addon">' +
-                    '<span class="glyphicon glyphicon-calendar"></span>' +
-                  '</span>' +
+                '<div class="col-sm-offset-1 col-sm-3">' +
+                  '<div class="form-group">' +
+                    '<div class="input-group date" id="endDate_input_research">' +
+                      '<input type="text" class="form-control">' +
+                      '<span class="input-group-addon">' +
+                        '<span class="glyphicon glyphicon-calendar"></span>' +
+                      '</span>' +
+                    '</div>' +
+                  '</div>' +    
                 '</div>' +
                 '<div class="col-sm-offset-1 col-sm-2">' +
                   '<button id="buttonCancel_input_research" type="submit" class="btn btn-primary" onclick="window.location.reload(false)">Réinitialiser</button>'+
