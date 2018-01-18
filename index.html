@@ -12,14 +12,14 @@
     	<link rel="stylesheet" href="code/web/static/css/style.css" type="text/css" media="screen">
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    	<link rel="stylesheet" href="code/web/static/css/style_jauge.css">
+    	<link rel="stylesheet" href="code/web/static/style_jauge.css">
 	</head>
 
     <body onLoad="start()">
     	<div id = "content_global_cover" class="container-fluid">
 			<section>
 				<div class="Logo container-fluid">
-				<img class="deco-logo" src="/home/formationsid/Groupe9_Application_web/code/web/static/img/blue.png" alt="Logo">
+				<img class="deco-logo" src="code/web/static/img/logo/bleu.png" alt="Logo">
 				<p class=" deco text-center" >
 				Le site web qui analyse quotidiennement la presse en ligne.<br>
 				Obtenez des analyses statistiques générales, par thème ou par mot-clé.
@@ -45,13 +45,14 @@
 				    <div id="g3"></div>
 				</article>
 			</section>
-
-	    	<section id="statistics" class="text-center">
-	        	<h1 id="statistics_title">Statistiques de la semaine</h1>
-				<section>
+		</div>
+		
+	    	<section id="statistics" class="text-center temp">
+	        	<h1 id="statistics_title" class="pol">Statistiques de la semaine</h1>
+					
 				    <article class="row" id="word_cloud_cover">
 				        <div id="word_cloud_div_cover" class="col-xs-12 text-center">
-				        	<h2> Top 10 des mots clés de la semaine</h2>
+				        	<h2 class="pol1"> Top 10 des mots clés de la semaine</h2>
 				        	<div class="center-block">
 				        		<div class="word_cloud_row_graph block_word_cloud"></div>
                       <div id="table_legend">
@@ -83,9 +84,8 @@
 			          	<div id="most_popular_theme_div_cover" class="container-fluid">
 			            	<div id="most_popular_theme_row_cover" class="row">
 				              	<div class="col-xs-12 text-center">
-				                	<h2>Thème le plus traité de la semaine</h2>
 				                	<p id="most_popular_theme_text">
-				                		<B><em id="most_popular_theme_pourcentage"></em></B>
+				                		<B><em id="most_popular_theme_pourcentage"></em></B><br>
 				                		des articles de cette semaine traitent du thème
 				                		<B><em id="most_popular_theme_name"></em></B>
 				               		</p>
@@ -97,18 +97,19 @@
 
 		    	<section>
 					<article id="top10_sources">
-
+						<section class="temp">
 			          	<div id="top10_sources_div_cover" class="container-fluid">
 							<div id="top10_sources_row_cover" class="row">
 			            		<div class="col-xs-12 text-center">
-			                		<h2>TOP 10 des sources de la semaine</h2>
+			                		<h2 class="pol1">TOP 10 des sources de la semaine</h2>
 			                		<script src="https://www.gstatic.com/charts/loader.js"></script>
 			                		<div class="block_top10 " id = "chart_div"></div>
 			                	</div>
 			            	</div>
 			            </div>
 
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Plus de sources</button>
+						<button id="Pls_src" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span>Plus de sources</span></button>
+						</section>
 							<div class="modal fade" id="myModal" role="dialog">
 						    	<div class="modal-dialog">
 							 		<div class="modal-content">
@@ -146,7 +147,7 @@
 	        	<div id="sources_div_cover" class="container-fluid">
 	          		<div id="sources_row_cover" class="row">
 	            		<div class="col-xs-12 text-center">
-	              			<h1>Sources</h1>
+	              			<h1 class="pol1">Sources</h1>
 	              <div class="container">
 								<div class="row">
 									<div id="center" class = "col-lg-10">
