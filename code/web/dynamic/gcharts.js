@@ -92,7 +92,7 @@ function draw_word_trend(data_json_trend_themes) {
 		}
     	var data = google.visualization.arrayToDataTable(tab);
     	var table = new google.visualization.Table(document.getElementById('table_div'));
-    	table.draw(data);
+    	table.draw(data, options);
     	$(window).resize(function(){
 			table.draw(data, options);
 		});
