@@ -89,8 +89,7 @@ li.item{
 
 .deco {
   color: black;
-  text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 1;
 }
 
@@ -142,7 +141,7 @@ li.item{
 }
 
 
-/* ************************** footer*********************** */ 
+/* ************************** footer*********************** */
 
 
 img.ups {
@@ -274,7 +273,7 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: rgb(67,122,189);
 	width:160px;
  	height:68px;
-	-webkit-border-radius: 10px; 
+	-webkit-border-radius: 10px;
 	border-left: 4px black solid;
 	border-top: 4px black solid;
 	border-right: 4px black solid;
@@ -299,7 +298,7 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: rgb(14,64,150);
 	width:160px;
  	height:68px;
-	-webkit-border-radius: 10px; 
+	-webkit-border-radius: 10px;
 	border-left: 4px black solid;
 	border-top: 4px black solid;
 	border-right: 4px black solid;
@@ -316,7 +315,7 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: rgb(27,31,43);
 	width:160px;
  	height:68px;
-	-webkit-border-radius: 10px; 
+	-webkit-border-radius: 10px;
 	border-left: 4px black solid;
 	border-top: 4px black solid;
 	border-right: 4px black solid;
@@ -328,7 +327,7 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: white;
 	width:160px;
  	height:68px;
-	-webkit-border-radius: 10px; 
+	-webkit-border-radius: 10px;
 	border-left: 4px black solid;
 	border-top: 4px black solid;
 	border-right: 4px black solid;
@@ -349,7 +348,7 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: rgb(171,0,0);
 	width:160px;
  	height:68px;
-	-webkit-border-radius: 10px; 
+	-webkit-border-radius: 10px;
 	border-left: 4px black solid;
 	border-top: 4px black solid;
 	border-right: 4px black solid;
@@ -370,7 +369,7 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: white;
 	width:160px;
  	height:68px;
-	-webkit-border-radius: 10px; 
+	-webkit-border-radius: 10px;
 	border-left: 4px black solid;
 	border-top: 4px black solid;
 	border-right: 4px black solid;
@@ -391,7 +390,7 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: rgb(21,44,86);
 	width:160px;
  	height:68px;
-	-webkit-border-radius: 10px; 
+	-webkit-border-radius: 10px;
 	border-left: 4px black solid;
 	border-top: 4px black solid;
 	border-right: 4px black solid;
@@ -412,7 +411,7 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: white;
 	width:160px;
  	height:68px;
-	-webkit-border-radius: 10px; 
+	-webkit-border-radius: 10px;
 	border-left: 4px black solid;
 	border-top: 4px black solid;
 	border-right: 4px black solid;
@@ -424,7 +423,7 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: rgb(224,0,27);
 	width:160px;
  	height:68px;
-	-webkit-border-radius: 10px; 
+	-webkit-border-radius: 10px;
 	border-left: 4px black solid;
 	border-top: 4px black solid;
 	border-right: 4px black solid;
@@ -435,7 +434,7 @@ a.socialIcon:hover, .socialHoverClass {
 	background-color: rgb(204,7,30);
 	width:160px;
  	height:68px;
-	-webkit-border-radius: 10px; 
+	-webkit-border-radius: 10px;
 	border-left: 4px black solid;
 	border-top: 4px black solid;
 	border-right: 4px black solid;
@@ -546,5 +545,3 @@ height: 400px
     margin-left: -50%;
     text-align: right;
 }
-
-

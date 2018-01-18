@@ -17,7 +17,7 @@ api = Api(app)
 # def general():
 #     #--> requete sur la base
 #     #--> appel de l'API du groupe statiques
-#     
+#
 #     data = {
 #         'nbart'  : 2000,
 #         'source' : ["lemonde", "le figaro", "le nouvel obs"]
@@ -26,13 +26,13 @@ api = Api(app)
 #     resp.status_code = 200
 #     resp.headers.add('Access-Control-Allow-Origin', '*')
 #     return resp
-# 
+#
 # @app.route('/theme', methods = ['GET'])
 # def theme():
 #     #--> requete sur la base
 #     #--> appel de l'API du groupe statiques
-#     word =request.args.get('word')  
-#     source = request.args.get('source')  
+#     word =request.args.get('word')
+#     source = request.args.get('source')
 #     print(word, source)
 #     data = {
 #         'src'  : source,
@@ -45,9 +45,9 @@ api = Api(app)
 #     resp.status_code = 200
 #     resp.headers.add('Access-Control-Allow-Origin', '*')
 #     return resp
- 
+
 ##################################################
-#					PAGE INDEX					#   
+#					PAGE INDEX					#
 ##################################################
 @app.route('/test', methods = ['GET'])
 def general():
@@ -103,60 +103,60 @@ def general():
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp  
-   
+    return resp
+
 @app.route('/test1', methods = ['GET'])
 def general1():
     data = {
    '1': {
         "text": "figaro",
         "weight" : 1,
-        "trend" : "hausse"
+        "trend" : "Increasing_trend"
     },
     '2':{
         "text": "monde",
         "weight": 2,
-        "trend" : "baisse"
+        "trend" : "Decreasing_trend"
     },
     '3':{
         "text": "depeche",
         "weight" : 3,
-        "trend" : "normale"
+        "trend" : "No_trend"
     },
     '4':{
         "text": "set",
         "weight": 4,
-        "trend" : "normale"
+        "trend" : "Strongly_increasing_trend"
     },
     '5':{
         "text": "truc",
         "weight" : 5,
-        "trend" : "normale"
+        "trend" : "Strongly_decreasing_trend"
     },
     '6':{
         "text": "ouai",
         "weight": 6,
-        "trend" : "normale"
+        "trend" : "Strongly_increasing_trend"
     },
     '7':{
         "text": "plus",
         "weight" : 7,
-        "trend" : "normale"
+        "trend" : "Increasing_trend"
     },
     '8':{
         "text": "trente",
         "weight": 8,
-        "trend" : "normale"
+        "trend" : "Decreasing_trend"
     },
     '9':{
         "text": "aller",
         "weight" : 9,
-        "trend" : "normale"
+        "trend" : "Strongly_decreasing_trend"
     },
     '10':{
         "text": "test",
         "weight": 10,
-        "trend" : "normale"
+        "trend" : "No_trend"
     }
 }
     resp = jsonify(data)
@@ -175,7 +175,7 @@ def general2():
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp 
+    return resp
 
 @app.route('/gauge', methods = ['GET'])
 def gauge():
@@ -195,14 +195,14 @@ def gauge():
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp 
+	return resp
 
 
 ##################################################
-#					PAGE THEME					#   
+#					PAGE THEME					#
 ##################################################
 
- 
+
 @app.route('/theme', methods = ['GET'])
 def theme():
     data = {
@@ -237,8 +237,8 @@ def theme():
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp 
- 
+    return resp
+
 @app.route('/trend/<string:vparam1>', methods = ['GET'])
 def trend(vparam1):
     #theme =request.args.get('theme')
@@ -425,7 +425,7 @@ def cloud(vparam1):
     return resp
 
 ##################################################
-#					PAGE RECHERCHE				#   
+#					PAGE RECHERCHE				#
 ##################################################
 
 @app.route('/recherche1/<string:vparam1>/<string:vparam2>/<string:vparam3>/<string:vparam4>/<string:vparam5>/<string:vparam6>', methods = ['GET'])

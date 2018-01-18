@@ -96,23 +96,22 @@ function draw_cloud(some_words) {
     for (var i = 1; i <Object.keys(some_words).length+1; i++) {
         tab = tab.concat(some_words[i]);
     }
-    var trend_colors = {
-        'trend_very_positive': '#32CD32',
-        'trend_positive': '#7FFF00',
-        'trend_neutral': '#FFD700',
-        'trend_negative': '#FF4500',
-        'trend_very_negative': '#B22222'
-    };
+		var trend_colors = {
+	  		'Strongly_increasing_trend': '#32CD32',
+	  		'Increasing_trend': '#7FFF00',
+	  		'No_trend': '#FFD700',
+	  		'Decreasing_trend': '#FF4500',
+	  		'Strongly_decreasing_trend': '#B22222'
+		};
     var colored_tab = [];
     for (var i = 0;i<7;i++){
         var color = tab[i].trend;
-        console.log(color);
         colored_tab = colored_tab.concat({text : tab[i].text, weight : tab[i].weight, color : trend_colors[color]});
     }
     $(".word_cloud_row_graph").jQCloud(colored_tab);
     $(document).ready(function() {
         setTimeout(function () {
-            var obj = $(".word_cloud_cover").data("jqcloud");
+            var obj = $(".word_cloud_row_graph").data("jqcloud");
             var data = obj.word_array;
             for (var i in data) {
                 $("#" + data[i]["attr"]["id"]).css("color", data[i]["color"]);

@@ -18,9 +18,9 @@
     <body onLoad="start()">
     	<div id = "content_global_cover" class="container-fluid">
 			<section>
-				<div class="Logo">
-				<img class="deco-logo" src="bleu1.png" alt="Logo">
-				<p class="deco">
+				<div class="Logo container-fluid">
+				<img class="deco-logo" src="/home/formationsid/Groupe9_Application_web/code/web/static/img/blue.png" alt="Logo">
+				<p class=" deco text-center" >
 				Le site web qui analyse quotidiennement la presse en ligne.<br>
 				Obtenez des analyses statistiques générales, par thème ou par mot-clé.
 				</p>
@@ -31,7 +31,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="text-center">
-						<button type="button" class="btn btn-primary"><span> Analyse par thème </span></button>
+						<button type="button" class="btn btn-primary text-center"><span> Analyse par thème </span></button>
 						<button	 type="button" class="btn btn-primary"><span> Analyse par mot clé </span></button>
 					</div>
 				</div>
@@ -46,42 +46,34 @@
 				</article>
 			</section>
 
-	    	<section id="statistics">
+	    	<section id="statistics" class="text-center">
 	        	<h1 id="statistics_title">Statistiques de la semaine</h1>
-
 				<section>
 				    <article class="row" id="word_cloud_cover">
 				        <div id="word_cloud_div_cover" class="col-xs-12 text-center">
 				        	<h2> Top 10 des mots clés de la semaine</h2>
 				        	<div class="center-block">
 				        		<div class="word_cloud_row_graph block_word_cloud"></div>
+                      <div id="table_legend">
+                         <table>
+                               <tr>
+                                   <td class="td_legend_text">Très positif </td>
+                                   <td class="td_legend_text">Positif </td>
+                                   <td class="td_legend_text">Stagnant </td>
+                                   <td class="td_legend_text">Négatif </td>
+                                   <td class="td_legend_text">Très Négatif </td>
+                               </tr>
+                               <tr>
+                                   <td class="td1_legend"></td>
+                                   <td class="td2_legend"></td>
+                                   <td class="td3_legend"></td>
+                                   <td class="td4_legend"></td>
+                                   <td class="td5_legend"></td>
 
-
-				            <div id="table_legend">
-				    			<table>
-				    				<tr>
-				    					<td class="td1_legend"></td>
-				    					<td class="td_legend_text">A</td>
-				    				</tr>
-				    				<tr>
-				    					<td class="td2_legend"></td>
-				    					<td class="td_legend_text">B</td>
-				    				</tr>
-				    				<tr>
-				    					<td class="td3_legend"></td>
-				    					<td class="td_legend_text">C</td>
-				    				</tr>
-										<tr>
-				    					<td class="td4_legend"></td>
-				    					<td class="td_legend_text">D</td>
-				    				</tr>
-				    				<tr>
-				    					<td class="td5_legend"></td>
-				    					<td class="td_legend_text">E</td>
-				    				</tr>
-				    			</table>
-            				</div>
-                     </div>
+                               </tr>
+                           </table>
+                      </div>
+                     </div><br/><br/><br/>
 				        </div>
 				    </article>
 				</section>
@@ -216,7 +208,7 @@
     <script src="code/web/dynamic/fixed_header.js"></script>
     <script src="code/web/dynamic/header.js"></script>
     <script src="code/web/dynamic/footer.js"></script>
-    <script src="code/web/dynamic/jqcloud-1.0.4.js"></script>
+    <script src="code/web/dynamic/jqcloud-2.js"></script>
     <link rel="stylesheet" href="code/web/static/jqcloud.css" type="text/css" media="screen">
     <link rel="stylesheet" href="code/web/static/style_cover.css" type="text/css" media="screen">
     <link rel="stylesheet" href="code/web/static/css/Source.css" type="text/css" media="screen">
