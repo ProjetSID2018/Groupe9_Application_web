@@ -1,25 +1,20 @@
 /*Lien Wiki*/
 function wiki(word){
-  var json=[{"word": "Donald_Trump", "wiki":"https://fr.wikipedia.org/wiki/Donald_Trump"}]
-  if (json.length==1){
-    var link=json[0].wiki;
-    return '<a id=wiki_a_research href="'+link+'"><img id=wiki_img_research src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png" width="50" height="50">'+word+'</img></a>'
-  }
-}
+	$.ajax({
+      url:'http://localhost:5000/wiki' + '/' + word,
+      type: 'GET',
+      dataType: 'json',
+      success: function(code_html, statut){
+      	if (Object.keys(code_html).length==1){
+      	//word_chaine.replace(/ /g,"");
+      	var text = '<a id=wiki_a_research href="'+code_html[1].link+'"><img id=wiki_img_research src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png" width="50" height="50">'+code_html[1].word+'</img></a>';
+      	$('#wiki').html(text);}},
+      error: ajax_failed,
+    });
+} 
 
 
 /*Boites des dates*/
-// $(function(){
-//   $("#startDate_input_research").DateTimePicker({
-//       dateTimeFormat : "dd-MM-yyyy"
-//   });
-// });
-//
-// $(function(){
-//  $("#endDate_input_research").DateTimePicker({
-//      dateTimeFormat : "dd-MM-yyyy"
-//   );
-// });
 
 function verification(word,start,end){
 d1=formattedDate(start,'mmddyyyy');
@@ -33,7 +28,7 @@ if (d1==false || d2==false){
       if (word==''){
         alert('Il faut absolument rentrer un mot')
       }else{
-        alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')
+        alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')      
       }
       return false
     }else{
@@ -71,7 +66,6 @@ function formattedDate(date,type) {
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   prefetch: 'code/web/countries.json'
 });
-
 $('#prefetch .typeahead').typeahead(null, {
   name: 'countries',
   source: countries
@@ -81,6 +75,20 @@ $('#prefetch .typeahead').typeahead(null, {
 
 /*Boutton de recherche*/
 $("#buttonResearch_input_research").click(function() {
+ var valueSearchBar = $("#searchBar_input_research").val();
+ var themeChoisi = $("#themeList_select_research").val();
+ var sourceChoisie = $("#sourceList_input_research").val();
+ var frequenceChoisie = $("#freqList_input_research").val();
+ var dateDebutChoisie = $("#startDate_input_research").val();
+ var dateFinChoisie = $("#endDate_input_research").val();
+
+ for (var i = 0; i<valueSearchBar.length; i++) {
+   if (valueSearchBar.substr(i)==' '){
+     valueSearchBar =valueSearchBar.replace(" ", "_")
+   }
+ }});
+
+$("#buttonResearch_input_research").click(function() {
   var valueSearchBar = $("#searchBar_input_research").val();
   var themeChoisi = $("#themeList_select_research").val();
   var sourceChoisie = $("#sourceList_input_research").val();
@@ -88,7 +96,7 @@ $("#buttonResearch_input_research").click(function() {
   var dateDebutChoisie = $("#startDate_input_research").val();
   var dateFinChoisie = $("#endDate_input_research").val();
 
-  if (verification(valueSearchBar,dateDebutChoisie,dateFinChoisie)==true && Object.keys(json_fail)!=0){
+  if (verification(valueSearchBar,dateDebutChoisie,dateFinChoisie)==true){
     document.getElementById("wiki").innerHTML = wiki(valueSearchBar);
     var dateDebutChoisie_ajax = formattedDate(dateDebutChoisie,'yyyymmdd') ;
     var dateFinChoisie_ajax = formattedDate(dateFinChoisie,'yyyymmdd');
@@ -101,25 +109,14 @@ $("#buttonResearch_input_research").click(function() {
       success: Graph1,
       error: ajax_failed,
     });
-<<<<<<< HEAD
-    // document.getElementById("titre2").innerHTML = recupererTitre2(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
-    // $.ajax({
-    //   url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
-    //   type: 'GET',
-    //   dataType: 'json',
-    //   success: Graph2,
-    //   error: ajax_failed,
-    // });
-=======
     document.getElementById("titre2").innerHTML = recupererTitre2(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
     $.ajax({
-      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie,
+      url:'http://localhost:5000/recherche2' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph2,
       error: ajax_failed,
     });
->>>>>>> master
     document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
     $.ajax({
       url:'http://localhost:5000/recherche3' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
@@ -128,27 +125,9 @@ $("#buttonResearch_input_research").click(function() {
       success: Graph3,
       error: ajax_failed,
     });
-<<<<<<< HEAD
-    // document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
-    // $.ajax({
-    //   url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
-    //   type: 'GET',
-    //   dataType: 'json',
-    //   success: Graph4,
-    //   error: ajax_failed,
-    // });
-//     document.getElementById("titre5").innerHTML = recupererTitre5(valueSearchBar,dateDebutChoisie,dateFinChoisie);
-//     $.ajax({
-//       url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
-//       type: 'GET',
-//       dataType: 'json',
-//       success: Graph5,
-//       error: ajax_failed,
-//     });
-=======
     document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
     $.ajax({
-      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie,
+      url:'http://localhost:5000/recherche4' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph4,
@@ -156,31 +135,39 @@ $("#buttonResearch_input_research").click(function() {
     });
     document.getElementById("titre5").innerHTML = recupererTitre5(valueSearchBar,dateDebutChoisie,dateFinChoisie);
     $.ajax({
-      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie,
+      url:'http://localhost:5000/recherche5' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph5,
       error: ajax_failed,
     });
->>>>>>> master
+    document.getElementById("titre6").innerHTML = recupererTitre6(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    $.ajax({
+      url:'http://localhost:5000/recherche6' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph6,
+      error: ajax_failed,
+    });
   }
 });
 
 
 
 /*Création des titres*/
-function recupererTitre1(word,start,end){  return "Graphe 1 : Evolution du nombre d'article utilisant le mot " + word + " par jour et par sources entre le " + start + " et le " + end;}
-function recupererTitre2(word,start,end){  return "Graphe 2 : Evolution du nombre d'article utilisant le mot " + word + " par jour et par thèmes entre le " + start + " et le " + end;}
-function recupererTitre3(word,start,end){  return "Graphe 3 : Nombre d'utilisation du mot " + word + " par sources entre le " + start + " et le " + end;}
-function recupererTitre4(word,start,end){  return "Graphe 4 : Nombre d'utilisation du mot " + word + " par thèmes entre le " + start + " et le " + end;}
-function recupererTitre5(word,start,end){  return "Graphe 5 : Evolution du nombre d'article utilisant le mot " + word + " par jour entre le " + start + " et le " + end;}
+function recupererTitre1(word,start,end){  return "Evolution du nombre d'article utilisant le mot " + word + " par jour et par sources entre le " + start + " et le " + end;}
+function recupererTitre2(word,start,end){  return "Evolution du nombre d'article utilisant le mot " + word + " par jour et par thèmes entre le " + start + " et le " + end;}
+function recupererTitre3(word,start,end){  return "Nombre d'utilisation du mot " + word + " par sources entre le " + start + " et le " + end;}
+function recupererTitre4(word,start,end){  return "Nombre d'utilisation du mot " + word + " par thèmes entre le " + start + " et le " + end;}
+function recupererTitre5(word,start,end){  return "Evolution du nombre d'article utilisant le mot " + word + " par jour entre le " + start + " et le " + end;}
+function recupererTitre6(word,start,end){  return "Score de polarité du mot " + word + " par sources par jour entre le " + start + " et le " + end;}
 
 
 /*Création des graphiques*/
 function Graph1(json_graph1) {
   google.charts.load('visualization', '1', {'packages':['corechart']});
   google.charts.setOnLoadCallback(function(){
-    var data = new google.visualization.DataTable();
+    var data = new google.visualization.DataTable();    
     var week=json_graph1[1].periode;
     var col=0;
     data.addColumn('string', 'source');
@@ -212,7 +199,7 @@ function Graph1(json_graph1) {
 function Graph2(json_graph2) {
   google.charts.load('visualization', '1', {'packages':['corechart']});
   google.charts.setOnLoadCallback(function(){
-    var data = new google.visualization.DataTable();
+    var data = new google.visualization.DataTable();    
     var week=json_graph2[1].periode;
     var col=0;
     data.addColumn('string', 'theme');
@@ -280,12 +267,47 @@ function Graph4(json_graph4){
   });
 }
 
+function Graph5(json_graph5) {
+  google.charts.load('visualization', '1', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(function(){
+    var data = new google.visualization.DataTable();    
+    data.addColumn('string', 'periode');
+    data.addColumn('number', "nombre");
+    for (var i = 1; i <= Object.keys(json_graph5).length; i++) {
+    data.addRow([json_graph5[i].periode,json_graph5[i].nombre ]);
+    }
+    var options = {
+      curveType: 'function',
+      legend: { position: 'bottom' }};
+    var chart = new google.visualization.LineChart(document.getElementById('chart5_div_research'));
+    $("#chart5_div_research").show();
+    chart.draw(data,options);
+      $(window).resize(function(){ //make the graphics responsive
+        chart.draw(data,options);
+     });
+  });
+}
+
+function Graph6(json_graph6){
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(function(){
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'source');
+    data.addColumn('number', "polarite");
+    for (var i = 1; i < Object.keys(json_graph6).length; i++) {
+    	data.addRow([json_graph6[i].source,json_graph6[i].polarite-0.5]);
+    }
+    var chart = new google.visualization.ColumnChart(
+    document.getElementById('chart6_div_research'));
+    chart.draw(data,{legend: {position: 'none'}});
+    $(window).resize(function(){ //make the graphics responsive
+      chart.draw(data,{legend: {position: 'none'}});
+    });
+    $("#chart6_div_research").show();
+  });
+}
+
 
 function ajax_failed() {
-<<<<<<< HEAD
-    alert('erreur');
-}
-=======
     alert('Essayez un autre mot');
 }
->>>>>>> master
