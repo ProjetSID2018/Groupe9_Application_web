@@ -93,7 +93,7 @@ document.body.insertAdjacentHTML("afterBegin",
                 '<div class="col-sm-offset-1 col-sm-3">' +
                   '<div class="form-group">' +
                     '<div class="input-group date" >' +
-                      '<input type="text" class="form-control" id="endDate_input_research style="cursor: pointer" onclick="new calendar(this);" value="Au :">' +
+                      '<input type="text" class="form-control" id="endDate_input_research" style="cursor: pointer" onclick="new calendar(this);" value="Au :">' +
                       '<span class="input-group-addon">' +
                         '<span class="glyphicon glyphicon-calendar"></span>' +
                       '</span>' +

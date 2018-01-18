@@ -88,12 +88,6 @@ $("#buttonResearch_input_research").click(function() {
   var dateDebutChoisie = $("#startDate_input_research").val();
   var dateFinChoisie = $("#endDate_input_research").val();
 
-  if (frequenceChoisie=='Traitement par semaine'){frequenceChoisie='semaine'}
-  if (frequenceChoisie=='Traitement par mois'){frequenceChoisie='mois'}
-  if (frequenceChoisie=='Traitement par annee'){frequenceChoisie='annee'}
-  if (themeChoisi=='Tous les thèmes'){themeChoisi='all'}
-  if (sourceChoisie=='Toutes les sources'){sourceChoisie='all'}
-
   if (verification(valueSearchBar,dateDebutChoisie,dateFinChoisie)==true){
     document.getElementById("wiki").innerHTML = wiki(valueSearchBar);
     var dateDebutChoisie_ajax = formattedDate(dateDebutChoisie,'yyyymmdd') ;
@@ -101,7 +95,7 @@ $("#buttonResearch_input_research").click(function() {
 
     document.getElementById("titre1").innerHTML = recupererTitre1(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
     $.ajax({
-      url:'http://localhost:5000/recherche1' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      url:'http://localhost:5000/recherche1' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax/* + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie*/,
       type: 'GET',
       dataType: 'json',
       success: Graph1,
@@ -115,14 +109,14 @@ $("#buttonResearch_input_research").click(function() {
 //       success: Graph2,
 //       error: ajax_failed,
 //     });
-    document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+/*    document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
     $.ajax({
       url:'http://localhost:5000/recherche3' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
       type: 'GET',
       dataType: 'json',
       success: Graph3,
       error: ajax_failed,
-    });
+    });*/
 //     document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
 //     $.ajax({
 //       url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
