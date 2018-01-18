@@ -245,42 +245,51 @@ def trend(vparam1):
     print(vparam1)
     data_first = {
     '1':{
-        "mot" : "Verbe",
-        "tendance" : "tendance1"
+    	"text" : "Verbe",
+        "type" : "VERB",
+        "trend" : "Increasing_trend"
     },
     '2':{
-        "mot" : "Nom",
-        "tendance" : "tendance2"
+    	"text" : "Nom propre",
+        "type" : "PROPER_NOUN",
+        "trend" : "Decreasing_trend"
     },
     '3':{
-        "mot" : "Adjectif",
-        "tendance" : "tendance3"
+    	"text" : "Adjectif",
+        "type" : "ADJECTIVE",
+        "trend" : "No_trend"
     }}
     data_bis = {
     '1':{
-        "mot" : "Manger",
-        "tendance" : "En hausse"
+    	"text" : "Manger",
+        "type" : "VERB",
+        "trend" : "Increasing_trend"
     },
     '2':{
-        "mot" : "Donald Trump",
-        "tendance" : "En baisse"
+    	"text" : "Donald Trump",
+        "type" : "PROPER_NOUN",
+        "trend" : "Decreasing_trend"
     },
     '3':{
-        "mot" : "Gros",
-        "tendance" : "Constant"
+    	"text" : "Gros",
+        "type" : "ADJECTIVE",
+        "trend" : "Increasing_trend"
     }}
     data_ter = {
     '1':{
-        "mot" : "Boire",
-        "tendance" : "tendance1"
+    	"text" : "Boire",
+        "type" : "VERB",
+        "trend" : "Strongly_increasing_trend"
     },
     '2':{
-        "mot" : "Individu",
-        "tendance" : "tendance2"
+    	"text" : "Individu",
+        "type" : "PROPER_NOUN",
+        "trend" : "Strongly_decreasing_trend"
     },
     '3':{
-        "mot" : "Savoureux",
-        "tendance" : "tendance3"
+    	"text" : "Savoureux",
+        "type" : "ADJECTIVE",
+        "trend" : "No_trend"
     }}
     if vparam1 == 'international':
         data = data_first

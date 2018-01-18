@@ -1,46 +1,3 @@
-// var val_most_treated_themes = [
-//             ['Theme',           'Effectif'],
-//             ['Art et Culture',    31090763],
-//             ['Economie',          61801570],
-//             ['Science',           73137148],
-//             ['Sports',            74856000],
-//             ['France',            79716203],
-//             ['International',     81902307],
-//             ['Santé',            141850000]
-//           ];
-
-// var words_associated_trend_1 = [
-//   ["Mots liés au thème",  "Tendance"],
-//   ["Verbe", "Tendance1"],
-//   ["Nom", "Tendance2"],
-//   ["Adjectif", "Tendance3"]
-// ];
-// 
-// var words_associated_trend_2 = [
-//   ["Mots liés au thème",  "Tendance"],
-//   ["Word1", "Res1"],
-//   ["Word2", "Res2"],
-//   ["Word3", "Res3"]
-// ];
-// 
-// var words_associated_trend_3 = [
-//   ["Mots liés au thème",  "Tendance"],
-//   ["Expression1", "Analyse1"],
-//   ["Expression2", "Analyse2"],
-//   ["Expression3", "Analyse3"]
-// ];
-// 
-// var json_table = {
-//    '1': {
-//        word_link: "Lorem",
-//        trend : 13
-//      },
-//      '2':{
-//        text: "Ipsum",
-//        weight: 10.5
-//      }
-// }
-
 function start() {
 	request_number_article_theme();
 	request_word_trend();
@@ -131,9 +88,17 @@ function draw_word_trend(data_json_trend_themes) {
       		width: '100%',
       		height: '100%'
     	};
+    	var trend_translated = {
+  			'Strongly_increasing_trend': 'Très positive',
+  			'Increasing_trend': 'Positive',
+  			'No_trend': 'Neutre',
+  			'Decreasing_trend': 'Négative',
+  			'Strongly_decreasing_trend': 'Très négative'
+		};
     	var tab = new Array(['Mots liés au thème',  'Tendance']);
 		for (var i = 1; i <=Object.keys(data_json_trend_themes).length; i++) {
-			tab[i] = [data_json_trend_themes[i].mot,data_json_trend_themes[i].tendance];
+			var json_trend = data_json_trend_themes[i].trend;
+			tab[i] = [data_json_trend_themes[i].text, trend_translated[json_trend]];
 		}
     	var data = google.visualization.arrayToDataTable(tab);
     	var table = new google.visualization.Table(document.getElementById('table_div'));
@@ -150,16 +115,15 @@ function draw_word_cloud_trend(some_words) {
 		tab = tab.concat(some_words[i]);
 	}
 	var trend_colors = {
-  		'trend_very_positive': '#32CD32',
-  		'trend_positive': '#7FFF00',
-  		'trend_neutral': '#FFD700',
-  		'trend_negative': '#FF4500',
-  		'trend_very_negative': '#B22222'
+  		'Strongly_increasing_trend': '#32CD32',
+  		'Increasing_trend': '#7FFF00',
+  		'No_trend': '#FFD700',
+  		'Decreasing_trend': '#FF4500',
+  		'Strongly_decreasing_trend': '#B22222'
 	};
 	var colored_tab = [];
 	for (var i = 0;i<7;i++){
   		var color = tab[i].trend;
-  		console.log(color);
   		colored_tab = colored_tab.concat({text : tab[i].text, weight : tab[i].weight, color : trend_colors[color]});
 	}
 	$(".world_cloud_div_theme").jQCloud(colored_tab);
