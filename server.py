@@ -267,89 +267,110 @@ def cloud(vparam1):
     data_first = {
     '1':{
         "text" : "Lorem",
-        "weight" : 13
+        "weight" : 13,
+        "trend": 'trend_very_positive'
     },
     '2':{
         "text" : "Ipsum",
-        "weight" : 10.5
+        "weight" : 10.5,
+        "trend": 'trend_positive'
     },
     '3':{
         "text" : "Dolor",
-        "weight" : 9.4
+        "weight" : 9.4,
+        "trend": 'trend_neutral'
     },
     '4':{
         "text" : "Sit",
-        "weight" : 8
+        "weight" : 8,
+        "trend": 'trend_negative'
     },
     '5':{
         "text" : "Amet",
-        "weight" : 6.2
+        "weight" : 6.2,
+        "trend": 'trend_very_negative'
     },
     '6':{
         "text" : "Consectetur",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'trend_positive'
     },
     '7':{
         "text" : "Adipiscing",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'trend_very_positive'
     }}
     data_bis = {
     '1':{
         "text" : "Arbre",
-        "weight" : 13
+        "weight" : 13,
+        "trend": 'trend_neutral'
     },
     '2':{
         "text" : "Bol",
-        "weight" : 10.5
+        "weight" : 10.5,
+        "trend": 'trend_positive'
     },
     '3':{
         "text" : "Cerceau",
-        "weight" : 9.4
+        "weight" : 9.4,
+        "trend": 'trend_very_negative'
     },
     '4':{
         "text" : "Domino",
-        "weight" : 8
+        "weight" : 8,
+        "trend": 'trend_neutral'
     },
     '5':{
         "text" : "Elephant",
-        "weight" : 6.2
+        "weight" : 6.2,
+        "trend": 'trend_negative'
     },
     '6':{
         "text" : "Fabriquer",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'trend_neutral'
     },
     '7':{
         "text" : "Gateau",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'trend_very_positive'
     }}
     data_ter = {
     '1':{
         "text" : "Hibou",
-        "weight" : 13
+        "weight" : 13,
+        "trend": 'trend_very_positive'
     },
     '2':{
         "text" : "Important",
-        "weight" : 10.5
+        "weight" : 10.5,
+        "trend": 'trend_negative'
     },
     '3':{
         "text" : "Joyeux",
-        "weight" : 9.4
+        "weight" : 9.4,
+        "trend": 'trend_negative'
     },
     '4':{
         "text" : "Lalala",
-        "weight" : 8
+        "weight" : 8,
+        "trend": 'trend_positive'
     },
     '5':{
         "text" : "Mouton",
-        "weight" : 6.2
+        "weight" : 6.2,
+        "trend": 'trend_very_negative'
     },
     '6':{
         "text" : "Négation",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'trend_positive'
     },
     '7':{
         "text" : "Obligation",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'trend_neutral'
     }}
     if vparam1 == '_international':
         data = data_first

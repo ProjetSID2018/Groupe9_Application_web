@@ -107,7 +107,7 @@ function draw_number_article_theme(data_json_most_treated_themes) {
           	title : "Nombre d'articles",
           	minValue: 0
         	},
-        	width: '100%',
+        	width: 600,
         	height: 400,
         	bar: {groupWidth: "95%"},
         	legend: { position: "none" },
@@ -129,7 +129,7 @@ function draw_word_trend(data_json_trend_themes) {
     	var options = {
       		showRowNumber: true,
       		width: '100%',
-      		height: 400
+      		height: '100%'
     	};
     	var tab = new Array(['Mots liés au thème',  'Tendance']);
 		for (var i = 1; i <=Object.keys(data_json_trend_themes).length; i++) {
