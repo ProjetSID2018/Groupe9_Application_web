@@ -76,11 +76,8 @@ $('#prefetch .typeahead').typeahead(null, {
 /*Boutton de recherche*/
 $("#buttonResearch_input_research").click(function() {
  var valueSearchBar = $("#searchBar_input_research").val();
- var themeChoisi = $("#themeList_select_research").val();
- var sourceChoisie = $("#sourceList_input_research").val();
- var frequenceChoisie = $("#freqList_input_research").val();
- var dateDebutChoisie = $("#startDate_input_research").val();
- var dateFinChoisie = $("#endDate_input_research").val();
+ var start_date = $("#startDate_input_research").val();
+ var end_date = $("#endDate_input_research").val();
 
  for (var i = 0; i<valueSearchBar.length; i++) {
    if (valueSearchBar.substr(i)==' '){
@@ -90,60 +87,57 @@ $("#buttonResearch_input_research").click(function() {
 
 $("#buttonResearch_input_research").click(function() {
   var valueSearchBar = $("#searchBar_input_research").val();
-  var themeChoisi = $("#themeList_select_research").val();
-  var sourceChoisie = $("#sourceList_input_research").val();
-  var frequenceChoisie = $("#freqList_input_research").val();
-  var dateDebutChoisie = $("#startDate_input_research").val();
-  var dateFinChoisie = $("#endDate_input_research").val();
+  var start_date = $("#startDate_input_research").val();
+  var end_date = $("#endDate_input_research").val();
 
-  if (verification(valueSearchBar,dateDebutChoisie,dateFinChoisie)==true){
+  if (verification(valueSearchBar,start_date,end_date)==true){
     document.getElementById("wiki").innerHTML = wiki(valueSearchBar);
-    var dateDebutChoisie_ajax = formattedDate(dateDebutChoisie,'yyyymmdd') ;
-    var dateFinChoisie_ajax = formattedDate(dateFinChoisie,'yyyymmdd');
+    var start_date_ajax = formattedDate(start_date,'yyyymmdd') ;
+    var end_date_ajax = formattedDate(end_date,'yyyymmdd');
 
-    document.getElementById("titre1").innerHTML = recupererTitre1(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
+    document.getElementById("title1").innerHTML = recupTitle1(valueSearchBar,start_date,end_date,frequenceChoisie);
     $.ajax({
-      url:'http://localhost:5000/recherche1' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
+      url:'http://localhost:5000/recherche1' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph1,
       error: ajax_failed,
     });
-    document.getElementById("titre2").innerHTML = recupererTitre2(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
+    document.getElementById("title2").innerHTML = recupTitle2(valueSearchBar,start_date,end_date,frequenceChoisie);
     $.ajax({
-      url:'http://localhost:5000/recherche2' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
+      url:'http://localhost:5000/recherche2' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph2,
       error: ajax_failed,
     });
-    document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    document.getElementById("title3").innerHTML = recupTitle3(valueSearchBar,start_date,end_date);
     $.ajax({
-      url:'http://localhost:5000/recherche3' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
+      url:'http://localhost:5000/recherche3' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph3,
       error: ajax_failed,
     });
-    document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    document.getElementById("title4").innerHTML = recupTitle4(valueSearchBar,start_date,end_date);
     $.ajax({
-      url:'http://localhost:5000/recherche4' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
+      url:'http://localhost:5000/recherche4' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph4,
       error: ajax_failed,
     });
-    document.getElementById("titre5").innerHTML = recupererTitre5(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    document.getElementById("title5").innerHTML = recupTitle5(valueSearchBar,start_date,end_date);
     $.ajax({
-      url:'http://localhost:5000/recherche5' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
+      url:'http://localhost:5000/recherche5' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph5,
       error: ajax_failed,
     });
-    document.getElementById("titre6").innerHTML = recupererTitre6(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    document.getElementById("title6").innerHTML = recupTitle6(valueSearchBar,start_date,end_date);
     $.ajax({
-      url:'http://localhost:5000/recherche6' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
+      url:'http://localhost:5000/recherche6' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph6,
@@ -155,12 +149,12 @@ $("#buttonResearch_input_research").click(function() {
 
 
 /*Création des titres*/
-function recupererTitre1(word,start,end){  return "Evolution du nombre d'article utilisant le mot " + word + " par jour et par sources entre le " + start + " et le " + end;}
-function recupererTitre2(word,start,end){  return "Evolution du nombre d'article utilisant le mot " + word + " par jour et par thèmes entre le " + start + " et le " + end;}
-function recupererTitre3(word,start,end){  return "Nombre d'utilisation du mot " + word + " par sources entre le " + start + " et le " + end;}
-function recupererTitre4(word,start,end){  return "Nombre d'utilisation du mot " + word + " par thèmes entre le " + start + " et le " + end;}
-function recupererTitre5(word,start,end){  return "Evolution du nombre d'article utilisant le mot " + word + " par jour entre le " + start + " et le " + end;}
-function recupererTitre6(word,start,end){  return "Score de polarité du mot " + word + " par sources par jour entre le " + start + " et le " + end;}
+function recupTitle1(word,start,end){  return "Evolution du nombre d'article utilisant le mot " + word + " par jour et par sources entre le " + start + " et le " + end;}
+function recupTitle2(word,start,end){  return "Evolution du nombre d'article utilisant le mot " + word + " par jour et par thèmes entre le " + start + " et le " + end;}
+function recupTitle3(word,start,end){  return "Nombre d'utilisation du mot " + word + " par sources entre le " + start + " et le " + end;}
+function recupTitle4(word,start,end){  return "Nombre d'utilisation du mot " + word + " par thèmes entre le " + start + " et le " + end;}
+function recupTitle5(word,start,end){  return "Evolution du nombre d'article utilisant le mot " + word + " par jour entre le " + start + " et le " + end;}
+function recupTitle6(word,start,end){  return "Score de polarité du mot " + word + " par sources par jour entre le " + start + " et le " + end;}
 
 
 /*Création des graphiques*/
