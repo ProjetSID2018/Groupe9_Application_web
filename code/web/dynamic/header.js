@@ -32,13 +32,13 @@ document.body.insertAdjacentHTML("afterBegin",
             '<span class="glyphicon glyphicon-search"></span>'+
           '</button>' +
           '<div id="codebrainery-toggle-search" class="collapse navbar-collapse">' +
-            '<div class="col-sm-offset-4">'+
+            '<div class="col-sm-offset-3">'+
               '<div class="row">' +
                 '<div id="prefetch" class="col-sm-offset-4 col-sm-4">' +
                   '<input id="searchBar_input_research" type="text" class="typeahead" placeholder="Recherche">' +
                 '</div>' +
               '</div>'+
-              '<div class="row">' +
+              /*'<div class="row">' +
                 '<div class="col-sm-4">' +
                   '<SELECT id="themeList_select_research" class="form-control" name="theme" size="1">' +
                     '<option> Tous les thèmes </option>' +
@@ -54,7 +54,20 @@ document.body.insertAdjacentHTML("afterBegin",
                 '<div class="col-sm-4">' +        
                   '<SELECT id="sourceList_input_research" class="form-control" name="Source" size="1">' +
                     '<option> Toutes les sources </option>' +
-                    '<option> </option>' +
+                    '<option> Le Figaro </option>' +
+                    '<option> Le Point </option>' +
+                    '<option> Telerama </option>' +
+                    '<option> L Humanité </option>' +
+                    '<option> L Equipe </option>' +
+                    '<option> Science et Vie </option>' +
+                    '<option> Futurascience </option>' +
+                    '<option> Femina </option>' +
+                    '<option> 20 Minutes </option>' +
+                    '<option> Gorafi </option>' +
+                    '<option> La Depêche </option>' +
+                    '<option> Libération </option>' +
+                    '<option> Le Monde </option>' +
+                    '<option> Le Nouvel Obs </option>' +
                   '</select>' +
                 '</div>' +
                 '<div class="col-sm-4">' +        
@@ -64,23 +77,30 @@ document.body.insertAdjacentHTML("afterBegin",
                     '<option>Traitement par année</option>' +
                   '</select>' +
                 '</div>' +
-              '</div>' +
+              '</div>' +*/
 
               '<div class="row">' +
                 '<div class="col-sm-3">' +
                   '<div class="form-group">' +
-                    '<div class="input-group date" id="startDate_input_research">' +
-                      '<input type="text" class="form-control">' +
+                    '<div class="input-group date" >' +
+                      '<input type="text" class="form-control" id="startDate_input_research" style="cursor: pointer" onclick="new calendar(this);" value="Du :">' +
                       '<span class="input-group-addon">' +
                         '<span class="glyphicon glyphicon-calendar"></span>' +
                       '</span>' +
                     '</div>' +
                   '</div>' +    
                 '</div>' +
+                '<script type="text/javascript">'+
+                  '$(function () {'+
+                      '$("#startDate_input_research").datetimepicker({'+
+                          'dateTimeFormat : "dd-MM-yyyy"'+
+                      '});'+
+                  '});'+
+                '</script>'+
                 '<div class="col-sm-offset-1 col-sm-3">' +
                   '<div class="form-group">' +
-                    '<div class="input-group date" id="endDate_input_research">' +
-                      '<input type="text" class="form-control">' +
+                    '<div class="input-group date" >' +
+                      '<input type="text" class="form-control" id="endDate_input_research style="cursor: pointer" onclick="new calendar(this);" value="Du :"">' +
                       '<span class="input-group-addon">' +
                         '<span class="glyphicon glyphicon-calendar"></span>' +
                       '</span>' +
