@@ -101,44 +101,36 @@ $("#buttonResearch_input_research").click(function() {
       success: Graph1,
       error: ajax_failed,
     });
-//     document.getElementById("titre2").innerHTML = recupererTitre2(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
-//     $.ajax({
-//       url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
-//       type: 'GET',
-//       dataType: 'json',
-//       success: Graph2,
-//       error: ajax_failed,
-//     });
-/*    document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    document.getElementById("titre2").innerHTML = recupererTitre2(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph2,
+      error: ajax_failed,
+    });
+    document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
     $.ajax({
       url:'http://localhost:5000/recherche3' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
       type: 'GET',
       dataType: 'json',
       success: Graph3,
       error: ajax_failed,
-    });*/
-//     document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
-//     $.ajax({
-//       url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
-//       type: 'GET',
-//       dataType: 'json',
-//       success: Graph4,
-//       error: ajax_failed,
-//     });
+    });
+    document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph4,
+      error: ajax_failed,
+    });
 //     document.getElementById("titre5").innerHTML = recupererTitre5(valueSearchBar,dateDebutChoisie,dateFinChoisie);
 //     $.ajax({
 //       url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
 //       type: 'GET',
 //       dataType: 'json',
 //       success: Graph5,
-//       error: ajax_failed,
-//     });
-//     document.getElementById("titre6").innerHTML = recupererTitre6(valueSearchBar,dateDebutChoisie,dateFinChoisie);
-//     $.ajax({
-//       url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
-//       type: 'GET',
-//       dataType: 'json',
-//       success: Graph6,
 //       error: ajax_failed,
 //     });
   }
@@ -174,25 +166,51 @@ function Graph1(json_graph1) {
       for (var j = 0; j < col; j++) { //create a table proportional to the number of sources selected
         tab.splice(j+1, 0, json_graph1[j+i].nombre);
       }
-      data.addRow(tab); //add the table to generate the lines
-    } 
+     data.addRow(tab); //add the table to generate the lines
+    }
     var options = {
       curveType: 'function',
       legend: { position: 'bottom' }};
     var chart = new google.visualization.LineChart(document.getElementById('chart1_div_research'));
     $("#chart1_div_research").show();
     chart.draw(data,options);
-    $(window).resize(function(){ //make the graphics responsive
-      chart.draw(data,options);
-  });
+      $(window).resize(function(){ //make the graphics responsive
+        chart.draw(data,options);
+     });
   });
 }
 
-// function Graph2() {
-// 
-//   $("#chart2_div_research").show();
-// }
-// 
+function Graph2(json_graph2) {
+  google.charts.load('visualization', '1', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(function(){
+    var data = new google.visualization.DataTable();    
+    var week=json_graph2[1].periode;
+    var col=0;
+    data.addColumn('string', 'theme');
+    for (var g = 1; g <=Object.keys(json_graph2).length; g++) {
+      if (json_graph2[g].periode==week){
+        data.addColumn('number', json_graph2[g].theme); //add every distinct sources present in the Json into column
+        col=col+1;
+      }
+    }
+    for (var i = 1; i <=Object.keys(json_graph2).length; i+=col) {
+      var tab = [json_graph2[i].periode];
+      for (var j = 0; j < col; j++) { //create a table proportional to the number of sources selected
+        tab.splice(j+1, 0, json_graph2[j+i].nombre);
+      }
+     data.addRow(tab); //add the table to generate the lines
+    }
+    var options = {
+      curveType: 'function',
+      legend: { position: 'bottom' }};
+    var chart = new google.visualization.LineChart(document.getElementById('chart2_div_research'));
+    $("#chart2_div_research").show();
+    chart.draw(data,options);
+      $(window).resize(function(){ //make the graphics responsive
+        chart.draw(data,options);
+     });
+  });
+}
 
 
 function Graph3(json_graph3){
@@ -205,7 +223,7 @@ function Graph3(json_graph3){
     data.addRow([json_graph3[i].source,json_graph3[i].nombre ]);
     }
     var chart = new google.visualization.ColumnChart(
-    document.getElementById('chart2_div_research'));
+    document.getElementById('chart3_div_research'));
     chart.draw(data,{legend: {position: 'none'}});
     $(window).resize(function(){ //make the graphics responsive
       chart.draw(data,{legend: {position: 'none'}});
@@ -213,20 +231,27 @@ function Graph3(json_graph3){
     $("#chart3_div_research").show();
   });
 }
-// 
-// function Graph4(){
-//   $("#chart4_div_research").show();
-// }
-// 
-// function Graph5(){
-//   $("#chart5_div_research").show();
-// }
-// 
-// function Graph6(){
-//   $("#chart5_div_research").show();
-// }
-// 
-// 
+
+function Graph4(json_graph4){
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(function(){
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'theme');
+    data.addColumn('number', "nombre");
+    for (var i = 1; i <Object.keys(json_graph4).length; i++) {
+    data.addRow([json_graph4[i].theme,json_graph4[i].nombre ]);
+    }
+    var chart = new google.visualization.ColumnChart(
+    document.getElementById('chart4_div_research'));
+    chart.draw(data,{legend: {position: 'none'}});
+    $(window).resize(function(){ //make the graphics responsive
+      chart.draw(data,{legend: {position: 'none'}});
+    });
+    $("#chart4_div_research").show();
+  });
+}
+
+
 function ajax_failed() {
     alert('erreur');
 }
