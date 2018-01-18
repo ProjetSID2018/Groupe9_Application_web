@@ -130,9 +130,9 @@ function draw_gauge(data_gauge) {
 	var title1 = data_gauge[1].feeling;
 	var title2 = data_gauge[2].feeling;
 	var title3 = data_gauge[3].feeling;
-	var pourcent1 = data_gauge[1].pourcent;
-	var pourcent2 = data_gauge[2].pourcent;
-	var pourcent3 = data_gauge[3].pourcent;
+	var pourcent1 = data_gauge[1].rate;
+	var pourcent2 = data_gauge[2].rate;
+	var pourcent3 = data_gauge[3].rate;
 	gauge(title1,title2,title3,pourcent1,pourcent2,pourcent3);
 }
 
