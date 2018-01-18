@@ -16,11 +16,21 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .block_top10{
   /*width: 100%;*/
   max-width: 1000px;
   height :400px;
   border: 1px solid #ccc;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#table_div{
+  width: 100%;
+  max-width: 400px;
+  height : 100px;
+  /*border: 1px solid #ccc;*/
   margin-left: auto;
   margin-right: auto;
 }
