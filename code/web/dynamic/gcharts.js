@@ -89,11 +89,11 @@ function draw_word_trend(data_json_trend_themes) {
       		height: '100%'
     	};
     	var trend_translated = {
-  			'Strongly_increasing_trend': 'Très positive',
-  			'Increasing_trend': 'Positive',
-  			'No_trend': 'Neutre',
-  			'Decreasing_trend': 'Négative',
-  			'Strongly_decreasing_trend': 'Très négative'
+  			'Strongly_increasing_trend': 'En très forte hausse',
+  			'Increasing_trend': 'En hausse',
+  			'No_trend': 'Stagnante',
+  			'Decreasing_trend': 'En baisse',
+  			'Strongly_decreasing_trend': 'En très forte baisse'
 		};
     	var tab = new Array(['Mots liés au thème',  'Tendance']);
 		for (var i = 1; i <=Object.keys(data_json_trend_themes).length; i++) {
