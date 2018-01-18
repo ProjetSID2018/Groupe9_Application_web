@@ -510,6 +510,50 @@ def recherche1(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6):
 	resp.headers.add('Access-Control-Allow-Origin', '*')
 	return resp 
 
+@app.route('/recherche3/<string:vparam1>/<string:vparam2>/<string:vparam3>/<string:vparam4>/<string:vparam5>/<string:vparam6>', methods = ['GET'])
+def recherche3(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6):
+	print(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6)
+	data = {
+	'1':{
+		"source" : "La Dépêche",
+		"nombre" : 50
+	},
+	'2':{
+		"source" : "Le Figaro",
+		"nombre" : 210
+	},
+	'3':{
+		"source" : "Le Point",
+		"nombre" : 12
+	},
+	'4':{
+		"source" : "Le Monde",
+		"nombre" : 2015
+	},
+	'5':{
+		"source" : "Libération",
+		"nombre" : 45
+	},
+	'6':{
+		"source" : "Nouvelle Obs",
+		"nombre" : 544
+	},
+	'7':{
+		"source" : "Telerama",
+		"nombre" : 45
+	},
+	'8':{
+		"source" : "Futurasciences",
+		"nombre" : 76
+	},
+	'9':{
+		"source" : "L’Humanité",
+		"nombre" : 71
+	}}
+	resp = jsonify(data)
+	resp.status_code = 200
+	resp.headers.add('Access-Control-Allow-Origin', '*')
+	return resp 
 
 if __name__ == '__main__':
   app.run(debug=True)

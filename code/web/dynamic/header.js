@@ -1,4 +1,4 @@
-/*fonction servant a inserer le header dans l'ensemble des pages du site. Permet d'actualiser tous les headers en meme temps.*/
+/*fonction servant a inserer le header dans l'ensemble des pages du site. Permet d'actualiser tous les headers en meme temps.*
 /*utilise le lien vers bootstrap de chaque page */
 
 document.body.insertAdjacentHTML("afterBegin",
@@ -90,17 +90,10 @@ document.body.insertAdjacentHTML("afterBegin",
                     '</div>' +
                   '</div>' +    
                 '</div>' +
-                '<script type="text/javascript">'+
-                  '$(function () {'+
-                      '$("#startDate_input_research").datetimepicker({'+
-                          'dateTimeFormat : "dd-MM-yyyy"'+
-                      '});'+
-                  '});'+
-                '</script>'+
                 '<div class="col-sm-offset-1 col-sm-3">' +
                   '<div class="form-group">' +
                     '<div class="input-group date" >' +
-                      '<input type="text" class="form-control" id="endDate_input_research style="cursor: pointer" onclick="new calendar(this);" value="Du :"">' +
+                      '<input type="text" class="form-control" id="endDate_input_research style="cursor: pointer" onclick="new calendar(this);" value="Au :">' +
                       '<span class="input-group-addon">' +
                         '<span class="glyphicon glyphicon-calendar"></span>' +
                       '</span>' +
@@ -112,7 +105,7 @@ document.body.insertAdjacentHTML("afterBegin",
                 '</div>' +
                 '<div class="col-sm-2">' +
                   '<button id="buttonResearch_input_research" type="submit" class="btn btn-primary">Valider</button>' +
-                '</div>' +
+                '</div>'  +
               '</div>' +
             '</div>'+
           '</div>'+   
@@ -158,6 +151,6 @@ document.body.insertAdjacentHTML("afterBegin",
           '</div>' +
         '</div>' +
       '</div>' +
-      
     '</nav>'+
   '</header>');
+

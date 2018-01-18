@@ -20,7 +20,7 @@ function request_top_10() {
 }
 
 function request_word_cloud() {
-    $('#most_treated_word_article_theme').hide();
+    $('#word_cloud_cover').hide();
     $.ajax({
         //url:'/Top10_pertinent',
         url:'http://localhost:5000/test1',
@@ -92,14 +92,36 @@ function draw_table(data_json) {
 }
 
 function draw_cloud(some_words) {
-	var tab = [];
-	for (var i = 1; i <Object.keys(some_words).length+1; i++) {
-		tab = tab.concat(some_words[i]);
-	}
-	$(document).ready(function() {
-		$(".word_cloud_row_graph").jQCloud(tab);
-	});
-	$('#word_cloud_cover').show();
+    // $("div.modal-bg").removeClass("hide");
+    // $("#word_cloud_cover").hide();
+    var tab = [];
+    for (var i = 1; i <Object.keys(some_words).length+1; i++) {
+        tab = tab.concat(some_words[i]);
+    }
+    var trend_colors = {
+        'trend_very_positive': '#32CD32',
+        'trend_positive': '#7FFF00',
+        'trend_neutral': '#FFD700',
+        'trend_negative': '#FF4500',
+        'trend_very_negative': '#B22222'
+    };
+    var colored_tab = [];
+    for (var i = 0;i<7;i++){
+        var color = tab[i].trend;
+        console.log(color);
+        colored_tab = colored_tab.concat({text : tab[i].text, weight : tab[i].weight, color : trend_colors[color]});
+    }
+    $(".word_cloud_row_graph").jQCloud(colored_tab);
+    $(document).ready(function() {
+        setTimeout(function () {
+            var obj = $(".word_cloud_cover").data("jqcloud");
+            var data = obj.word_array;
+            for (var i in data) {
+                $("#" + data[i]["attr"]["id"]).css("color", data[i]["color"]);
+            }
+        });
+    });
+    $('#word_cloud_cover').show();
 }
 
 function top_theme(theme_pourcent) {
