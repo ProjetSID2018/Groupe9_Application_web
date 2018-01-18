@@ -241,25 +241,57 @@ def theme():
  
 @app.route('/trend/<string:vparam1>', methods = ['GET'])
 def trend(vparam1):
-	#theme =request.args.get('theme')
-	print(vparam1)
-	data = {
-	'1':{
-		"mot" : "verbe",
-		"tendance" : "tendance1"
-	},
-	'2':{
-		"mot" : "Nom",
-		"tendance" : "tendance2"
-	},
-	'3':{
-		"mot" : "Adjectif",
-		"tendance" : "tendance3"
-	}}
-	resp = jsonify(data)
-	resp.status_code = 200
-	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp 
+    #theme =request.args.get('theme')
+    print(vparam1)
+    data_first = {
+    '1':{
+        "mot" : "Verbe",
+        "tendance" : "tendance1"
+    },
+    '2':{
+        "mot" : "Nom",
+        "tendance" : "tendance2"
+    },
+    '3':{
+        "mot" : "Adjectif",
+        "tendance" : "tendance3"
+    }}
+    data_bis = {
+    '1':{
+        "mot" : "Manger",
+        "tendance" : "En hausse"
+    },
+    '2':{
+        "mot" : "Donald Trump",
+        "tendance" : "En baisse"
+    },
+    '3':{
+        "mot" : "Gros",
+        "tendance" : "Constant"
+    }}
+    data_ter = {
+    '1':{
+        "mot" : "Boire",
+        "tendance" : "tendance1"
+    },
+    '2':{
+        "mot" : "Individu",
+        "tendance" : "tendance2"
+    },
+    '3':{
+        "mot" : "Savoureux",
+        "tendance" : "tendance3"
+    }}
+    if vparam1 == 'international':
+        data = data_first
+    elif vparam1 == 'france':
+        data = data_bis
+    else:
+        data = data_ter
+    resp = jsonify(data)
+    resp.status_code = 200
+    resp.headers.add('Access-Control-Allow-Origin', '*')
+    return resp
 
 @app.route('/cloud/<string:vparam1>', methods = ['GET'])
 def cloud(vparam1):
@@ -267,100 +299,121 @@ def cloud(vparam1):
     data_first = {
     '1':{
         "text" : "Lorem",
-        "weight" : 13
+        "weight" : 13,
+        "trend": 'Strongly_increasing_trend'
     },
     '2':{
         "text" : "Ipsum",
-        "weight" : 10.5
+        "weight" : 10.5,
+        "trend": 'Increasing_trend'
     },
     '3':{
         "text" : "Dolor",
-        "weight" : 9.4
+        "weight" : 9.4,
+        "trend": 'No_trend'
     },
     '4':{
         "text" : "Sit",
-        "weight" : 8
+        "weight" : 8,
+        "trend": 'Decreasing_trend'
     },
     '5':{
         "text" : "Amet",
-        "weight" : 6.2
+        "weight" : 6.2,
+        "trend": 'Strongly_decreasing_trend'
     },
     '6':{
         "text" : "Consectetur",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'Increasing_trend'
     },
     '7':{
         "text" : "Adipiscing",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'Strongly_increasing_trend'
     }}
     data_bis = {
     '1':{
         "text" : "Arbre",
-        "weight" : 13
+        "weight" : 13,
+        "trend": 'No_trend'
     },
     '2':{
         "text" : "Bol",
-        "weight" : 10.5
+        "weight" : 10.5,
+        "trend": 'Increasing_trend'
     },
     '3':{
         "text" : "Cerceau",
-        "weight" : 9.4
+        "weight" : 9.4,
+        "trend": 'Strongly_decreasing_trend'
     },
     '4':{
         "text" : "Domino",
-        "weight" : 8
+        "weight" : 8,
+        "trend": 'No_trend'
     },
     '5':{
         "text" : "Elephant",
-        "weight" : 6.2
+        "weight" : 6.2,
+        "trend": 'Decreasing_trend'
     },
     '6':{
         "text" : "Fabriquer",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'No_trend'
     },
     '7':{
         "text" : "Gateau",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'Strongly_increasing_trend'
     }}
     data_ter = {
     '1':{
         "text" : "Hibou",
-        "weight" : 13
+        "weight" : 13,
+        "trend": 'Strongly_increasing_trend'
     },
     '2':{
         "text" : "Important",
-        "weight" : 10.5
+        "weight" : 10.5,
+        "trend": 'Decreasing_trend'
     },
     '3':{
         "text" : "Joyeux",
-        "weight" : 9.4
+        "weight" : 9.4,
+        "trend": 'Decreasing_trend'
     },
     '4':{
         "text" : "Lalala",
-        "weight" : 8
+        "weight" : 8,
+        "trend": 'Increasing_trend'
     },
     '5':{
         "text" : "Mouton",
-        "weight" : 6.2
+        "weight" : 6.2,
+        "trend": 'Strongly_decreasing_trend'
     },
     '6':{
         "text" : "Négation",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'Increasing_trend'
     },
     '7':{
         "text" : "Obligation",
-        "weight" : 5
+        "weight" : 5,
+        "trend": 'No_trend'
     }}
-    if vparam1 == '_international':
+    if vparam1 == 'international':
         data = data_first
-    elif vparam1 == '_france':
+    elif vparam1 == 'france':
         data = data_bis
     else:
         data = data_ter
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp 
+    return resp
 
 ##################################################
 #					PAGE RECHERCHE				#   
@@ -508,7 +561,7 @@ def recherche1(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6):
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp 
+	return resp
 
 @app.route('/recherche3/<string:vparam1>/<string:vparam2>/<string:vparam3>/<string:vparam4>/<string:vparam5>/<string:vparam6>', methods = ['GET'])
 def recherche3(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6):
@@ -553,7 +606,7 @@ def recherche3(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6):
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp 
+	return resp
 
 if __name__ == '__main__':
   app.run(debug=True)

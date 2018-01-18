@@ -88,19 +88,20 @@ $("#buttonResearch_input_research").click(function() {
   var dateDebutChoisie = $("#startDate_input_research").val();
   var dateFinChoisie = $("#endDate_input_research").val();
 
-  if (verification(valueSearchBar,dateDebutChoisie,dateFinChoisie)==true){
+  if (verification(valueSearchBar,dateDebutChoisie,dateFinChoisie)==true && Object.keys(json_fail)!=0){
     document.getElementById("wiki").innerHTML = wiki(valueSearchBar);
     var dateDebutChoisie_ajax = formattedDate(dateDebutChoisie,'yyyymmdd') ;
     var dateFinChoisie_ajax = formattedDate(dateFinChoisie,'yyyymmdd');
 
     document.getElementById("titre1").innerHTML = recupererTitre1(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
     $.ajax({
-      url:'http://localhost:5000/recherche1' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax/* + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie*/,
+      url:'http://localhost:5000/recherche1' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph1,
       error: ajax_failed,
     });
+<<<<<<< HEAD
     // document.getElementById("titre2").innerHTML = recupererTitre2(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
     // $.ajax({
     //   url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
@@ -109,14 +110,25 @@ $("#buttonResearch_input_research").click(function() {
     //   success: Graph2,
     //   error: ajax_failed,
     // });
+=======
+    document.getElementById("titre2").innerHTML = recupererTitre2(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph2,
+      error: ajax_failed,
+    });
+>>>>>>> master
     document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
     $.ajax({
-      url:'http://localhost:5000/recherche3' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      url:'http://localhost:5000/recherche3' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph3,
       error: ajax_failed,
     });
+<<<<<<< HEAD
     // document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
     // $.ajax({
     //   url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
@@ -133,18 +145,35 @@ $("#buttonResearch_input_research").click(function() {
 //       success: Graph5,
 //       error: ajax_failed,
 //     });
+=======
+    document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph4,
+      error: ajax_failed,
+    });
+    document.getElementById("titre5").innerHTML = recupererTitre5(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    $.ajax({
+      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph5,
+      error: ajax_failed,
+    });
+>>>>>>> master
   }
 });
 
 
 
 /*Création des titres*/
-function recupererTitre1(word,start,end,frequence){  return "Graphe 1 : Evolution du nombre d'article utilisant " + word + " par "+ frequence + " et par source(s) selectionnée(s) entre le " + start + " et le " + end;}
-function recupererTitre2(word,start,end,frequence){  return "Graphe 2 : Evolution du nombre d'article utilisant " + word + " par "+ frequence + "semaine et par thème(s) selectionné(s) entre le " + start + " et le " + end;}
-function recupererTitre3(word,start,end){  return "Graphe 3 : Nombre d'utilisation de " + word + " par source(s) selectionnée(s) entre le " + start + " et le " + end;}
-function recupererTitre4(word,start,end){  return "Graphe 4 : Nombre d'utilisation de " + word + " par thème(s) selectionné(s) entre le " + start + " et le " + end;}
-function recupererTitre5(word,start,end){  return "Graphe 5 : Nuage des mots les plus associés à " + word + " par source(s) selectionnée(s) entre le " + start + " et le " + end;}
-function recupererTitre6(word,start,end){  return "Graphe 6 : Nuage des mots les plus associés à " + word + " par thème(s) selectionné(s) entre le " + start + " et le " + end;}
+function recupererTitre1(word,start,end){  return "Graphe 1 : Evolution du nombre d'article utilisant le mot " + word + " par jour et par sources entre le " + start + " et le " + end;}
+function recupererTitre2(word,start,end){  return "Graphe 2 : Evolution du nombre d'article utilisant le mot " + word + " par jour et par thèmes entre le " + start + " et le " + end;}
+function recupererTitre3(word,start,end){  return "Graphe 3 : Nombre d'utilisation du mot " + word + " par sources entre le " + start + " et le " + end;}
+function recupererTitre4(word,start,end){  return "Graphe 4 : Nombre d'utilisation du mot " + word + " par thèmes entre le " + start + " et le " + end;}
+function recupererTitre5(word,start,end){  return "Graphe 5 : Evolution du nombre d'article utilisant le mot " + word + " par jour entre le " + start + " et le " + end;}
 
 
 /*Création des graphiques*/
@@ -253,5 +282,10 @@ function Graph4(json_graph4){
 
 
 function ajax_failed() {
+<<<<<<< HEAD
     alert('erreur');
 }
+=======
+    alert('Essayez un autre mot');
+}
+>>>>>>> master
