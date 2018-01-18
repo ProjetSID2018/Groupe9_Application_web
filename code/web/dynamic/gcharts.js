@@ -2,14 +2,12 @@ function start() {
 	request_number_article_theme();
 	request_word_trend();
 	request_word_cloud_theme();
-	//request_word_cloud();
 }
 
 function request_number_article_theme() {
 	$.ajax({
-		//url:'',
-		//url:'http://localhost:5000/theme',
-		url:'http://127.0.0.1:5000/theme',
+		//url:'http://130.120.8.250:5000/newspaper_by_label',
+		url:'http://127.0.0.1:5000/newspaper_by_label',
 		type: 'GET',
 		dataType: 'json',
 		success: draw_number_article_theme,
@@ -21,8 +19,7 @@ function request_word_trend() {
 	$( ".radio" ).click(function() {
 		var theme = $(this).attr('id');
 		$.ajax({
-			//url:'',
-			//url:'http://localhost:5000/trend/'+theme,
+			//url:'http://130.120.8.250:5000/trend/'+theme,
 			url:'http://127.0.0.1:5000/trend/'+theme,
 			type: 'GET',
 			dataType: 'json',
@@ -36,8 +33,7 @@ function request_word_cloud_theme() {
 	$( ".radio" ).click(function() {
 		var theme = $(this).attr('id');
 		$.ajax({
-			//url:'',
-			//url:'http://localhost:5000/cloud/'+theme,
+			//url:'http://130.120.8.250:5000/'+theme,
 			url:'http://127.0.0.1:5000/cloud/'+theme,
 			type: 'GET',
 			dataType: 'json',
@@ -56,7 +52,7 @@ function draw_number_article_theme(data_json_most_treated_themes) {
 	google.charts.setOnLoadCallback(function(){
     	var tab = new Array(['Theme','Effectif']);
 		for (var i = 1; i <=Object.keys(data_json_most_treated_themes).length; i++) {
-			tab[i] = [data_json_most_treated_themes[i].theme,data_json_most_treated_themes[i].effectif];
+			tab[i] = [data_json_most_treated_themes[i].label,data_json_most_treated_themes[i].number_article];
 		}
 		var data = new google.visualization.arrayToDataTable(tab);
 		var options = {   

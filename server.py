@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jan  9 12:22:10 2018
-
-@author: mathi
+@author: G9
 """
 
 from flask import Flask, request,  jsonify, Response
@@ -12,151 +10,118 @@ import json
 app = Flask(__name__)
 api = Api(app)
 
-
-# @app.route('/general', methods = ['POST'])
-# def general():
-#     #--> requete sur la base
-#     #--> appel de l'API du groupe statiques
-#
-#     data = {
-#         'nbart'  : 2000,
-#         'source' : ["lemonde", "le figaro", "le nouvel obs"]
-#     }
-#     resp = jsonify(data)
-#     resp.status_code = 200
-#     resp.headers.add('Access-Control-Allow-Origin', '*')
-#     return resp
-#
-# @app.route('/theme', methods = ['GET'])
-# def theme():
-#     #--> requete sur la base
-#     #--> appel de l'API du groupe statiques
-#     word =request.args.get('word')
-#     source = request.args.get('source')
-#     print(word, source)
-#     data = {
-#         'src'  : source,
-#         'word' :word,
-#         'tendancy' : {'month':'-','week':'+','day':'+-'},
-#         'verbe':{'verbe' : 'atomiser','month':'+','week':'-','day':'--'},
-#         'theme':{'culture' : 1,'politic':80,'humor':19}
-#     }
-#     resp = jsonify(data)
-#     resp.status_code = 200
-#     resp.headers.add('Access-Control-Allow-Origin', '*')
-#     return resp
-
+ 
 ##################################################
-#					PAGE INDEX					#
+#					PAGE INDEX					 #   
 ##################################################
-@app.route('/test', methods = ['GET'])
-def general():
+@app.route('/newspaper_by_article', methods = ['GET'])
+def newspaper_by_article():
     data = {
    '1': {
-        "source": "figaro",
-        "nombre" : 210
+        "newspaper": "figaro",
+        "number_article" : 210
     },
     '2':{
-        "source": "monde",
-        "nombre": 2015
+        "newspaper": "monde",
+        "number_article": 2015
     },
     '3':{
-        "source": "depeche",
-        "nombre" : 50
+        "newspaper": "depeche",
+        "number_article" : 50
     },
     '4':{
-        "source": "set",
-        "nombre": 45
+        "newspaper": "set",
+        "number_article": 45
     },
     '5':{
-        "source": "truc",
-        "nombre" : 544
+        "newspaper": "truc",
+        "number_article" : 544
     },
     '6':{
-        "source": "ouai",
-        "nombre": 45
+        "newspaper": "ouai",
+        "number_article": 45
     },
     '7':{
-        "source": "plus",
-        "nombre" : 76
+        "newspaper": "plus",
+        "number_article" : 76
     },
     '8':{
-        "source": "trente",
-        "nombre": 71
+        "newspaper": "trente",
+        "number_article": 71
     },
     '9':{
-        "source": "aller",
-        "nombre" : 828
+        "newspaper": "aller",
+        "number_article" : 828
     },
     '10':{
-        "source": "dix",
-        "nombre": 783
+        "newspaper": "dix",
+        "number_article": 783
     },
     '11':{
-        "source": "onze",
-        "nombre": 7823
+        "newspaper": "onze",
+        "number_article": 7823
     },
     '12':{
-        "source": "douze",
-        "nombre": 78223
+        "newspaper": "douze",
+        "number_article": 78223
     }}
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp
-
+    return resp  
+   
 @app.route('/test1', methods = ['GET'])
 def general1():
     data = {
    '1': {
         "text": "figaro",
         "weight" : 1,
-        "trend" : "Increasing_trend"
+        "trend" : "hausse"
     },
     '2':{
         "text": "monde",
         "weight": 2,
-        "trend" : "Decreasing_trend"
+        "trend" : "baisse"
     },
     '3':{
         "text": "depeche",
         "weight" : 3,
-        "trend" : "No_trend"
+        "trend" : "normale"
     },
     '4':{
         "text": "set",
         "weight": 4,
-        "trend" : "Strongly_increasing_trend"
+        "trend" : "normale"
     },
     '5':{
         "text": "truc",
         "weight" : 5,
-        "trend" : "Strongly_decreasing_trend"
+        "trend" : "normale"
     },
     '6':{
         "text": "ouai",
         "weight": 6,
-        "trend" : "Strongly_increasing_trend"
+        "trend" : "normale"
     },
     '7':{
         "text": "plus",
         "weight" : 7,
-        "trend" : "Increasing_trend"
+        "trend" : "normale"
     },
     '8':{
         "text": "trente",
         "weight": 8,
-        "trend" : "Decreasing_trend"
+        "trend" : "normale"
     },
     '9':{
         "text": "aller",
         "weight" : 9,
-        "trend" : "Strongly_decreasing_trend"
+        "trend" : "normale"
     },
     '10':{
         "text": "test",
         "weight": 10,
-        "trend" : "No_trend"
+        "trend" : "normale"
     }
 }
     resp = jsonify(data)
@@ -165,74 +130,74 @@ def general1():
     return resp
 
 
-@app.route('/test2', methods = ['GET'])
-def general2():
+@app.route('/best_label_week', methods = ['GET'])
+def best_label_week():
     data = {
    '1': {
-        "name": "France",
-        "pourcentage" : "50%"
+        "label": "France",
+        "ratio_article" : "50%"
     }}
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp
+    return resp 
 
-@app.route('/gauge', methods = ['GET'])
-def gauge():
+@app.route('/top_3_rate_feeling', methods = ['GET'])
+def top_3_rate_feeling():
 	data = {
 	'1': {
 		"feeling": "Degout",
-		"pourcent" : "50"
+		"rate" : "50"
 	},
 	'2': {
 		"feeling": "Peur",
-		"pourcent" : "20"
+		"rate" : "20"
 	},
 	'3': {
 		"feeling": "Joie",
-		"pourcent" : "80"
+		"rate" : "80"
 	}}
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
+	return resp 
 
 
 ##################################################
-#					PAGE THEME					#
+#					PAGE THEME					#   
 ##################################################
 
 
-@app.route('/theme', methods = ['GET'])
-def theme():
+@app.route('/newspaper_by_label', methods = ['GET'])
+def newspaper_by_label():
     data = {
 	'1':{
-		"theme" : "Art et Culture",
-		"effectif" : 31090763
+		"label" : "Art et Culture",
+		"number_article" : 31090763
 	},
 	'2':{
-		"theme" : "Economie",
-		"effectif" : 61801570
+		"label" : "Economie",
+		"number_article" : 61801570
 	},
 	'3':{
-		"theme" : "Science",
-		"effectif" : 73137148
+		"label" : "Science",
+		"number_article" : 73137148
 	},
 	'4':{
-		"theme" : "Sports",
-		"effectif" : 74856000
+		"label" : "Sports",
+		"number_article" : 74856000
 	},
 	'5':{
-		"theme" : "France",
-		"effectif" : 79716203
+		"label" : "France",
+		"number_article" : 79716203
 	},
 	'6':{
-		"theme" : "International",
-		"effectif" : 81902307
+		"label" : "International",
+		"number_article" : 81902307
 	},
 	'7':{
-		"theme" : "Santé",
-		"effectif" : 141850000
+		"label" : "Santé",
+		"number_article" : 141850000
 	}}
     resp = jsonify(data)
     resp.status_code = 200
@@ -425,197 +390,432 @@ def cloud(vparam1):
     return resp
 
 ##################################################
-#					PAGE RECHERCHE				#
+#					PAGE RECHERCHE				#   
 ##################################################
 
-@app.route('/recherche1/<string:vparam1>/<string:vparam2>/<string:vparam3>/<string:vparam4>/<string:vparam5>/<string:vparam6>', methods = ['GET'])
-def recherche1(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6):
-	print(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6)
+@app.route('/article_per_day_source/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
+def article_per_day_source(vparam1,vparam2,vparam3):
+	print(vparam1,vparam2,vparam3)
 	data = {
 	'1':{
-		"periode" : "w1",
-		"source" : "La Dépêche",
-		"nombre" : 10
+		"date" : "w1",
+		"newspaper" : "La Dépêche",
+		"number_article" : 10
 	},
 	'2':{
-		"periode" : "w1",
-		"source" : "Le Figaro",
-		"nombre" : 1
+		"date" : "w1",
+		"newspaper" : "Le Figaro",
+		"number_article" : 1
 	},
 	'3':{
-		"periode" : "w1",
-		"source" : "Le Point",
-		"nombre" : 12
+		"date" : "w1",
+		"newspaper" : "Le Point",
+		"number_article" : 12
 	},
 	'4':{
-		"periode" : "w1",
-		"source" : "Le Monde",
-		"nombre" : 2
+		"date" : "w1",
+		"newspaper" : "Le Monde",
+		"number_article" : 2
 	},
 	'5':{
-		"periode" : "w1",
-		"source" : "Libération",
-		"nombre" : 9
+		"date" : "w1",
+		"newspaper" : "Libération",
+		"number_article" : 9
 	},
 	'6':{
-		"periode" : "w1",
-		"source" : "Nouvelle Obs",
-		"nombre" : 13
+		"date" : "w1",
+		"newspaper" : "Nouvelle Obs",
+		"number_article" : 13
 	},
 	'7':{
-		"periode" : "w1",
-		"source" : "Telerama",
-		"nombre" : 6
+		"date" : "w1",
+		"newspaper" : "Telerama",
+		"number_article" : 6
 	},
 	'8':{
-		"periode" : "w1",
-		"source" : "Futurasciences",
-		"nombre" : 5
+		"date" : "w1",
+		"newspaper" : "Futurasciences",
+		"number_article" : 5
 	},
 	'9':{
-		"periode" : "w1",
-		"source" : "L’Humanité",
-		"nombre" : 9
+		"date" : "w1",
+		"newspaper" : "L’Humanité",
+		"number_article" : 9
 	},
 	'10':{
-		"periode" : "w2",
-		"source" : "La Dépêche",
-		"nombre" : 20
+		"date" : "w2",
+		"newspaper" : "La Dépêche",
+		"number_article" : 20
 	},
 	'11':{
-		"periode" : "w2",
-		"source" : "Le Figaro",
-		"nombre" : 35
+		"date" : "w2",
+		"newspaper" : "Le Figaro",
+		"number_article" : 35
 	},
 	'12':{
-		"periode" : "w2",
-		"source" : "Le Point",
-		"nombre" : 15
+		"date" : "w2",
+		"newspaper" : "Le Point",
+		"number_article" : 15
 	},
 	'13':{
-		"periode" : "w2",
-		"source" : "Le Monde",
-		"nombre" : 17
+		"date" : "w2",
+		"newspaper" : "Le Monde",
+		"number_article" : 17
 	},
 	'14':{
-		"periode" : "w2",
-		"source" : "Libération",
-		"nombre" : 3
+		"date" : "w2",
+		"newspaper" : "Libération",
+		"number_article" : 3
 	},
 	'15':{
-		"periode" : "w2",
-		"source" : "Nouvelle Obs",
-		"nombre" : 22
+		"date" : "w2",
+		"newspaper" : "Nouvelle Obs",
+		"number_article" : 22
 	},
 	'16':{
-		"periode" : "w2",
-		"source" : "Telerama",
-		"nombre" : 8
+		"date" : "w2",
+		"newspaper" : "Telerama",
+		"number_article" : 8
 	},
 	'17':{
-		"periode" : "w2",
-		"source" : "Futurasciences",
-		"nombre" : 3
+		"date" : "w2",
+		"newspaper" : "Futurasciences",
+		"number_article" : 3
 	},
 	'18':{
-		"periode" : "w2",
-		"source" : "L’Humanité",
-		"nombre" : 6
+		"date" : "w2",
+		"newspaper" : "L’Humanité",
+		"number_article" : 6
 	},
 	'19':{
-		"periode" : "w3",
-		"source" : "La Dépêche",
-		"nombre" : 15
+		"date" : "w3",
+		"newspaper" : "La Dépêche",
+		"number_article" : 15
 	},
 	'20':{
-		"periode" : "w3",
-		"source" : "Le Figaro",
-		"nombre" : 5
+		"date" : "w3",
+		"newspaper" : "Le Figaro",
+		"number_article" : 5
 	},
 	'21':{
-		"periode" : "w3",
-		"source" : "Le Point",
-		"nombre" : 11
+		"date" : "w3",
+		"newspaper" : "Le Point",
+		"number_article" : 11
 	},
 	'22':{
-		"periode" : "w3",
-		"source" : "Le Monde",
-		"nombre" : 17
+		"date" : "w3",
+		"newspaper" : "Le Monde",
+		"number_article" : 17
 	},
 	'23':{
-		"periode" : "w3",
-		"source" : "Libération",
-		"nombre" : 7
+		"date" : "w3",
+		"newspaper" : "Libération",
+		"number_article" : 7
 	},
 	'24':{
-		"periode" : "w3",
-		"source" : "Nouvelle Obs",
-		"nombre" : 23
+		"date" : "w3",
+		"newspaper" : "Nouvelle Obs",
+		"number_article" : 23
 	},
 	'25':{
-		"periode" : "w3",
-		"source" : "Telerama",
-		"nombre" : 28
+		"date" : "w3",
+		"newspaper" : "Telerama",
+		"number_article" : 28
 	},
 	'26':{
 		"periode" : "w3",
-		"source" : "Futurasciences",
-		"nombre" : 13
+		"newspaper" : "Futurasciences",
+		"number_article" : 13
 	},
 	'27':{
-		"periode" : "w3",
-		"source" : "L’Humanité",
-		"nombre" : 9
+		"date" : "w3",
+		"newspaper" : "L’Humanité",
+		"number_article" : 9
 	}}
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
+	return resp 
 
-@app.route('/recherche3/<string:vparam1>/<string:vparam2>/<string:vparam3>/<string:vparam4>/<string:vparam5>/<string:vparam6>', methods = ['GET'])
-def recherche3(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6):
-	print(vparam1,vparam2,vparam3,vparam4,vparam5,vparam6)
+
+@app.route('/article_per_day_label/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
+def article_per_day_label(vparam1,vparam2,vparam3):
+	print(vparam1,vparam2,vparam3)
+	data = {
+	'1':{
+		"date" : "w1",
+		"label" : "France",
+		"number_article" : 10
+	},
+	'2':{
+		"date" : "w1",
+		"label" : "Internationale",
+		"number_article" : 1
+	},
+	'3':{
+		"date" : "w1",
+		"label" : "Sport",
+		"number_article" : 12
+	},
+	'4':{
+		"date" : "w1",
+		"label" : "Santé",
+		"number_article" : 2
+	},
+	'5':{
+		"date" : "w1",
+		"label" : "Culture",
+		"number_article" : 9
+	},
+	'6':{
+		"date" : "w1",
+		"label" : "Economie",
+		"number_article" : 13
+	},
+	'7':{
+		"date" : "w1",
+		"label" : "Science/High-Tech",
+		"number_article" : 6
+	},
+	'8':{
+		"date" : "w2",
+		"label" : "France",
+		"number_article" : 5
+	},
+	'9':{
+		"date" : "w2",
+		"label" : "Internationale",
+		"number_article" : 9
+	},
+	'10':{
+		"date" : "w2",
+		"label" : "Sport",
+		"number_article" : 20
+	},
+	'11':{
+		"date" : "w2",
+		"label" : "Santé",
+		"number_article" : 35
+	},
+	'12':{
+		"date" : "w2",
+		"label" : "Culture",
+		"number_article" : 15
+	},
+	'13':{
+		"date" : "w2",
+		"label" : "Economie",
+		"number_article" : 17
+	},
+	'14':{
+		"date" : "w2",
+		"label" : "Science/High-Tech",
+		"number_article" : 3
+	},
+	'15':{
+		"date" : "w3",
+		"label" : "France",
+		"number_article" : 22
+	},
+	'16':{
+		"date" : "w3",
+		"label" : "Internationale",
+		"number_article" : 8
+	},
+	'17':{
+		"date" : "w3",
+		"label" : "Sport",
+		"number_article" : 3
+	},
+	'18':{
+		"date" : "w3",
+		"label" : "Santé",
+		"number_article" : 6
+	},
+	'19':{
+		"date" : "w3",
+		"label" : "Culture",
+		"number_article" : 15
+	},
+	'20':{
+		"date" : "w3",
+		"label" : "Economie",
+		"number_article" : 5
+	},
+	'21':{
+		"date" : "w3",
+		"label" : "Science/High-Tech",
+		"number_article" : 11
+	}}
+	resp = jsonify(data)
+	resp.status_code = 200
+	resp.headers.add('Access-Control-Allow-Origin', '*')
+	return resp 
+
+
+@app.route('/article_per_source/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
+def article_per_source(vparam1,vparam2,vparam3):
+	print(vparam1,vparam2,vparam3)
+	data = {
+	'1':{
+		"newspaper" : "La Dépêche",
+		"number_article" : 50
+	},
+	'2':{
+		"newspaper" : "Le Figaro",
+		"number_article" : 210
+	},
+	'3':{
+		"newspaper" : "Le Point",
+		"number_article" : 12
+	},
+	'4':{
+		"newspaper" : "Le Monde",
+		"number_article" : 2015
+	},
+	'5':{
+		"newspaper" : "Libération",
+		"number_article" : 45
+	},
+	'6':{
+		"newspaper" : "Nouvelle Obs",
+		"number_article" : 544
+	},
+	'7':{
+		"newspaper" : "Telerama",
+		"number_article" : 45
+	},
+	'8':{
+		"newspaper" : "Futurasciences",
+		"number_article" : 76
+	},
+	'9':{
+		"newspaper" : "L’Humanité",
+		"number_article" : 71
+	}}
+	resp = jsonify(data)
+	resp.status_code = 200
+	resp.headers.add('Access-Control-Allow-Origin', '*')
+	return resp 
+	
+@app.route('/article_per_label/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
+def article_per_label(vparam1,vparam2,vparam3):
+	print(vparam1,vparam2,vparam3)
+	data = {
+	'1':{
+		"label" : "France",
+		"number_article" : 50
+	},
+	'2':{
+		"label" : "Internationale",
+		"number_article" : 210
+	},
+	'3':{
+		"label" : "Sport",
+		"number_article" : 12
+	},
+	'4':{
+		"label" : "Santé",
+		"number_article" : 2015
+	},
+	'5':{
+		"label" : "Culture",
+		"number_article" : 45
+	},
+	'6':{
+		"label" : "Economie",
+		"number_article" : 544
+	},
+	'7':{
+		"label" : "Science/High-Tech",
+		"number_article" : 45
+	}}
+	resp = jsonify(data)
+	resp.status_code = 200
+	resp.headers.add('Access-Control-Allow-Origin', '*')
+	return resp 
+
+@app.route('/article_per_day/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
+def article_per_day(vparam1,vparam2,vparam3):
+	print(vparam1,vparam2,vparam3)
+	data = {
+	'1':{
+		"date" : "w1",
+		"number_article" : 10
+	},
+	'2':{
+		"date" : "w2",
+		"number_article" : 12
+	},
+	'3':{
+		"date" : "w3",
+		"number_article" : 12
+	}}
+	resp = jsonify(data)
+	resp.status_code = 200
+	resp.headers.add('Access-Control-Allow-Origin', '*')
+	return resp 
+
+@app.route('/positivity_per_newspaper/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
+def positivity_per_newspaper(vparam1,vparam2,vparam3):
+	print(vparam1,vparam2,vparam3)
 	data = {
 	'1':{
 		"source" : "La Dépêche",
-		"nombre" : 50
+		"polarite" : 0
 	},
 	'2':{
 		"source" : "Le Figaro",
-		"nombre" : 210
+		"polarite" : 0.1
 	},
 	'3':{
 		"source" : "Le Point",
-		"nombre" : 12
+		"polarite" : 0.54
 	},
 	'4':{
 		"source" : "Le Monde",
-		"nombre" : 2015
+		"polarite" : 1
 	},
 	'5':{
 		"source" : "Libération",
-		"nombre" : 45
+		"polarite" : 0.98
 	},
 	'6':{
 		"source" : "Nouvelle Obs",
-		"nombre" : 544
+		"polarite" : 0.06
 	},
 	'7':{
 		"source" : "Telerama",
-		"nombre" : 45
+		"polarite" : 0.23
 	},
 	'8':{
 		"source" : "Futurasciences",
-		"nombre" : 76
+		"polarite" : 0.56
 	},
 	'9':{
 		"source" : "L’Humanité",
-		"nombre" : 71
+		"polarite" : 1
 	}}
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
+	return resp 
+
+
+
+@app.route('/found_word/<string:vparam1>', methods = ['GET'])
+def found_word(vparam1):
+	print(vparam1)
+	data = {
+	'1':{
+		"word" : "Donald_Trump",
+		"link" : "https://fr.wikipedia.org/wiki/Donald_Trump"
+	}}
+	resp = jsonify(data)
+	resp.status_code = 200
+	resp.headers.add('Access-Control-Allow-Origin', '*')
+	return resp 
 
 if __name__ == '__main__':
   app.run(debug=True)
+  

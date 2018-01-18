@@ -1,7 +1,8 @@
 /*Lien Wiki*/
 function wiki(word){
 	$.ajax({
-      url:'http://localhost:5000/wiki' + '/' + word,
+      url:'http://localhost:5000/found_word' + '/' + word,
+      //url:'http://130.120.8.250:5000/found_word' + '/' + word,
       type: 'GET',
       dataType: 'json',
       success: function(code_html, statut){
@@ -95,49 +96,55 @@ $("#buttonResearch_input_research").click(function() {
     var start_date_ajax = formattedDate(start_date,'yyyymmdd') ;
     var end_date_ajax = formattedDate(end_date,'yyyymmdd');
 
-    document.getElementById("title1").innerHTML = recupTitle1(valueSearchBar,start_date,end_date,frequenceChoisie);
+    document.getElementById("titre1").innerHTML = recupTitle1(valueSearchBar,start_date,end_date);
     $.ajax({
-      url:'http://localhost:5000/recherche1' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      //url:'http://130.120.8.250:5000/article_per_day_source' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      url:'http://localhost:5000/article_per_day_source' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph1,
       error: ajax_failed,
     });
-    document.getElementById("title2").innerHTML = recupTitle2(valueSearchBar,start_date,end_date,frequenceChoisie);
+    document.getElementById("titre2").innerHTML = recupTitle2(valueSearchBar,start_date,end_date);
     $.ajax({
-      url:'http://localhost:5000/recherche2' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      //url:'http://130.120.8.250:5000/article_per_day_label' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      url:'http://localhost:5000/article_per_day_label' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph2,
       error: ajax_failed,
     });
-    document.getElementById("title3").innerHTML = recupTitle3(valueSearchBar,start_date,end_date);
+    document.getElementById("titre3").innerHTML = recupTitle3(valueSearchBar,start_date,end_date);
     $.ajax({
-      url:'http://localhost:5000/recherche3' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      //url:'http://130.120.8.250:5000/article_per_source' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      url:'http://localhost:5000/article_per_source' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph3,
       error: ajax_failed,
     });
-    document.getElementById("title4").innerHTML = recupTitle4(valueSearchBar,start_date,end_date);
+    document.getElementById("titre4").innerHTML = recupTitle4(valueSearchBar,start_date,end_date);
     $.ajax({
-      url:'http://localhost:5000/recherche4' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      //url:'http://130.120.8.250:5000/article_per_label' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      url:'http://localhost:5000/article_per_label' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph4,
       error: ajax_failed,
     });
-    document.getElementById("title5").innerHTML = recupTitle5(valueSearchBar,start_date,end_date);
+    document.getElementById("titre5").innerHTML = recupTitle5(valueSearchBar,start_date,end_date);
     $.ajax({
-      url:'http://localhost:5000/recherche5' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      //url:'http://130.120.8.250:5000/article_per_day' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      url:'http://localhost:5000/article_per_day' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph5,
       error: ajax_failed,
     });
-    document.getElementById("title6").innerHTML = recupTitle6(valueSearchBar,start_date,end_date);
+    document.getElementById("titre6").innerHTML = recupTitle6(valueSearchBar,start_date,end_date);
     $.ajax({
-      url:'http://localhost:5000/recherche6' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      //url:'http://130.120.8.250:5000/positivity_per_newspaper' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
+      url:'http://localhost:5000/positivity_per_newspaper' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       type: 'GET',
       dataType: 'json',
       success: Graph6,
@@ -162,24 +169,25 @@ function Graph1(json_graph1) {
   google.charts.load('visualization', '1', {'packages':['corechart']});
   google.charts.setOnLoadCallback(function(){
     var data = new google.visualization.DataTable();    
-    var week=json_graph1[1].periode;
+    var week=json_graph1[1].date;
     var col=0;
     data.addColumn('string', 'source');
     for (var g = 1; g <=Object.keys(json_graph1).length; g++) {
-      if (json_graph1[g].periode==week){
-        data.addColumn('number', json_graph1[g].source); //add every distinct sources present in the Json into column
+      if (json_graph1[g].date==week){
+        data.addColumn('number', json_graph1[g].newspaper); //add every distinct sources present in the Json into column
         col=col+1;
       }
     }
     for (var i = 1; i <=Object.keys(json_graph1).length; i+=col) {
-      var tab = [json_graph1[i].periode];
+      var tab = [json_graph1[i].date];
       for (var j = 0; j < col; j++) { //create a table proportional to the number of sources selected
-        tab.splice(j+1, 0, json_graph1[j+i].nombre);
+        tab.splice(j+1, 0, json_graph1[j+i].nomnumber_articlebre);
       }
      data.addRow(tab); //add the table to generate the lines
     }
     var options = {
       curveType: 'function',
+      backgroundColor: 'transparent',
       legend: { position: 'bottom' }};
     var chart = new google.visualization.LineChart(document.getElementById('chart1_div_research'));
     $("#chart1_div_research").show();
@@ -194,24 +202,25 @@ function Graph2(json_graph2) {
   google.charts.load('visualization', '1', {'packages':['corechart']});
   google.charts.setOnLoadCallback(function(){
     var data = new google.visualization.DataTable();    
-    var week=json_graph2[1].periode;
+    var week=json_graph2[1].date;
     var col=0;
     data.addColumn('string', 'theme');
     for (var g = 1; g <=Object.keys(json_graph2).length; g++) {
-      if (json_graph2[g].periode==week){
-        data.addColumn('number', json_graph2[g].theme); //add every distinct sources present in the Json into column
+      if (json_graph2[g].date==week){
+        data.addColumn('number', json_graph2[g].label); //add every distinct sources present in the Json into column
         col=col+1;
       }
     }
     for (var i = 1; i <=Object.keys(json_graph2).length; i+=col) {
-      var tab = [json_graph2[i].periode];
+      var tab = [json_graph2[i].date];
       for (var j = 0; j < col; j++) { //create a table proportional to the number of sources selected
-        tab.splice(j+1, 0, json_graph2[j+i].nombre);
+        tab.splice(j+1, 0, json_graph2[j+i].number_article);
       }
      data.addRow(tab); //add the table to generate the lines
     }
     var options = {
       curveType: 'function',
+      backgroundColor: 'transparent',
       legend: { position: 'bottom' }};
     var chart = new google.visualization.LineChart(document.getElementById('chart2_div_research'));
     $("#chart2_div_research").show();
@@ -230,13 +239,16 @@ function Graph3(json_graph3){
     data.addColumn('string', 'source');
     data.addColumn('number', "nombre");
     for (var i = 1; i <Object.keys(json_graph3).length; i++) {
-    data.addRow([json_graph3[i].source,json_graph3[i].nombre ]);
+    data.addRow([json_graph3[i].newspaper,json_graph3[i].number_article ]);
     }
+    var options = {
+      backgroundColor: 'transparent',
+      legend: {position: 'none'}};
     var chart = new google.visualization.ColumnChart(
     document.getElementById('chart3_div_research'));
-    chart.draw(data,{legend: {position: 'none'}});
+    chart.draw(data,options);
     $(window).resize(function(){ //make the graphics responsive
-      chart.draw(data,{legend: {position: 'none'}});
+      chart.draw(data,options);
     });
     $("#chart3_div_research").show();
   });
@@ -249,13 +261,16 @@ function Graph4(json_graph4){
     data.addColumn('string', 'theme');
     data.addColumn('number', "nombre");
     for (var i = 1; i <Object.keys(json_graph4).length; i++) {
-    data.addRow([json_graph4[i].theme,json_graph4[i].nombre ]);
+    data.addRow([json_graph4[i].label,json_graph4[i].number_article ]);
     }
+    var options = {
+      backgroundColor: 'transparent',
+      legend: {position: 'none'}};
     var chart = new google.visualization.ColumnChart(
     document.getElementById('chart4_div_research'));
-    chart.draw(data,{legend: {position: 'none'}});
+    chart.draw(data,options);
     $(window).resize(function(){ //make the graphics responsive
-      chart.draw(data,{legend: {position: 'none'}});
+      chart.draw(data,options);
     });
     $("#chart4_div_research").show();
   });
@@ -268,10 +283,11 @@ function Graph5(json_graph5) {
     data.addColumn('string', 'periode');
     data.addColumn('number', "nombre");
     for (var i = 1; i <= Object.keys(json_graph5).length; i++) {
-    data.addRow([json_graph5[i].periode,json_graph5[i].nombre ]);
+    data.addRow([json_graph5[i].date,json_graph5[i].number_article ]);
     }
     var options = {
       curveType: 'function',
+      backgroundColor: 'transparent',
       legend: { position: 'bottom' }};
     var chart = new google.visualization.LineChart(document.getElementById('chart5_div_research'));
     $("#chart5_div_research").show();
@@ -291,11 +307,14 @@ function Graph6(json_graph6){
     for (var i = 1; i < Object.keys(json_graph6).length; i++) {
     	data.addRow([json_graph6[i].source,json_graph6[i].polarite-0.5]);
     }
+    var options = {
+      backgroundColor: 'transparent',
+      legend: {position: 'none'}};
     var chart = new google.visualization.ColumnChart(
     document.getElementById('chart6_div_research'));
-    chart.draw(data,{legend: {position: 'none'}});
+    chart.draw(data,options);
     $(window).resize(function(){ //make the graphics responsive
-      chart.draw(data,{legend: {position: 'none'}});
+      chart.draw(data,options);
     });
     $("#chart6_div_research").show();
   });

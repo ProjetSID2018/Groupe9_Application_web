@@ -10,8 +10,8 @@ function start() {
 function request_top_10() {
 	$('#top10_sources').hide();
     	$.ajax({
-        	//url:'/Top10_source/',
-        	url:'http://localhost:5000/test',
+        	//url:'http://130.120.8.250:5000/newspaper_by_article/',
+        	url:'http://localhost:5000/newspaper_by_article',
         	type: 'GET',
         	dataType: 'json',
         	success: drawBasic,
@@ -22,7 +22,7 @@ function request_top_10() {
 function request_word_cloud() {
     $('#word_cloud_cover').hide();
     $.ajax({
-        //url:'/Top10_pertinent',
+        //url:'http://130.120.8.250:5000/Top10_pertinent',
         url:'http://localhost:5000/test1',
         type: 'GET',
         dataType: 'json',
@@ -34,8 +34,8 @@ function request_word_cloud() {
 function request_top_theme() {
     $('#most_popular_theme').hide();
     $.ajax({
-        //url:'http://130.120.8.250:5000/MostPublishedCat',
-        url:'http://localhost:5000/test2',
+        //url:'http://130.120.8.250:5000/best_label_week',
+        url:'http://localhost:5000/best_label_week',
         type: 'GET',
         dataType: 'json',
         success: top_theme,
@@ -45,8 +45,8 @@ function request_top_theme() {
 
 function request_gauge() {
     $.ajax({
-        //url:'/MostPublishedCat',
-        url:'http://localhost:5000/gauge',
+        //url:'/top_3_rate_feeling',
+        url:'http://localhost:5000/top_3_rate_feeling',
         type: 'GET',
         dataType: 'json',
         success: draw_gauge,
@@ -62,7 +62,7 @@ function drawBasic(data_json) {
 		data.addColumn("string", "sources");
     		data.addColumn("number", "nombres d'articles");
     		for (var i = 1; i <=10; i++) {
-    			data.addRow([data_json[i].source,data_json[i].nombre]);
+    			data.addRow([data_json[i].newspaper,data_json[i].number_article]);
 		}
 		var options = {
     		hAxis: {
@@ -86,7 +86,7 @@ function drawBasic(data_json) {
 function draw_table(data_json) {
    var length = data_json.length;
    for (var i = 1; i <=Object.keys(data_json).length; i++) {
-       document.getElementById('table_source_body').insertAdjacentHTML("beforeEnd",'<tr><td>'+data_json[i].source+'</td> <td>'+data_json[i].nombre+'</td></tr>');
+       document.getElementById('table_source_body').insertAdjacentHTML("beforeEnd",'<tr><td>'+data_json[i].newspaper+'</td> <td>'+data_json[i].number_article+'</td></tr>');
    }
 }
 
