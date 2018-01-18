@@ -111,14 +111,14 @@ $("#buttonResearch_input_research").click(function() {
 //       success: Graph2,
 //       error: ajax_failed,
 //     });
-//     document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
-//     $.ajax({
-//       url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
-//       type: 'GET',
-//       dataType: 'json',
-//       success: Graph3,
-//       error: ajax_failed,
-//     });
+    document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    $.ajax({
+      url:'http://localhost:5000/recherche3' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+      type: 'GET',
+      dataType: 'json',
+      success: Graph3,
+      error: ajax_failed,
+    });
 //     document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
 //     $.ajax({
 //       url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
@@ -160,38 +160,33 @@ function recupererTitre6(word,start,end){  return "Graphe 6 : Nuage des mots les
 /*Création des graphiques*/
 function Graph1(json_graph1) {
   google.charts.load('visualization', '1', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-  	var tab = new Array(['Periode','Source','Nombre']);
-	for (var i = 1; i <=Object.keys(json_graph1).length; i++) {
-		tab[i] = [json_graph1[i].periode,json_graph1[i].source,json_graph1[i].nombre];
-	}
+  google.charts.setOnLoadCallback(function(){
     var data = new google.visualization.DataTable();    
-    var week=tab[1][0];
+    var week=json_graph1[1].periode;
     var col=0;
     data.addColumn('string', 'source');
-    for (var g = 1; g <tab.length; g++) {
-      if (tab[g][0]==week){
-        data.addColumn('number', tab[g][1]); //add every distinct sources present in the Json into column
+    for (var g = 1; g <=Object.keys(json_graph1).length; g++) {
+      if (json_graph1[g].periode==week){
+        data.addColumn('number', json_graph1[g].source); //add every distinct sources present in the Json into column
         col=col+1;
       }
     }
-    for (var i = 1; i <=tab.length; i+=col) {
-      var tab2 = [tab[i][0]];
+    for (var i = 1; i <=Object.keys(json_graph1).length; i+=col) {
+      var tab = [json_graph1[i].periode];
       for (var j = 0; j < col; j++) { //create a table proportional to the number of sources selected
-        tab2.splice(j+1, 0, tab[j+i][2]);
+        tab.splice(j+1, 0, json_graph1[j+i].nombre);
       }
-      data.addRow(tab2); //add the table to generate the lines
-    }   
+      data.addRow(tab); //add the table to generate the lines
+    } 
     var options = {
       curveType: 'function',
       legend: { position: 'bottom' }};
     var chart = new google.visualization.LineChart(document.getElementById('chart1_div_research'));
     $("#chart1_div_research").show();
     chart.draw(data,options);
-  }
-  $(window).resize(function(){ //make the graphics responsive
-    drawChart();
+  	$(window).resize(function(){ //make the graphics responsive
+    	chart.draw(data,options);
+ 	});
   });
 }
 
@@ -200,35 +195,26 @@ function Graph1(json_graph1) {
 //   $("#chart2_div_research").show();
 // }
 // 
-// function Graph3(){
-//   google.charts.load('current', {packages: ['corechart', 'bar']});
-//   google.charts.setOnLoadCallback(drawBasic);
-//   function drawBasic() {
-//     var json=[
-//       {"source": "figaro","nombre" : 210},
-//       {"source": "monde","nombre": 2015},
-//       {"source": "depeche","nombre" : 50},
-//       {"source": "libération","nombre": 45},
-//       {"source": "nouvel Obs","nombre" : 544},
-//       {"source": "Telerama","nombre": 45},
-//       {"source": "Futurasciences","nombre" : 76},
-//       {"source": "L’Humanité","nombre": 71}
-//     ]
-//     var data = new google.visualization.DataTable();
-//     data.addColumn('string', 'source');
-//     data.addColumn('number', "nombre");
-//     for (var i = 0; i <json.length; i++) {
-//     data.addRow([json[i].source,json[i].nombre ]);
-//     }
-//     var chart = new google.visualization.ColumnChart(
-//     document.getElementById('chart2_div_research'));
-//     chart.draw(data,{legend: {position: 'none'}});
-//   }
-//   $(window).resize(function(){ //make the graphics responsive
-//     drawBasic();
-//   });
-//   $("#chart3_div_research").show();
-// }
+
+
+function Graph3(json_graph3){
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(function(){
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'source');
+    data.addColumn('number', "nombre");
+    for (var i = 1; i <Object.keys(json_graph3).length; i++) {
+    data.addRow([json_graph3[i].source,json_graph3[i].nombre ]);
+    }
+    var chart = new google.visualization.ColumnChart(
+    document.getElementById('chart2_div_research'));
+    chart.draw(data,{legend: {position: 'none'}});
+  	$(window).resize(function(){ //make the graphics responsive
+    	chart.draw(data,{legend: {position: 'none'}});
+  	});
+  	$("#chart3_div_research").show();
+  });
+}
 // 
 // function Graph4(){
 //   $("#chart4_div_research").show();
