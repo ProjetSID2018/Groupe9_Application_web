@@ -3,9 +3,9 @@
 
 document.body.insertAdjacentHTML("afterBegin",
   '<header>'+
-    '<nav class="navbar navbar-default">'+ 
+    '<nav class="navbar navbar-default">'+
 
-    /*Navigation bar*/    
+    /*Navigation bar*/
       '<div id = "navBar" class="container">'+
         '<div class="navbar-header">'+
           '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#codebrainery-toggle-nav" aria-expanded="false">'+
@@ -18,9 +18,9 @@ document.body.insertAdjacentHTML("afterBegin",
         '</div>'+
         '<div class="collapse navbar-collapse" id="codebrainery-toggle-nav">'+
           '<ul class="nav navbar-nav navbar-right">'+
-            '<li class="item"><a class="a.a-nav" href="#">Accueil</a></li>'+
-            '<li class="item"><a class="a.a-nav" href="#">Thèmes</a></li>'+
-            '<li class="item"><a class="a.a-nav" href="#">Recherche</a></li>'+
+            '<li class="item"><a class="a.a-nav" href="index.html">Accueil</a></li>'+
+            '<li class="item"><a class="a.a-nav" href="theme.html">Thèmes</a></li>'+
+            '<li class="item"><a class="a.a-nav" href="search_page.html">Recherche</a></li>'+
           '</ul>'+
         '</div>'+
       '</div>'+
@@ -43,7 +43,7 @@ document.body.insertAdjacentHTML("afterBegin",
                   '<SELECT id="themeList_select_research" class="form-control" name="theme" size="1">' +
                     '<option> Tous les thèmes </option>' +
                     '<option> International </option>' +
-                    '<option> France </option>' +  
+                    '<option> France </option>' +
                     '<option> Economie </option>' +
                     '<option> Science/High-Tech </option>' +
                     '<option> Culture </option>' +
@@ -51,7 +51,7 @@ document.body.insertAdjacentHTML("afterBegin",
                     '<option> Sant&eacute; </option>' +
                   '</SELECT>' +
                 '</div>' +
-                '<div class="col-sm-4">' +        
+                '<div class="col-sm-4">' +
                   '<SELECT id="sourceList_input_research" class="form-control" name="Source" size="1">' +
                     '<option> Toutes les sources </option>' +
                     '<option> Le Figaro </option>' +
@@ -70,7 +70,7 @@ document.body.insertAdjacentHTML("afterBegin",
                     '<option> Le Nouvel Obs </option>' +
                   '</select>' +
                 '</div>' +
-                '<div class="col-sm-4">' +        
+                '<div class="col-sm-4">' +
                   '<SELECT id="freqList_input_research" class="form-control" name="frequence" size="1">' +
                     '<option>Traitement par semaine</option>' +
                     '<option>Traitement par mois</option>' +
@@ -88,7 +88,7 @@ document.body.insertAdjacentHTML("afterBegin",
                         '<span class="glyphicon glyphicon-calendar"></span>' +
                       '</span>' +
                     '</div>' +
-                  '</div>' +    
+                  '</div>' +
                 '</div>' +
                 '<div class="col-sm-offset-1 col-sm-3">' +
                   '<div class="form-group">' +
@@ -98,7 +98,7 @@ document.body.insertAdjacentHTML("afterBegin",
                         '<span class="glyphicon glyphicon-calendar"></span>' +
                       '</span>' +
                     '</div>' +
-                  '</div>' +    
+                  '</div>' +
                 '</div>' +
                 '<div class="col-sm-offset-1 col-sm-2">' +
                   '<button id="buttonCancel_input_research" type="submit" class="btn btn-primary" onclick="window.location.reload(false)">Réinitialiser</button>'+
@@ -108,11 +108,11 @@ document.body.insertAdjacentHTML("afterBegin",
                 '</div>'  +
               '</div>' +
             '</div>'+
-          '</div>'+   
+          '</div>'+
         '</div>'+
       '</div>' +
 
-    /*Theme choice*/ 
+    /*Theme choice*/
 
       '<div id = "themeBar" class = "container">' +
         '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#codebrainery-toggle-theme" aria-expanded="false">'+
@@ -153,4 +153,3 @@ document.body.insertAdjacentHTML("afterBegin",
       '</div>' +
     '</nav>'+
   '</header>');
-
