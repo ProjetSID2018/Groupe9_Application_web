@@ -24,29 +24,53 @@
 	<section id="stats_section_theme">
 		<div class="container-fluid" id="container3_div_theme">
 			<article class="row" id="most_treated_theme_article_theme">
-				<div id="text_graph1_div_theme">
-					<h2> Graphe 1 : Par defaut les themes les plus traités<h2>
-				</div>
-				<div id="graph1_div_theme">
+				<div id="text_graph1_div_theme" class="col-xs-12 text-center">
+					<h2> Graphe 1 : Par defaut les themes les plus traités</h2>
+					<div id="graph1_div_theme">
 						<div id="series_chart_theme" class="block_bar_chart"></div>
+					</div>
 		 		</div>
 			</article>
 
 			<article class="row" id="most_treated_word_article_theme">
-        		<div id="text_graph2_div_theme" class="col-xs-12 text-center">
+        		<div id="text_graph2_div_theme" class="col-xs-12 text-center modal-bg hide">
           			<h2>Graphe 2 : Pour chaque theme afficher le nuage des mots les plus traités par semaine</h2>
-            		<div class="center-block">
+            		<div id="graph2_div_theme" class="center-block">
                 		<div class="world_cloud_div_theme block_word_cloud"></div>
+            		</div>
+            		<div id="table_legend">
+            			<table>
+            				<tr>
+            					<td class="td1_legend"></td>
+            					<td class="td_legend_text">A</td>
+            				</tr>
+            				<tr>
+            					<td class="td2_legend"></td>
+            					<td class="td_legend_text">B</td>
+            				</tr>
+            				<tr>
+            					<td class="td3_legend"></td>
+            					<td class="td_legend_text">C</td>
+            				</tr>
+       						<tr>
+            					<td class="td4_legend"></td>
+            					<td class="td_legend_text">D</td>
+            				</tr>
+            				<tr>
+            					<td class="td5_legend"></td>
+            					<td class="td_legend_text">E</td>
+            				</tr>
+            			</table>
             		</div>
         		</div>
       		</article>
 
 			<article class="row" id="3_main_words_article_theme">
-				<div id="text_graph3_div_theme">
-					<h2> Graphe 3 : Les 3 Mots associés et leur tendance<h2>
-				</div>
-				<div id="graph3_div_theme">
-					<div id="table_div" ></div>
+				<div id="text_graph3_div_theme" class="col-xs-12 text-center">
+					<h2> Graphe 3 : Les 3 Mots associés et leur tendance</h2>
+					<div id="graph3_div_theme">
+						<div id="table_div"></div>
+					</div>
 		 		</div>
 			</article>
 
