@@ -75,7 +75,6 @@ function draw_word_trend(data_json_trend_themes) {
 	google.charts.load('visualization', '1', {packages: ['table']});
 	google.charts.setOnLoadCallback(function(){
     	var options = {
-      		showRowNumber: true,
       		width: '100%',
       		height: '100%'
     	};
