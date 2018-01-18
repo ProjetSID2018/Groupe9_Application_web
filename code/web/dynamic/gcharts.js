@@ -45,7 +45,7 @@ function start() {
 	request_number_article_theme();
 	request_word_trend();
 	request_word_cloud_theme();
-	request_word_cloud();
+	//request_word_cloud();
 }
 
 function request_number_article_theme() {
@@ -107,7 +107,7 @@ function draw_number_article_theme(data_json_most_treated_themes) {
           	title : "Nombre d'articles",
           	minValue: 0
         	},
-        	width: 600,
+        	width: '100%',
         	height: 400,
         	bar: {groupWidth: "95%"},
         	legend: { position: "none" },
@@ -129,7 +129,7 @@ function draw_word_trend(data_json_trend_themes) {
     	var options = {
       		showRowNumber: true,
       		width: '100%',
-      		height: '100%'
+      		height: 400
     	};
     	var tab = new Array(['Mots liés au thème',  'Tendance']);
 		for (var i = 1; i <=Object.keys(data_json_trend_themes).length; i++) {
@@ -143,16 +143,37 @@ function draw_word_trend(data_json_trend_themes) {
 }
 
 function draw_word_cloud_trend(some_words) {
+	$("div.modal-bg").removeClass("hide");
 	$("#most_treated_theme_article_theme").hide();
 	var tab = [];
 	for (var i = 1; i <Object.keys(some_words).length+1; i++) {
 		tab = tab.concat(some_words[i]);
 	}
-	$(".world_cloud_div_theme").jQCloud(tab);
+	var trend_colors = {
+  		'trend_very_positive': '#32CD32',
+  		'trend_positive': '#7FFF00',
+  		'trend_neutral': '#FFD700',
+  		'trend_negative': '#FF4500',
+  		'trend_very_negative': '#B22222'
+	};
+	var colored_tab = [];
+	for (var i = 0;i<7;i++){
+  		var color = tab[i].trend;
+  		console.log(color);
+  		colored_tab = colored_tab.concat({text : tab[i].text, weight : tab[i].weight, color : trend_colors[color]});
+	}
+	$(".world_cloud_div_theme").jQCloud(colored_tab);
 	$(document).ready(function() {
 		//$(".world_cloud_div_theme").jQCloud('destroy');
 		//$(".word_cloud_row_graph").jQCloud(tab);
-		$(".world_cloud_div_theme").jQCloud('update', tab);
+		$(".world_cloud_div_theme").jQCloud('update', colored_tab);
+		setTimeout(function () {
+    		var obj = $(".world_cloud_div_theme").data("jqcloud");
+    		var data = obj.word_array;
+    		for (var i in data) {
+        		$("#" + data[i]["attr"]["id"]).css("color", data[i]["color"]);
+    		}
+		});
 	});
 	$('#most_treated_word_article_theme').show();
 }
