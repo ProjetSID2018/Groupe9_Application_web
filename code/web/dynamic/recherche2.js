@@ -5,7 +5,7 @@ function wiki(word){
     var link=json[0].wiki;
     return '<a id=wiki_a_research href="'+link+'"><img id=wiki_img_research src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png" width="50" height="50">'+word+'</img></a>'
   }
-} 
+}
 
 
 /*Boites des dates*/
@@ -14,7 +14,7 @@ function wiki(word){
 //       dateTimeFormat : "dd-MM-yyyy"
 //   });
 // });
-// 
+//
 // $(function(){
 //  $("#endDate_input_research").DateTimePicker({
 //      dateTimeFormat : "dd-MM-yyyy"
@@ -33,7 +33,7 @@ if (d1==false || d2==false){
       if (word==''){
         alert('Il faut absolument rentrer un mot')
       }else{
-        alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')      
+        alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')
       }
       return false
     }else{
@@ -101,14 +101,14 @@ $("#buttonResearch_input_research").click(function() {
       success: Graph1,
       error: ajax_failed,
     });
-    document.getElementById("titre2").innerHTML = recupererTitre2(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
-    $.ajax({
-      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
-      type: 'GET',
-      dataType: 'json',
-      success: Graph2,
-      error: ajax_failed,
-    });
+    // document.getElementById("titre2").innerHTML = recupererTitre2(valueSearchBar,dateDebutChoisie,dateFinChoisie,frequenceChoisie);
+    // $.ajax({
+    //   url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+    //   type: 'GET',
+    //   dataType: 'json',
+    //   success: Graph2,
+    //   error: ajax_failed,
+    // });
     document.getElementById("titre3").innerHTML = recupererTitre3(valueSearchBar,dateDebutChoisie,dateFinChoisie);
     $.ajax({
       url:'http://localhost:5000/recherche3' + '/' + valueSearchBar + '/' + dateDebutChoisie_ajax + '/' + dateFinChoisie_ajax + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
@@ -117,14 +117,14 @@ $("#buttonResearch_input_research").click(function() {
       success: Graph3,
       error: ajax_failed,
     });
-    document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
-    $.ajax({
-      url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
-      type: 'GET',
-      dataType: 'json',
-      success: Graph4,
-      error: ajax_failed,
-    });
+    // document.getElementById("titre4").innerHTML = recupererTitre4(valueSearchBar,dateDebutChoisie,dateFinChoisie);
+    // $.ajax({
+    //   url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
+    //   type: 'GET',
+    //   dataType: 'json',
+    //   success: Graph4,
+    //   error: ajax_failed,
+    // });
 //     document.getElementById("titre5").innerHTML = recupererTitre5(valueSearchBar,dateDebutChoisie,dateFinChoisie);
 //     $.ajax({
 //       url:'http://localhost:5000/test' + '/' + valueSearchBar + '/' + dateDebutChoisie + '/' + dateFinChoisie + '/' + frequenceChoisie + '/' + themeChoisi + '/' + sourceChoisie,
@@ -151,7 +151,7 @@ function recupererTitre6(word,start,end){  return "Graphe 6 : Nuage des mots les
 function Graph1(json_graph1) {
   google.charts.load('visualization', '1', {'packages':['corechart']});
   google.charts.setOnLoadCallback(function(){
-    var data = new google.visualization.DataTable();    
+    var data = new google.visualization.DataTable();
     var week=json_graph1[1].periode;
     var col=0;
     data.addColumn('string', 'source');
@@ -183,7 +183,7 @@ function Graph1(json_graph1) {
 function Graph2(json_graph2) {
   google.charts.load('visualization', '1', {'packages':['corechart']});
   google.charts.setOnLoadCallback(function(){
-    var data = new google.visualization.DataTable();    
+    var data = new google.visualization.DataTable();
     var week=json_graph2[1].periode;
     var col=0;
     data.addColumn('string', 'theme');

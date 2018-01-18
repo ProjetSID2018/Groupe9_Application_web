@@ -65,7 +65,6 @@ function drawBasic(data_json) {
     			data.addRow([data_json[i].source,data_json[i].nombre]);
 		}
 		var options = {
-			title: 'Top 10 des thèmes les plus traités de la semaine.',
     		hAxis: {
         		title: 'sources',
         		format: 'string',
@@ -92,8 +91,7 @@ function draw_table(data_json) {
 }
 
 function draw_cloud(some_words) {
-    // $("div.modal-bg").removeClass("hide");
-    // $("#word_cloud_cover").hide();
+	  $('#word_cloud_cover').show();
     var tab = [];
     for (var i = 1; i <Object.keys(some_words).length+1; i++) {
         tab = tab.concat(some_words[i]);
@@ -121,7 +119,6 @@ function draw_cloud(some_words) {
             }
         });
     });
-    $('#word_cloud_cover').show();
 }
 
 function top_theme(theme_pourcent) {
