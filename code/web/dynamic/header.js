@@ -1,3 +1,4 @@
+// KB, PSB, FGD
 /*fonction servant a inserer le header dans l'ensemble des pages du site. Permet d'actualiser tous les headers en meme temps.*/
 /*utilise le lien vers bootstrap de chaque page */
 
