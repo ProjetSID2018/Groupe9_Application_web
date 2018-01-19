@@ -1,26 +1,12 @@
-// Groupe 9 
-//author : P.S-B, N.C, L.C, V.F, T.R, F.G, K.B, S.D, M.D, M.V
-
-
-// all of the data in this page concern the past 7 days
-
-
 var compt=0;
 
-//function beginning when the page is ready and that launches all the AJAX requests at once
-function start() { 
+function start() {
 	request_top_10();
     request_word_cloud();
     request_top_theme();
     request_gauge();
 }
 
-//all the following functions are AJAX requests for all the different charts
-//They hide the parts of the page in wich the chart should be draw 
-//If they successfuly receive the Json they pass it to the drawing function else they call a fail function.
-
-//for our top 10 chart and table of source and their number of article
-// data : source + number of article
 function request_top_10() {
 	$('#top10_sources').hide();
     	$.ajax({
@@ -33,8 +19,6 @@ function request_top_10() {
 	});
 }
 
-//for our word cloud 
-//data : word + weight + trend
 function request_word_cloud() {
     $('#word_cloud_cover').hide();
     $.ajax({
@@ -47,8 +31,6 @@ function request_word_cloud() {
     });
 }
 
-//for the theme the most treated this week
-//data : theme + pourcentage
 function request_top_theme() {
     $('#most_popular_theme').hide();
     $.ajax({
@@ -61,8 +43,6 @@ function request_top_theme() {
     });
 }
 
-//for our 3 gauges
-//data : top 3 feeling + rate
 function request_gauge() {
     $.ajax({
         //url:'/top_3_rate_feeling',
@@ -74,10 +54,7 @@ function request_gauge() {
     });
 }
 
-//all the drawing function receiving the Json data
 
-//draw the top 10 chart and call the function for the pop-up
-//uses google chart technology and the 10 first sources
 function drawBasic(data_json) {
 	google.charts.load('visualization', '1', {packages: ['corechart', 'bar']});
 	google.charts.setOnLoadCallback(function(){
@@ -94,7 +71,8 @@ function drawBasic(data_json) {
 			},
         	vAxis: {
         		title: "nombres d'articles par source"
-			}
+			},
+			backgroundColor: 'transparent'
 		};
 		var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 		$('#top10_sources').show();
@@ -106,8 +84,6 @@ function drawBasic(data_json) {
 	draw_table(data_json);
 }
 
-//fill the table of the pop-up with sources and their number of articles
-//uses the same data than the chart drawing function but not limited to the 10 first
 function draw_table(data_json) {
    var length = data_json.length;
    for (var i = 1; i <=Object.keys(data_json).length; i++) {
@@ -115,8 +91,6 @@ function draw_table(data_json) {
    }
 }
 
-//draw the word cloud, the size of the word is determined by its weight and its color depends on its trend
-//uses the jqcloud plugin and its method
 function draw_cloud(some_words) {
 	  $('#word_cloud_cover').show();
     var tab = [];
@@ -147,27 +121,22 @@ function draw_cloud(some_words) {
     });
 }
 
-//show the most present theme and its percentage
 function top_theme(theme_pourcent) {
     $('#most_popular_theme').show();
-    document.getElementById("most_popular_theme_pourcentage").textContent = theme_pourcent[1].pourcentage;
-    document.getElementById("most_popular_theme_name").textContent = theme_pourcent[1].name;
+    document.getElementById("most_popular_theme_pourcentage").textContent = theme_pourcent[1].ratio_article;
+    document.getElementById("most_popular_theme_name").textContent = theme_pourcent[1].label;
 }
 
-//those 2 functions draw 3 gauges of the feeling with the highest rate
-//uses the just gage plugin we did it in 2 times to be more understandable
-//uses the data to get the title and the rate of the 3 feeling
 function draw_gauge(data_gauge) {
 	var title1 = data_gauge[1].feeling;
 	var title2 = data_gauge[2].feeling;
 	var title3 = data_gauge[3].feeling;
-	var pourcent1 = data_gauge[1].rate*100;
-	var pourcent2 = data_gauge[2].rate*100;
-	var pourcent3 = data_gauge[3].rate*100;
+	var pourcent1 = data_gauge[1].rate;
+	var pourcent2 = data_gauge[2].rate;
+	var pourcent3 = data_gauge[3].rate;
 	gauge(title1,title2,title3,pourcent1,pourcent2,pourcent3);
 }
 
-//take the differents titles and percent as arguments and uses the methods of the plugin to draw 3 gauges
 function gauge(title1,title2,title3,pourcent1,pourcent2,pourcent3) {
     var g1 = new JustGage({
         id: "g1",
@@ -197,11 +166,9 @@ function gauge(title1,title2,title3,pourcent1,pourcent2,pourcent3) {
     });
 }
 
-//this function is used when the AJAX request failed
-//if all the 4 requests failed the alert message will come out
 function ajax_failed() {
     compt+=1;
-    if ( compt == 4){
+    if ( compt == 3){
         alert('erreur')
     };
 }
