@@ -1,4 +1,5 @@
- // Fonction JQUERY pour gérer la barre de navigation
+// KB et PSB 
+// Fonction JQUERY pour gérer la barre de navigation
 (function($){
    // Quand le document est chargé
    $(document).ready(
