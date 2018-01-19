@@ -10,8 +10,8 @@ function start() {
 function request_top_10() {
 	$('#top10_sources').hide();
     	$.ajax({
-        	//url:'http://130.120.8.250:5000/newspaper_by_article/',
-        	url:'http://localhost:5000/newspaper_by_article',
+        	url:'http://130.120.8.250:5000/newspaper_by_article/',
+        	//url:'http://localhost:5000/newspaper_by_article',
         	type: 'GET',
         	dataType: 'json',
         	success: drawBasic,
@@ -22,8 +22,8 @@ function request_top_10() {
 function request_word_cloud() {
     $('#word_cloud_cover').hide();
     $.ajax({
-        //url:'http://130.120.8.250:5000/Top10_pertinent',
-        url:'http://localhost:5000/test1',
+        url:'http://130.120.8.250:5000/Top10_pertinent',
+        //url:'http://localhost:5000/test1',
         type: 'GET',
         dataType: 'json',
         success: draw_cloud,
@@ -34,8 +34,8 @@ function request_word_cloud() {
 function request_top_theme() {
     $('#most_popular_theme').hide();
     $.ajax({
-        //url:'http://130.120.8.250:5000/best_label_week',
-        url:'http://localhost:5000/best_label_week',
+        url:'http://130.120.8.250:5000/best_label_week',
+        //url:'http://localhost:5000/best_label_week',
         type: 'GET',
         dataType: 'json',
         success: top_theme,
@@ -45,8 +45,8 @@ function request_top_theme() {
 
 function request_gauge() {
     $.ajax({
-        //url:'/top_3_rate_feeling',
-        url:'http://localhost:5000/top_3_rate_feeling',
+        url:'http://130.120.8.250:5000/top_3_rate_feeling',
+        //url:'http://localhost:5000/top_3_rate_feeling',
         type: 'GET',
         dataType: 'json',
         success: draw_gauge,

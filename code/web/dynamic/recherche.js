@@ -1,8 +1,8 @@
 /*Lien Wiki*/
 function wiki(word){
 	$.ajax({
-      url:'http://localhost:5000/found_word' + '/' + word,
-      //url:'http://130.120.8.250:5000/found_word' + '/' + word,
+      //url:'http://localhost:5000/found_word' + '/' + word,
+      url:'http://130.120.8.250:5000/found_word' + '/' + word,
       type: 'GET',
       dataType: 'json',
       success: function(code_html, statut){
@@ -96,7 +96,7 @@ $("#buttonResearch_input_research").click(function() {
     var start_date_ajax = formattedDate(start_date,'yyyymmdd') ;
     var end_date_ajax = formattedDate(end_date,'yyyymmdd');
 
-    document.getElementById("titre1").innerHTML = recupTitle1(valueSearchBar,start_date,end_date);
+    document.getElementById("title1").innerHTML = recupTitle1(valueSearchBar,start_date,end_date);
     $.ajax({
       //url:'http://130.120.8.250:5000/article_per_day_source' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       url:'http://localhost:5000/article_per_day_source' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
@@ -105,7 +105,7 @@ $("#buttonResearch_input_research").click(function() {
       success: Graph1,
       error: ajax_failed,
     });
-    document.getElementById("titre2").innerHTML = recupTitle2(valueSearchBar,start_date,end_date);
+    document.getElementById("title2").innerHTML = recupTitle2(valueSearchBar,start_date,end_date);
     $.ajax({
       //url:'http://130.120.8.250:5000/article_per_day_label' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       url:'http://localhost:5000/article_per_day_label' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
@@ -114,7 +114,7 @@ $("#buttonResearch_input_research").click(function() {
       success: Graph2,
       error: ajax_failed,
     });
-    document.getElementById("titre3").innerHTML = recupTitle3(valueSearchBar,start_date,end_date);
+    document.getElementById("title3").innerHTML = recupTitle3(valueSearchBar,start_date,end_date);
     $.ajax({
       //url:'http://130.120.8.250:5000/article_per_source' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       url:'http://localhost:5000/article_per_source' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
@@ -123,7 +123,7 @@ $("#buttonResearch_input_research").click(function() {
       success: Graph3,
       error: ajax_failed,
     });
-    document.getElementById("titre4").innerHTML = recupTitle4(valueSearchBar,start_date,end_date);
+    document.getElementById("title4").innerHTML = recupTitle4(valueSearchBar,start_date,end_date);
     $.ajax({
       //url:'http://130.120.8.250:5000/article_per_label' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       url:'http://localhost:5000/article_per_label' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
@@ -132,7 +132,7 @@ $("#buttonResearch_input_research").click(function() {
       success: Graph4,
       error: ajax_failed,
     });
-    document.getElementById("titre5").innerHTML = recupTitle5(valueSearchBar,start_date,end_date);
+    document.getElementById("title5").innerHTML = recupTitle5(valueSearchBar,start_date,end_date);
     $.ajax({
       //url:'http://130.120.8.250:5000/article_per_day' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       url:'http://localhost:5000/article_per_day' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
@@ -141,7 +141,7 @@ $("#buttonResearch_input_research").click(function() {
       success: Graph5,
       error: ajax_failed,
     });
-    document.getElementById("titre6").innerHTML = recupTitle6(valueSearchBar,start_date,end_date);
+    document.getElementById("title6").innerHTML = recupTitle6(valueSearchBar,start_date,end_date);
     $.ajax({
       //url:'http://130.120.8.250:5000/positivity_per_newspaper' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
       url:'http://localhost:5000/positivity_per_newspaper' + '/' + valueSearchBar + '/' + start_date_ajax + '/' + end_date_ajax,
@@ -181,7 +181,7 @@ function Graph1(json_graph1) {
     for (var i = 1; i <=Object.keys(json_graph1).length; i+=col) {
       var tab = [json_graph1[i].date];
       for (var j = 0; j < col; j++) { //create a table proportional to the number of sources selected
-        tab.splice(j+1, 0, json_graph1[j+i].nomnumber_articlebre);
+        tab.splice(j+1, 0, json_graph1[j+i].number_article);
       }
      data.addRow(tab); //add the table to generate the lines
     }
