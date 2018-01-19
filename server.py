@@ -73,57 +73,56 @@ def newspaper_by_article():
 @app.route('/test1', methods = ['GET'])
 def general1():
     data = {
-   '1': {
-        "text": "figaro",
-        "weight" : 1,
-        "trend" : "hausse"
+    '1':{
+        "text" : "Lorem",
+        "weight" : 13,
+        "trend": 'Strongly_increasing_trend'
     },
     '2':{
-        "text": "monde",
-        "weight": 2,
-        "trend" : "baisse"
+        "text" : "Ipsum",
+        "weight" : 10.5,
+        "trend": 'Increasing_trend'
     },
     '3':{
-        "text": "depeche",
-        "weight" : 3,
-        "trend" : "normale"
+        "text" : "Dolor",
+        "weight" : 9.4,
+        "trend": 'No_trend'
     },
     '4':{
-        "text": "set",
-        "weight": 4,
-        "trend" : "normale"
+        "text" : "Sit",
+        "weight" : 8,
+        "trend": 'Decreasing_trend'
     },
     '5':{
-        "text": "truc",
-        "weight" : 5,
-        "trend" : "normale"
+        "text" : "Amet",
+        "weight" : 6.2,
+        "trend": 'Strongly_decreasing_trend'
     },
     '6':{
-        "text": "ouai",
-        "weight": 6,
-        "trend" : "normale"
+        "text" : "Consectetur",
+        "weight" : 5,
+        "trend": 'Increasing_trend'
     },
     '7':{
-        "text": "plus",
-        "weight" : 7,
-        "trend" : "normale"
+        "text" : "Adipiscing",
+        "weight" : 5,
+        "trend": 'Strongly_increasing_trend'
     },
     '8':{
-        "text": "trente",
-        "weight": 8,
-        "trend" : "normale"
+        "text" : "Amzeet",
+        "weight" : 7.2,
+        "trend": 'Strongly_decreasing_trend'
     },
     '9':{
-        "text": "aller",
+        "text" : "Conszezectetur",
         "weight" : 9,
-        "trend" : "normale"
+        "trend": 'Increasing_trend'
     },
     '10':{
-        "text": "test",
-        "weight": 10,
-        "trend" : "normale"
-    }
-}
+        "text" : "Adipzeiscing",
+        "weight" : 5,
+        "trend": 'Strongly_increasing_trend'
+    }}
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
@@ -147,15 +146,15 @@ def top_3_rate_feeling():
 	data = {
 	'1': {
 		"feeling": "Degout",
-		"rate" : "50"
+		"rate" : "0.5"
 	},
 	'2': {
 		"feeling": "Peur",
-		"rate" : "20"
+		"rate" : "0.8"
 	},
 	'3': {
 		"feeling": "Joie",
-		"rate" : "80"
+		"rate" : "0.2"
 	}}
 	resp = jsonify(data)
 	resp.status_code = 200
@@ -204,8 +203,8 @@ def newspaper_by_label():
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp
 
-@app.route('/trend/<string:vparam1>', methods = ['GET'])
-def trend(vparam1):
+@app.route('/link_by_tagging/<string:vparam1>', methods = ['GET'])
+def link_by_tagging(vparam1):
     #theme =request.args.get('theme')
     print(vparam1)
     data_first = {
@@ -267,8 +266,8 @@ def trend(vparam1):
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp
 
-@app.route('/cloud/<string:vparam1>', methods = ['GET'])
-def cloud(vparam1):
+@app.route('/link_by_label/<string:vparam1>', methods = ['GET'])
+def link_by_label(vparam1):
     print(vparam1)
     data_first = {
     '1':{

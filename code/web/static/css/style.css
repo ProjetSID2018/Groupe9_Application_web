@@ -194,7 +194,10 @@ p#most_popular_theme_text{
 }
 
 /* ************************** footer*********************** */ 
-
+// footer {
+//   position: absolute; 
+//   bottom: 0;
+// }
 
 img.ups {
 display: block;
@@ -664,15 +667,9 @@ div#list_theme_div_theme.row{
  width: 110%;
 }
 
-/***************************************Barre recherche*****************************************/
+/***************************************Page recherche*****************************************/
 
-.bar_espace_top{
-    margin-top: 8px;
+h2 #wiki {
+	text-align: center;
 }
-.calendrier_espace_top_left{
-    margin-right: -2% !important;
-    margin-left: -5% !important;
-}
-.bar_center{
-        margin-left: 15%;
-}
+

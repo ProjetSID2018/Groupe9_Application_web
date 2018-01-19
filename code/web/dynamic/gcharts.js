@@ -14,8 +14,8 @@ function start() {
 /* Calling json data for graphing (bar chart of the number of articles by theme) */
 function request_number_article_theme() {
 	$.ajax({
-		url:'http://130.120.8.250:5000/newspaper_by_label',
-		//url:'http://127.0.0.1:5000/newspaper_by_label',
+		//url:'http://130.120.8.250:5000/newspaper_by_label',
+		url:'http://127.0.0.1:5000/newspaper_by_label',
 		type: 'GET',
 		dataType: 'json',
 		success: draw_number_article_theme,
@@ -28,8 +28,8 @@ function request_word_trend() {
 	$( ".radio" ).click(function() {
 		var theme = $(this).attr('id');
 		$.ajax({
-			url:'http://130.120.8.250:5000/link_by_tagging/'+theme,
-			//url:'http://127.0.0.1:5000/link_by_tagging/'+theme,
+			//url:'http://130.120.8.250:5000/link_by_tagging/'+theme,
+			url:'http://127.0.0.1:5000/link_by_tagging/'+theme,
 			type: 'GET',
 			dataType: 'json',
 			success: draw_word_trend,
@@ -43,8 +43,8 @@ function request_word_cloud_theme() {
 	$( ".radio" ).click(function() {
 		var theme = $(this).attr('id');
 		$.ajax({
-			url:'http://130.120.8.250:5000/link_by_label'+theme,
-			//url:'http://127.0.0.1:5000/link_by_label/'+theme,
+			//url:'http://130.120.8.250:5000/link_by_label'+theme,
+			url:'http://127.0.0.1:5000/link_by_label/'+theme,
 			type: 'GET',
 			dataType: 'json',
 			success: draw_word_cloud_trend,

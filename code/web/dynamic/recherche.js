@@ -1,13 +1,12 @@
 /*Lien Wiki*/
 function wiki(word){
 	$.ajax({
-      //url:'http://localhost:5000/found_word' + '/' + word,
-      url:'http://130.120.8.250:5000/found_word' + '/' + word,
+      url:'http://localhost:5000/found_word' + '/' + word,
+    //url:'http://130.120.8.250:5000/found_word' + '/' + word,
       type: 'GET',
       dataType: 'json',
       success: function(code_html, statut){
       	if (Object.keys(code_html).length==1){
-      	//word_chaine.replace(/ /g,"");
       	var text = '<a id=wiki_a_research href="'+code_html[1].link+'"><img id=wiki_img_research src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png" width="50" height="50">'+code_html[1].word+'</img></a>';
       	$('#wiki').html(text);}},
       error: ajax_failed,
@@ -28,7 +27,7 @@ if (d1==false || d2==false){
     if (word=='' ||  d2<d1){
       if (word==''){
         alert('Il faut absolument rentrer un mot')
-      }else{
+      }else{                
         alert('Il faut absolument que la première date soit inférieur ou égale à la deuxième')      
       }
       return false
@@ -305,7 +304,7 @@ function Graph6(json_graph6){
     data.addColumn('string', 'source');
     data.addColumn('number', "polarite");
     for (var i = 1; i < Object.keys(json_graph6).length; i++) {
-    	data.addRow([json_graph6[i].source,json_graph6[i].polarite-0.5]);
+    	data.addRow([json_graph6[i].source,json_graph6[i].polarite]);
     }
     var options = {
       backgroundColor: 'transparent',
