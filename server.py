@@ -10,9 +10,9 @@ import json
 app = Flask(__name__)
 api = Api(app)
 
-
+ 
 ##################################################
-#					PAGE INDEX					 #
+#					PAGE INDEX					 #   
 ##################################################
 @app.route('/newspaper_by_article', methods = ['GET'])
 def newspaper_by_article():
@@ -68,8 +68,8 @@ def newspaper_by_article():
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp
-
+    return resp  
+   
 @app.route('/test1', methods = ['GET'])
 def general1():
     data = {
@@ -140,7 +140,7 @@ def best_label_week():
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
-    return resp
+    return resp 
 
 @app.route('/top_3_rate_feeling', methods = ['GET'])
 def top_3_rate_feeling():
@@ -160,11 +160,11 @@ def top_3_rate_feeling():
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
+	return resp 
 
 
 ##################################################
-#					PAGE THEME					#
+#					PAGE THEME					#   
 ##################################################
 
 
@@ -272,181 +272,109 @@ def cloud(vparam1):
     print(vparam1)
     data_first = {
     '1':{
-        "text" : "Europe",
+        "text" : "Lorem",
         "weight" : 13,
         "trend": 'Strongly_increasing_trend'
     },
     '2':{
-        "text" : "Immigration",
+        "text" : "Ipsum",
         "weight" : 10.5,
         "trend": 'Increasing_trend'
     },
     '3':{
-        "text" : "Etats-Unis",
+        "text" : "Dolor",
         "weight" : 9.4,
         "trend": 'No_trend'
     },
     '4':{
-        "text" : "Trump",
+        "text" : "Sit",
         "weight" : 8,
         "trend": 'Decreasing_trend'
     },
     '5':{
-        "text" : "Maison Blanche",
+        "text" : "Amet",
         "weight" : 6.2,
         "trend": 'Strongly_decreasing_trend'
     },
     '6':{
-        "text" : "Prison",
+        "text" : "Consectetur",
         "weight" : 5,
         "trend": 'Increasing_trend'
     },
     '7':{
-        "text" : "Chine",
+        "text" : "Adipiscing",
         "weight" : 5,
         "trend": 'Strongly_increasing_trend'
     }}
     data_bis = {
     '1':{
-        "text" : "Macron",
+        "text" : "Arbre",
         "weight" : 13,
         "trend": 'No_trend'
     },
     '2':{
-        "text" : "Président",
+        "text" : "Bol",
         "weight" : 10.5,
         "trend": 'Increasing_trend'
     },
     '3':{
-        "text" : "Taxes",
+        "text" : "Cerceau",
         "weight" : 9.4,
         "trend": 'Strongly_decreasing_trend'
     },
     '4':{
-        "text" : "Réformes",
+        "text" : "Domino",
         "weight" : 8,
         "trend": 'No_trend'
     },
     '5':{
-        "text" : "Retraite",
+        "text" : "Elephant",
         "weight" : 6.2,
         "trend": 'Decreasing_trend'
     },
     '6':{
-        "text" : "Gendarmerie",
+        "text" : "Fabriquer",
         "weight" : 5,
         "trend": 'No_trend'
     },
     '7':{
-        "text" : "Maëlys",
+        "text" : "Gateau",
         "weight" : 5,
         "trend": 'Strongly_increasing_trend'
     }}
     data_ter = {
     '1':{
-        "text" : "Emploi",
+        "text" : "Hibou",
         "weight" : 13,
         "trend": 'Strongly_increasing_trend'
     },
     '2':{
-        "text" : "Augmentation",
+        "text" : "Important",
         "weight" : 10.5,
         "trend": 'Decreasing_trend'
     },
     '3':{
-        "text" : "Budget",
+        "text" : "Joyeux",
         "weight" : 9.4,
         "trend": 'Decreasing_trend'
     },
     '4':{
-        "text" : "Banques",
+        "text" : "Lalala",
         "weight" : 8,
         "trend": 'Increasing_trend'
     },
     '5':{
-        "text" : "Crise",
+        "text" : "Mouton",
         "weight" : 6.2,
         "trend": 'Strongly_decreasing_trend'
     },
     '6':{
-        "text" : "Licencié",
+        "text" : "Négation",
         "weight" : 5,
         "trend": 'Increasing_trend'
     },
     '7':{
-        "text" : "Bourse",
-        "weight" : 5,
-        "trend": 'No_trend'
-    }}
-    data_quat = {
-    '1':{
-        "text" : "Nintendo",
-        "weight" : 13,
-        "trend": 'Strongly_increasing_trend'
-    },
-    '2':{
-        "text" : "Jeux Video",
-        "weight" : 10.5,
-        "trend": 'Decreasing_trend'
-    },
-    '3':{
-        "text" : "iPhone",
-        "weight" : 9.4,
-        "trend": 'Decreasing_trend'
-    },
-    '4':{
-        "text" : "Google",
-        "weight" : 8,
-        "trend": 'Increasing_trend'
-    },
-    '5':{
-        "text" : "Smartphone",
-        "weight" : 6.2,
-        "trend": 'Strongly_decreasing_trend'
-    },
-    '6':{
-        "text" : "Switch",
-        "weight" : 5,
-        "trend": 'Increasing_trend'
-    },
-    '7':{
-        "text" : "PS4",
-        "weight" : 5,
-        "trend": 'No_trend'
-    }}
-    data_cinq = {
-    '1':{
-        "text" : "Télévision",
-        "weight" : 13,
-        "trend": 'Strongly_increasing_trend'
-    },
-    '2':{
-        "text" : "Cinéma",
-        "weight" : 10.5,
-        "trend": 'Decreasing_trend'
-    },
-    '3':{
-        "text" : "Woody Allen",
-        "weight" : 9.4,
-        "trend": 'Decreasing_trend'
-    },
-    '4':{
-        "text" : "Litterature",
-        "weight" : 8,
-        "trend": 'Increasing_trend'
-    },
-    '5':{
-        "text" : "Johnny Hallyday",
-        "weight" : 6.2,
-        "trend": 'Strongly_decreasing_trend'
-    },
-    '6':{
-        "text" : "Concert",
-        "weight" : 5,
-        "trend": 'Increasing_trend'
-    },
-    '7':{
-        "text" : "Ecriture",
+        "text" : "Obligation",
         "weight" : 5,
         "trend": 'No_trend'
     }}
@@ -454,19 +382,15 @@ def cloud(vparam1):
         data = data_first
     elif vparam1 == 'france':
         data = data_bis
-    elif vparam1== 'economie':
+    else:
         data = data_ter
-    elif vparam1=='sciences_high_tech':
-        data = data_quat
-    else :
-        data =data_cinq
     resp = jsonify(data)
     resp.status_code = 200
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp
 
 ##################################################
-#					PAGE RECHERCHE				#
+#					PAGE RECHERCHE				#   
 ##################################################
 
 @app.route('/article_per_day_source/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
@@ -611,7 +535,7 @@ def article_per_day_source(vparam1,vparam2,vparam3):
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
+	return resp 
 
 
 @app.route('/article_per_day_label/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
@@ -726,7 +650,7 @@ def article_per_day_label(vparam1,vparam2,vparam3):
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
+	return resp 
 
 
 @app.route('/article_per_source/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
@@ -772,8 +696,8 @@ def article_per_source(vparam1,vparam2,vparam3):
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
-
+	return resp 
+	
 @app.route('/article_per_label/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
 def article_per_label(vparam1,vparam2,vparam3):
 	print(vparam1,vparam2,vparam3)
@@ -809,7 +733,7 @@ def article_per_label(vparam1,vparam2,vparam3):
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
+	return resp 
 
 @app.route('/article_per_day/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
 def article_per_day(vparam1,vparam2,vparam3):
@@ -830,7 +754,7 @@ def article_per_day(vparam1,vparam2,vparam3):
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
+	return resp 
 
 @app.route('/positivity_per_newspaper/<string:vparam1>/<string:vparam2>/<string:vparam3>', methods = ['GET'])
 def positivity_per_newspaper(vparam1,vparam2,vparam3):
@@ -875,7 +799,7 @@ def positivity_per_newspaper(vparam1,vparam2,vparam3):
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
+	return resp 
 
 
 
@@ -890,7 +814,8 @@ def found_word(vparam1):
 	resp = jsonify(data)
 	resp.status_code = 200
 	resp.headers.add('Access-Control-Allow-Origin', '*')
-	return resp
+	return resp 
 
 if __name__ == '__main__':
   app.run(debug=True)
+  
