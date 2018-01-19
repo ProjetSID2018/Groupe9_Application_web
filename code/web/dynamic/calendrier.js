@@ -1,4 +1,4 @@
-
+// KB et PSB
 			var calendarElement, calendarDestruct = false, preventDouble = true;
 			document.onclick = function(e){
 				var source=window.event?window.event.srcElement:e.target;
