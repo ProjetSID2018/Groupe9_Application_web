@@ -54,11 +54,11 @@ function draw_number_article_theme(data_json_most_treated_themes) {
 		var data = new google.visualization.arrayToDataTable(tab);
 		var options = {   
         	hAxis : {
-          	title : "Nombre d'articles",
           	minValue: 0
         	},
         	bar: {groupWidth: "95%"},
         	legend: { position: "none" },
+        	backgroundColor: { fill:'transparent' }
 		};
 		var chart = new google.visualization.BarChart(document.getElementById("series_chart_theme"));
 		chart.draw(data, options);
@@ -76,7 +76,8 @@ function draw_word_trend(data_json_trend_themes) {
 	google.charts.setOnLoadCallback(function(){
     	var options = {
       		width: '100%',
-      		height: '100%'
+      		height: '100%',
+      		backgroundColor: { fill:'transparent' }
     	};
     	var trend_translated = {
   			'Strongly_increasing_trend': 'En très forte hausse',
