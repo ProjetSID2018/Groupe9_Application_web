@@ -1,3 +1,4 @@
+// KB, PSB, FGD
 /*Lien Wiki*/
 function wiki(word){
 	$.ajax({
