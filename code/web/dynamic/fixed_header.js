@@ -1,9 +1,9 @@
- // Fonction JQUERY pour gérer la barre de navigation
+ // JQUERY : function to handle the navigation bar
 (function($){
-   // Quand le document est chargé
+   // When the document is loaded
    $(document).ready(
     function(){
-      var offset= $("header").offset().top;
+      var offset= $("header").offset().top; 
       $(document).scroll(function(){
           var scrollTop = $(document).scrollTop();
           if(scrollTop > offset){
@@ -13,8 +13,9 @@
             $("nav").removeClass("navbar-fixed-top");
           }
       });
-
+      // Get the ID of the title division
       var title = $("title").attr("id");
+      // Compares the recovered id with the id pages to be able to hide the good parts of the header  
       if(title == "Search_Page"){
         $("#themeBar").hide();
       }
